@@ -13,20 +13,57 @@
 
     <header class="navbar">
         <div class="logo">Congregação das Irmãs</div>
-        <nav>
-            <a href="/" class="nav-link">Início</a>
-            <a href="/historia" class="nav-link">História</a>
-            <a href="/projetos" class="nav-link">Ação Social</a>
-            <a href="/noticias" class="nav-link">Notícias</a>
-            <a href="/vocacoes" class="nav-link">Vocações</a>
-            <a href="/doacoes" class="nav-link">Doações</a>
-            <a href="/oracao" class="nav-link btn-destaque">Pedir Oração</a>
+        
+        <button class="menu-toggle" id="mobile-menu-btn">
+            <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor">
+                <path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/>
+            </svg>
+        </button>
+        
+        <nav id="nav-menu">
+            <a href="#inicio" class="nav-link">Início</a>
+            <a href="#historia" class="nav-link">História</a>
+            <a href="#projetos" class="nav-link">Ação Social</a>
+            <a href="#noticias" class="nav-link">Notícias</a>
+            <a href="#vocacoes" class="nav-link">Vocações</a>
+            <a href="#doacoes" class="nav-link">Doações</a>
+            <a href="#oracao" class="nav-link btn-destaque">Pedir Oração</a>
         </nav>
     </header>
 
     <main id="app-content">
         <%- include(bodyPage) %> 
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3 class="footer-logo">Congregação das Irmãs</h3>
+                <p>Educando com amor, servindo com esperança e vivendo a fé há mais de 50 anos.</p>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Acesso Rápido</h3>
+                <ul>
+                    <li><a href="/historia" class="nav-link footer-link">Nossa História</a></li>
+                    <li><a href="/projetos" class="nav-link footer-link">Ação Social</a></li>
+                    <li><a href="/vocacoes" class="nav-link footer-link">Vocações</a></li>
+                    <li><a href="/doacoes" class="nav-link footer-link">Doações</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Fale Conosco</h3>
+                <p>📍 Sede: Rua da Paz, 123 - Centro</p>
+                <p>📞 Tel: (11) 99999-9999</p>
+                <p>✉️ E-mail: contato@congregacao.org.br</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Congregação das Irmãs. Todos os direitos reservados. | Desenvolvido com dedicação.</p>
+        </div>
+    </footer>
 
     <script src="/js/main.js"></script>
 </body>
