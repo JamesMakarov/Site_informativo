@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="loader" class="loader-overlay hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <header class="navbar">
+        <div class="logo">Congregação das Irmãs</div>
+        <nav>
+            <a href="/" class="nav-link">Início</a>
+            <a href="/historia" class="nav-link">História</a>
+        </nav>
+    </header>
+
+    <main id="app-content">
+        <%- include(bodyPage) %> 
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
