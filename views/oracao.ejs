@@ -1,0 +1,24 @@
+<h1 class="hero-title">Pedidos de Oração</h1>
+
+<div class="form-container">
+    <p class="text-content" style="text-align: center; margin-bottom: 2rem;">
+        Deixe sua intenção. Nossas irmãs rezarão por você e sua família.
+    </p>
+
+    <form id="form-oracao">
+        <div class="input-group">
+            <label for="nome">Seu Nome</label>
+            <input type="text" id="nome" name="nome" required placeholder="Ex: Maria da Silva">
+        </div>
+        
+        <div class="input-group">
+            <label for="pedido">Sua Intenção</label>
+            <textarea id="pedido" name="pedido" rows="4" required placeholder="Escreva seu pedido aqui..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+            <span class="btn-text">Enviar Pedido</span>
+            <div class="btn-loader hidden"></div>
+        </button>
+    </form>
+</div>
