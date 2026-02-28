@@ -1,24 +1,33 @@
-<h1 class="hero-title">Pedidos de Oração</h1>
-
-<div class="form-container">
-    <p class="text-content" style="text-align: center; margin-bottom: 2rem;">
-        Deixe sua intenção. Nossas irmãs rezarão por você e sua família.
-    </p>
-
-    <form id="form-oracao">
-        <div class="input-group">
-            <label for="nome">Seu Nome</label>
-            <input type="text" id="nome" name="nome" required placeholder="Ex: Maria da Silva">
-        </div>
+<section class="py-20 bg-slate-50 min-h-[70vh] flex flex-col justify-center">
+    <div class="max-w-3xl mx-auto px-6 w-full">
+        <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-grad-primary mb-6 text-center">Pedidos de Oração</h2>
         
-        <div class="input-group">
-            <label for="pedido">Sua Intenção</label>
-            <textarea id="pedido" name="pedido" rows="4" required placeholder="Escreva seu pedido aqui..."></textarea>
-        </div>
+        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-grad-primary"></div>
+            
+            <p class="text-center text-slate-600 mb-8 text-lg italic">
+                "Onde dois ou três estiverem reunidos em meu nome, ali estou eu no meio deles."<br>
+                <span class="not-italic font-bold text-brand-blue mt-2 block">Deixe sua intenção. Nossas irmãs rezarão por você e sua família.</span>
+            </p>
 
-        <button type="submit" class="btn-submit">
-            <span class="btn-text">Enviar Pedido</span>
-            <div class="btn-loader hidden"></div>
-        </button>
-    </form>
-</div>
+            <form id="form-oracao" class="space-y-6">
+                <div>
+                    <label for="nome" class="block text-sm font-bold text-brand-blue mb-2">Seu Nome</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Ex: Maria da Silva" 
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-primary focus:ring-4 focus:ring-blue-500/20 transition-all outline-none bg-slate-50">
+                </div>
+                
+                <div>
+                    <label for="pedido" class="block text-sm font-bold text-brand-blue mb-2">Sua Intenção</label>
+                    <textarea id="pedido" name="pedido" rows="4" required placeholder="Escreva seu pedido aqui..." 
+                              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-primary focus:ring-4 focus:ring-blue-500/20 transition-all outline-none bg-slate-50 resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit w-full bg-grad-primary hover:bg-grad-hover text-white font-bold text-lg py-4 rounded-xl shadow-[0_4px_15px_rgba(59,130,246,0.4)] hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(59,130,246,0.6)] transition-all duration-300 flex justify-center items-center gap-2">
+                    <span class="btn-text">Enviar Pedido de Oração</span>
+                    <div class="btn-loader hidden w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

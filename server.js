@@ -21,13 +21,12 @@ const renderPage = (req, res, page, title) => {
 // Rotas de Páginas
 app.get('/', (req, res) => renderPage(req, res, 'home', 'Início | Congregação'));
 app.get('/historia', (req, res) => renderPage(req, res, 'historia', 'Nossa História'));
-app.get('/projetos', (req, res) => renderPage(req, res, 'projetos', 'Projetos Sociais'));
-app.get('/oracao', (req, res) => renderPage(req, res, 'oracao', 'Pedidos de Oração'));
-
-// NOVAS ROTAS
-app.get('/noticias', (req, res) => renderPage(req, res, 'noticias', 'Notícias | Congregação'));
-app.get('/vocacoes', (req, res) => renderPage(req, res, 'vocacoes', 'Desperte sua Vocação'));
-app.get('/doacoes', (req, res) => renderPage(req, res, 'doacoes', 'Ajude nossa Obra'));
+app.get('/projetos', (req, res) => renderPage(req, res, 'projetos', 'Ação Social'));
+app.get('/noticias', (req, res) => renderPage(req, res, 'noticias', 'Notícias'));
+app.get('/vocacoes', (req, res) => renderPage(req, res, 'vocacoes', 'Vocações'));
+app.get('/casas', (req, res) => renderPage(req, res, 'casas', 'Nossas Casas')); // <-- NOVA ROTA
+app.get('/doacoes', (req, res) => renderPage(req, res, 'doacoes', 'Doações'));
+app.get('/oracao', (req, res) => renderPage(req, res, 'oracao', 'oração'));
 
 // Rota de API (Nós recebemos o POST do form aqui)
 app.post('/api/oracao', (req, res) => {
