@@ -1,0 +1,179 @@
+{
+  "home": {
+    "heroBadge": "DESDE 1970",
+    "heroTitulo": "Educação que",
+    "heroTituloDestaque": "Transforma",
+    "heroBg": "/img/noticia1.jpg",
+    "heroSubtitulo": "Há mais de 50 anos educando com amor, servindo com esperança e vivendo a fé em nossa comunidade.",
+    "heroBtn": "Deixe seu Pedido de Oração",
+    "stat1_num": "+50",
+    "stat1_text": "Anos de História",
+    "stat2_num": "12",
+    "stat2_text": "Escolas Apoiadas",
+    "stat3_num": "300+",
+    "stat3_text": "Irmãs em Missão",
+    "stat4_num": "10k+",
+    "stat4_text": "Vidas Tocadas",
+    "welcomeTitulo": "Paz e Bem! Bem-vindos à nossa casa virtual",
+    "welcomeTexto": "Nossa missão não se resume a palavras, mas a gestos diários de compaixão. Aqui você encontrará um reflexo do nosso trabalho nos hospitais, nas escolas e nas comunidades carentes.",
+    "welcomeBtn1": "Conhecer Nossa História",
+    "welcomeBtn2": "Ver Nossos Projetos",
+    "highlightSecTitulo": "Acompanhe Nossa Caminhada",
+    "highlightBadge": "DESTAQUE",
+    "highlightTitulo": "Campanha Inverno Solidário",
+    "highlightTexto": "Milhares de cobertores já foram arrecadados. Junte-se a nós para aquecer as famílias neste inverno rigoroso.",
+    "highlightBtn": "Ler relato completo",
+    "liturgiaIcon": "📖",
+    "liturgiaTitulo": "Liturgia Diária",
+    "liturgiaTexto": "Acompanhe as reflexões das nossas irmãs sobre o evangelho do dia.",
+    "liturgiaBtn": "Acessar reflexões",
+    "faqTitulo": "Dúvidas Frequentes",
+    "ctaTitulo": "Ajude-nos a continuar servindo",
+    "ctaTexto": "Sua contribuição mantém nossas obras funcionando diariamente.",
+    "ctaBtn": "Quero ser um Benfeitor",
+    "depoimentos": [
+      {
+        "texto": "Através do projeto Pão Partilhado, eu encontrei não apenas alimento, mas conforto.",
+        "autor": "João Silva",
+        "papel": "Assistido"
+      },
+      {
+        "texto": "Estudar na escola da congregação me ensinou valores que levo para a vida. A dedicação é inesquecível.",
+        "autor": "Dr. Marcos Paulo",
+        "papel": "Ex-aluno"
+      }
+    ],
+    "faqs": [
+      {
+        "pergunta": "Como posso fazer uma doação?",
+        "resposta": "Acesse a nossa página de doações pelo menu superior para doar via PIX ou Transferência Bancária."
+      },
+      {
+        "pergunta": "O pedido de oração é confidencial?",
+        "resposta": "Sim! Todas as intenções são levadas diretamente para a capela e rezadas de forma anônima e confidencial."
+      },
+      {
+        "pergunta": "Como fazer parte da comunidade?",
+        "resposta": "Sua resposta aqui, detalhe de maneira convincente e clara, para que os usuários compreendam. "
+      }
+    ]
+  },
+  "historia": {
+    "heroBadge": "NOSSA ORIGEM",
+    "heroTitulo": "Onde o",
+    "heroTituloDestaque": "Amor",
+    "heroSufixo": " se fez Obra",
+    "heroSubtitulo": "Conheça a trajetória de fé, lágrimas, suor e milagres que transformou uma pequena promessa em um farol de esperança.",
+    "capitulos": [
+      {
+        "badge": "CAPÍTULO I",
+        "titulo": "Uma faísca no interior",
+        "p1": "Tudo começou no árido ano de 1970. Em uma pequena comunidade afastada dos grandes centros, nossa fundadora caminhava pelas estradas quando se deparou com crianças sem escola.",
+        "p2": "Naquele momento, sob a sombra de um velho juazeiro, ela não viu apenas a pobreza; ela viu um pedido divino de amparo.",
+        "citacao": "\"Não temos ouro nem prata, mas o que temos nós entregaremos a eles.\"",
+        "citacaoAutor": "— Registros da Primeira Reunião",
+        "imagem": "/img/noticia1.jpg"
+      },
+      {
+        "badge": "CAPÍTULO II",
+        "titulo": "Tijolo por Tijolo",
+        "p1": "A primeira obra não foi um grande hospital, mas uma pequena sala de taipa que servia de escola de manhã, refeitório ao meio-dia e capela à noite.",
+        "p2": "A notícia de que 'um grupo de irmãs estava mudando a cidade' se espalhou rápido. Em menos de cinco anos, a sala de taipa deu lugar ao nosso primeiro complexo.",
+        "citacao": "",
+        "citacaoAutor": "",
+        "imagem": "/img/noticia2.jpg"
+      }
+    ],
+    "timelineTitulo": "A Marcha do Tempo",
+    "timelineSub": "Os marcos que definem nossa trajetória de expansão e caridade.",
+    "timeline": [
+      { "ano": "1970", "titulo": "A Fundação", "texto": "Criação oficial da Congregação.", "cor": "brand-accent" },
+      { "ano": "1985", "titulo": "O Primeiro Hospital", "texto": "Inauguração de nossa primeira casa de saúde.", "cor": "brand-primary" },
+      { "ano": "2002", "titulo": "Expansão de Escolas", "texto": "Atingimos a marca de 10 escolas em funcionamento.", "cor": "brand-accent" },
+      { "ano": "Atual", "titulo": "Mais de 50 Anos", "texto": "Celebramos nosso jubileu com uma congregação forte.", "cor": "white" }
+    ],
+    "galeriaTitulo": "Galeria de Memórias",
+    "galeria": [
+      { "imagem": "/img/noticia3.jpg", "titulo": "Primeira turma de alunos (1975)" },
+      { "imagem": "/img/noticia1.jpg", "titulo": "Votos Perpétuos (Anos 80)" },
+      { "imagem": "/img/noticia2.jpg", "titulo": "Inauguração da Capela Central" }
+    ]
+  },
+  "oracao": {
+    "heroTitulo": "Pedidos de Oração",
+    "heroSubtitulo": "Não carregue o seu fardo sozinho. Deixe aqui a sua intenção e as nossas irmãs rezarão por si e pela sua família na Capela de Adoração.",
+    "formCitacao": "\"Onde dois ou três estiverem reunidos em meu nome, ali estou eu no meio deles.\"",
+    "formInstrucao": "Deixe a sua intenção. O sigilo é absoluto.",
+    "labelNome": "O Seu Nome (Opcional)",
+    "labelPedido": "A Sua Intenção",
+    "btnEnviar": "Enviar Pedido"
+  },
+  "projetos": {
+    "heroBadge": "NOSSAS OBRAS",
+    "heroTitulo": "O Amor em",
+    "heroTituloDestaque": "Movimento",
+    "heroSubtitulo": "Acreditamos que a fé genuína se manifesta na prática. Conheça as frentes de atuação onde as nossas irmãs dedicam as suas vidas para transformar a realidade de milhares de famílias.",
+    "pilaresTitulo": "Os Nossos Pilares Sociais",
+    "pilares": [
+      {
+        "icone": "📚",
+        "cor": "blue",
+        "titulo": "Educação Integral",
+        "texto": "Nós não apenas ensinamos a ler e a escrever. O nosso foco é a formação de cidadãos éticos, preparados para os desafios do futuro, aliando a excelência académica aos valores humanos e cristãos intransigíveis."
+      },
+      {
+        "icone": "🏥",
+        "cor": "orange",
+        "titulo": "Amparo à Saúde",
+        "texto": "Nos nossos centros de saúde e hospitais filantrópicos, as famílias em situação de extrema vulnerabilidade encontram acolhimento, tratamentos médicos dignos e o consolo espiritual que acelera qualquer cura."
+      },
+      {
+        "icone": "🍲",
+        "cor": "blue",
+        "titulo": "Pão Partilhado",
+        "texto": "A fome não espera. Mantemos cozinhas solidárias ativas diariamente, distribuindo milhares de refeições quentes e cestas básicas para moradores em situação de rua e lares desprovidos de rendimento."
+      }
+    ],
+    "destaqueBadge": "PROJETO MODELO",
+    "destaqueLocal": "Cascavel, Ceará",
+    "destaqueTitulo": "Centro Educacional",
+    "destaqueTituloDestaque": "Juvenal de Carvalho",
+    "destaqueTexto1": "Uma das nossas obras de maior orgulho. Neste centro, não apenas preservamos a tradição do ensino católico, mas abraçamos o futuro.",
+    "destaqueTexto2": "Através de metodologias ativas e da inserção da robótica e tecnologia na sala de aula, estamos a formar mentes brilhantes e mãos capacitadas, prontas para inovar e construir um mundo mais sustentável e justo.",
+    "destaqueStat1Num": "500+",
+    "destaqueStat1Txt": "Alunos Atendidos",
+    "destaqueStat2Num": "100%",
+    "destaqueStat2Txt": "Foco no Futuro",
+    "outrosTitulo": "Onde Mais Atuamos",
+    "outros": [
+      {
+        "icone": "👵",
+        "corClass": "brand-primary",
+        "titulo": "Acolhimento de Idosos",
+        "texto": "Lares de repouso estruturados para devolver a dignidade e a alegria àqueles que já contribuíram com uma vida inteira de trabalho."
+      },
+      {
+        "icone": "🌍",
+        "corClass": "brand-accent",
+        "titulo": "Missões Além-Fronteiras",
+        "texto": "Grupos de irmãs enviadas para regiões extremas, prestando socorro imediato, alfabetização e assistência médica básica."
+      },
+      {
+        "icone": "🌱",
+        "corClass": "green-500",
+        "titulo": "Sustentabilidade Comunitária",
+        "texto": "Projetos de hortas comunitárias e reciclagem, ensinando as famílias a gerarem o seu próprio sustento em harmonia com a natureza."
+      },
+      {
+        "icone": "🧵",
+        "corClass": "purple-500",
+        "titulo": "Oficinas Profissionalizantes",
+        "texto": "Cursos de costura, marcenaria e informática básica para inserir jovens e adultos no mercado de trabalho com qualificação."
+      }
+    ],
+    "ctaTitulo": "Faça parte desta rede",
+    "ctaTexto": "As nossas obras não se sustentam sozinhas. Precisamos de mãos dispostas a trabalhar, corações dispostos a rezar e recursos para expandir. Junte-se à nossa congregação.",
+    "ctaBtn1": "Apoiar Financeiramente",
+    "ctaBtn2": "Pedir Oração"
+  }
+}

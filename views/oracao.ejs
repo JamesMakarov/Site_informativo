@@ -1,33 +1,75 @@
-<section class="py-20 bg-slate-50 min-h-[70vh] flex flex-col justify-center">
-    <div class="max-w-3xl mx-auto px-6 w-full">
-        <h2 class="text-4xl font-extrabold text-transparent bg-clip-text bg-grad-primary mb-6 text-center">Pedidos de Oração</h2>
-        
-        <div class="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-gray-100 relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-2 bg-grad-primary"></div>
-            
-            <p class="text-center text-slate-600 mb-8 text-lg italic">
-                "Onde dois ou três estiverem reunidos em meu nome, ali estou eu no meio deles."<br>
-                <span class="not-italic font-bold text-brand-blue mt-2 block">Deixe sua intenção. Nossas irmãs rezarão por você e sua família.</span>
-            </p>
+<section class="relative pt-24 md:pt-32 pb-32 bg-brand-blue dark:bg-slate-950 transition-colors duration-500 overflow-hidden flex items-center">
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+    
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-white rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
 
-            <form id="form-oracao" class="space-y-6">
-                <div>
-                    <label for="nome" class="block text-sm font-bold text-brand-blue mb-2">Seu Nome</label>
-                    <input type="text" id="nome" name="nome" required placeholder="Ex: Maria da Silva" 
-                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-primary focus:ring-4 focus:ring-blue-500/20 transition-all outline-none bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+        <div class="relative group inline-block w-full">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover:opacity-100 text-xs" data-pagina="oracao" data-chave="heroTitulo">✏️</button><% } %>
+            <h1 id="texto-oracao-heroTitulo" class="hidden-scroll text-5xl md:text-7xl font-extrabold text-white mb-6 tracking-tight drop-shadow-2xl">
+                <%= siteData.oracao.heroTitulo %>
+            </h1>
+        </div>
+        
+        <div class="relative group inline-block w-full max-w-2xl mx-auto">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover:opacity-100 text-xs" data-pagina="oracao" data-chave="heroSubtitulo">✏️</button><% } %>
+            <p id="texto-oracao-heroSubtitulo" class="hidden-scroll delay-100 text-xl md:text-2xl text-blue-100 leading-relaxed drop-shadow-md">
+                <%= siteData.oracao.heroSubtitulo %>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="pb-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 relative z-20 -mt-16 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
+    <div class="max-w-3xl mx-auto px-6 pt-8">
+        
+        <div class="hidden-scroll delay-200 bg-white dark:bg-slate-800 p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-slate-700 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-2 bg-grad-animated bg-[length:200%_auto] animate-shimmer"></div>
+            
+            <div class="text-center mb-10 relative group">
+                <% if(isAdmin) { %>
+                    <div class="absolute top-0 right-0 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                        <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="oracao" data-chave="formCitacao">Citação</button>
+                        <button class="btn-editar-cms bg-orange-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="oracao" data-chave="formInstrucao">Texto</button>
+                    </div>
+                <% } %>
+                <p id="texto-oracao-formCitacao" class="text-slate-600 dark:text-slate-400 text-xl md:text-2xl font-serif italic mb-4">
+                    <%= siteData.oracao.formCitacao %>
+                </p>
+                <span id="texto-oracao-formInstrucao" class="inline-block bg-brand-primary/10 dark:bg-brand-primary/20 text-brand-primary dark:text-blue-300 font-bold px-4 py-2 rounded-full text-sm">
+                    <%= siteData.oracao.formInstrucao %>
+                </span>
+            </div>
+
+            <form id="form-oracao" class="space-y-8 relative group/form">
+                
+                <div class="relative group/input">
+                    <% if(isAdmin) { %><button class="btn-editar-cms absolute top-0 right-0 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover/input:opacity-100 text-xs z-50" data-pagina="oracao" data-chave="labelNome">✏️ Label</button><% } %>
+                    <label for="nome" id="texto-oracao-labelNome" class="block text-sm font-bold text-brand-blue dark:text-slate-300 mb-3 ml-2 uppercase tracking-wider"><%= siteData.oracao.labelNome %></label>
+                    <input type="text" id="nome" name="nome" placeholder="Escreva o seu nome aqui..." 
+                           class="w-full px-6 py-4 rounded-2xl border-2 border-gray-200 dark:border-slate-700 focus:border-brand-primary dark:focus:border-brand-accent focus:ring-4 focus:ring-blue-500/20 dark:focus:ring-brand-accent/20 transition-all outline-none bg-slate-50 dark:bg-slate-900 dark:text-white font-medium text-lg">
                 </div>
                 
-                <div>
-                    <label for="pedido" class="block text-sm font-bold text-brand-blue mb-2">Sua Intenção</label>
-                    <textarea id="pedido" name="pedido" rows="4" required placeholder="Escreva seu pedido aqui..." 
-                              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-brand-primary focus:ring-4 focus:ring-blue-500/20 transition-all outline-none bg-slate-50 resize-none"></textarea>
+                <div class="relative group/input">
+                    <% if(isAdmin) { %><button class="btn-editar-cms absolute top-0 right-0 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover/input:opacity-100 text-xs z-50" data-pagina="oracao" data-chave="labelPedido">✏️ Label</button><% } %>
+                    <label for="pedido" id="texto-oracao-labelPedido" class="block text-sm font-bold text-brand-blue dark:text-slate-300 mb-3 ml-2 uppercase tracking-wider"><%= siteData.oracao.labelPedido %> <span class="text-red-500">*</span></label>
+                    <textarea id="pedido" name="pedido" rows="5" required placeholder="A minha intenção é..." 
+                              class="w-full px-6 py-4 rounded-2xl border-2 border-gray-200 dark:border-slate-700 focus:border-brand-primary dark:focus:border-brand-accent focus:ring-4 focus:ring-blue-500/20 dark:focus:ring-brand-accent/20 transition-all outline-none bg-slate-50 dark:bg-slate-900 dark:text-white font-medium resize-none text-lg"></textarea>
                 </div>
 
-                <button type="submit" class="btn-submit w-full bg-grad-primary hover:bg-grad-hover text-white font-bold text-lg py-4 rounded-xl shadow-[0_4px_15px_rgba(59,130,246,0.4)] hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(59,130,246,0.6)] transition-all duration-300 flex justify-center items-center gap-2">
-                    <span class="btn-text">Enviar Pedido de Oração</span>
-                    <div class="btn-loader hidden w-6 h-6 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
-                </button>
+                <div class="relative group/btn pt-4">
+                    <% if(isAdmin) { %><button type="button" class="btn-editar-cms absolute -top-4 right-0 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover/btn:opacity-100 text-xs z-50" data-pagina="oracao" data-chave="btnEnviar">✏️ Botão</button><% } %>
+                    <button type="submit" class="btn-submit w-full bg-grad-primary hover:bg-grad-hover text-white font-black text-xl py-5 rounded-2xl shadow-[0_10px_20px_rgba(29,78,216,0.3)] hover:-translate-y-1 hover:shadow-[0_15px_30px_rgba(29,78,216,0.5)] transition-all duration-300 flex justify-center items-center gap-3">
+                        <span id="texto-oracao-btnEnviar" class="btn-text"><%= siteData.oracao.btnEnviar %></span>
+                        <div class="btn-loader hidden w-7 h-7 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    </button>
+                </div>
+                
+                <p class="text-center text-xs text-slate-400 dark:text-slate-500 mt-6 font-medium uppercase tracking-wider">
+                    As suas informações estão protegidas.
+                </p>
             </form>
         </div>
+        
     </div>
 </section>

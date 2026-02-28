@@ -2,152 +2,162 @@
     <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
     <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary rounded-full blur-[150px] opacity-30 pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
     
-    <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
-        <span class="hidden-scroll inline-block py-1 px-4 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-sm mb-6">NOSSA ORIGEM</span>
-        <h1 class="hidden-scroll delay-100 text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight drop-shadow-2xl">Onde o <span class="text-transparent bg-clip-text bg-grad-animated bg-[length:200%_auto] animate-shimmer">Amor</span> se fez Obra</h1>
-        <p class="hidden-scroll delay-200 text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md">
-            Conheça a trajetória de fé, lágrimas, suor e milagres que transformou uma pequena promessa em um farol de esperança para milhares de almas ao longo de mais de meio século.
-        </p>
+    <div class="max-w-5xl mx-auto px-6 relative z-10 text-center group">
+        <% if(isAdmin) { %>
+            <div class="absolute -top-6 -right-4 flex gap-1 opacity-0 group-hover:opacity-100 z-50">
+                <button class="btn-editar-cms bg-blue-500 text-white p-1 rounded shadow text-[10px]" data-pagina="historia" data-chave="heroBadge">✏️ Badge</button>
+                <button class="btn-editar-cms bg-brand-accent text-white p-1 rounded shadow text-[10px]" data-pagina="historia" data-chave="heroTitulo">✏️ Titulo</button>
+                <button class="btn-editar-cms bg-brand-primary text-white p-1 rounded shadow text-[10px]" data-pagina="historia" data-chave="heroTituloDestaque">✏️ Dest</button>
+                <button class="btn-editar-cms bg-green-500 text-white p-1 rounded shadow text-[10px]" data-pagina="historia" data-chave="heroSubtitulo">✏️ Sub</button>
+            </div>
+        <% } %>
+        
+        <span id="texto-historia-heroBadge" class="hidden-scroll inline-block py-1 px-4 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-sm mb-6"><%= siteData.historia.heroBadge %></span>
+        <h1 class="hidden-scroll delay-100 text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight drop-shadow-2xl">
+            <span id="texto-historia-heroTitulo"><%= siteData.historia.heroTitulo %></span> 
+            <span id="texto-historia-heroTituloDestaque" class="text-transparent bg-clip-text bg-grad-animated bg-[length:200%_auto] animate-shimmer"><%= siteData.historia.heroTituloDestaque %></span>
+            <span id="texto-historia-heroSufixo"><%= siteData.historia.heroSufixo %></span>
+        </h1>
+        <p id="texto-historia-heroSubtitulo" class="hidden-scroll delay-200 text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md"><%= siteData.historia.heroSubtitulo %></p>
     </div>
 </section>
 
-<section class="py-24 bg-white dark:bg-slate-900 transition-colors duration-500 relative">
+<div class="bg-white dark:bg-slate-900 transition-colors duration-500 relative py-24">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="hidden-scroll flex flex-col md:flex-row gap-16 items-center">
-            <div class="md:w-1/2">
-                <h2 class="text-brand-accent font-bold tracking-widest text-sm mb-3">CAPÍTULO I</h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6 leading-tight">Uma faísca no interior</h3>
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                    Tudo começou no árido ano de 1970. Em uma pequena comunidade afastada dos grandes centros, nossa fundadora (em memória carinhosa chamamos de Madre Maria Clara) caminhava pelas estradas de terra quando se deparou com dezenas de crianças sem escola e famílias assoladas pelas dificuldades da época. 
-                </p>
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                    Naquele momento, sob a sombra de um velho juazeiro, ela não viu apenas a pobreza; ela viu um pedido divino de amparo. Sem recursos, sem apoio político, armada apenas com a fé e uma vontade inquebrável, ela reuniu outras três jovens da comunidade. Estava plantada a primeira semente da nossa congregação.
-                </p>
-                <blockquote class="border-l-4 border-brand-primary pl-6 py-2 my-8 bg-slate-50 dark:bg-slate-800/50 rounded-r-xl">
-                    <p class="text-xl italic text-brand-blue dark:text-blue-200 font-serif">"Não temos ouro nem prata, mas o que temos — nossas vidas e nosso amor — nós entregaremos a eles."</p>
-                    <footer class="mt-2 font-bold text-sm text-brand-accent">— Registros da Primeira Reunião (1970)</footer>
-                </blockquote>
+        
+        <% if(isAdmin) { %>
+            <div class="text-center mb-16">
+                <button class="btn-adicionar-lista bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-3 rounded-full shadow-lg transition-all hover:scale-105" data-pagina="historia" data-lista="capitulos">
+                    + Escrever Novo Capítulo
+                </button>
             </div>
-            <div class="md:w-1/2 relative group">
-                <div class="absolute inset-0 bg-brand-primary rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500 opacity-20 dark:opacity-40"></div>
-                <img src="/img/noticia1.jpg" onerror="this.src='https://via.placeholder.com/800x1000?text=Irmas+Reunidas'" alt="A primeira capela" class="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[600px] group-hover:-translate-y-2 transition-transform duration-500 grayscale hover:grayscale-0">
-            </div>
-        </div>
-    </div>
-</section>
+        <% } %>
 
-<section class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-500 relative border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="hidden-scroll flex flex-col md:flex-row-reverse gap-16 items-center">
-            <div class="md:w-1/2">
-                <h2 class="text-brand-accent font-bold tracking-widest text-sm mb-3">CAPÍTULO II</h2>
-                <h3 class="text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6 leading-tight">Tijolo por Tijolo</h3>
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                    A primeira obra não foi um grande hospital, mas uma pequena sala de taipa que servia de escola de manhã, refeitório ao meio-dia e capela à noite. As próprias irmãs ajudavam a amassar o barro e carregar as telhas. A comunidade, tocada por aquele esforço hercúleo, começou a trazer doações: mantimentos, tempo e suor.
-                </p>
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed">
-                    A notícia de que "um grupo de irmãs estava mudando a cidade" se espalhou rápido. Em menos de cinco anos, a pequena sala de taipa deu lugar ao nosso primeiro complexo educacional e de caridade, que foi o molde para tudo o que fazemos hoje.
-                </p>
-                <div class="grid grid-cols-2 gap-6 mt-10">
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-700">
-                        <div class="text-4xl mb-2">🧱</div>
-                        <h4 class="font-bold text-xl text-brand-blue dark:text-white">Trabalho Braçal</h4>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Construção da base com as próprias mãos e ajuda local.</p>
-                    </div>
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-700">
-                        <div class="text-4xl mb-2">🥖</div>
-                        <h4 class="font-bold text-xl text-brand-blue dark:text-white">A Providência</h4>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">O alimento que nunca faltou graças às doações.</p>
-                    </div>
+        <% siteData.historia.capitulos.forEach((cap, index) => { %>
+            <% const isReverse = index % 2 !== 0; %> <div class="hidden-scroll flex flex-col <%= isReverse ? 'md:flex-row-reverse' : 'md:flex-row' %> gap-16 items-center mb-32 relative group/cap">
+                
+                <% if(isAdmin) { %>
+                    <button class="btn-remover-lista absolute -top-10 right-0 bg-red-600 text-white px-4 py-2 rounded-full shadow-xl opacity-0 group-hover/cap:opacity-100 z-50 text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>">🗑️ Apagar Capítulo Completo</button>
+                <% } %>
+
+                <div class="md:w-1/2 relative group/texto">
+                    <% if(isAdmin) { %>
+                        <div class="absolute -top-4 -left-4 flex gap-1 opacity-0 group-hover/texto:opacity-100 z-50 bg-white/90 p-2 rounded shadow">
+                            <button class="btn-editar-lista bg-slate-800 text-white p-1 rounded text-[10px]" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="badge">Cap</button>
+                            <button class="btn-editar-lista bg-blue-500 text-white p-1 rounded text-[10px]" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="titulo">Tít</button>
+                            <button class="btn-editar-lista bg-orange-500 text-white p-1 rounded text-[10px]" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="p1">P1</button>
+                            <button class="btn-editar-lista bg-green-500 text-white p-1 rounded text-[10px]" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="p2">P2</button>
+                            <button class="btn-editar-lista bg-purple-500 text-white p-1 rounded text-[10px]" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="citacao">Citação</button>
+                        </div>
+                    <% } %>
+
+                    <h2 id="texto-capitulos-<%= index %>-badge" class="text-brand-accent font-bold tracking-widest text-sm mb-3 uppercase"><%= cap.badge %></h2>
+                    <h3 id="texto-capitulos-<%= index %>-titulo" class="text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6 leading-tight"><%= cap.titulo %></h3>
+                    <p id="texto-capitulos-<%= index %>-p1" class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed"><%= cap.p1 %></p>
+                    <% if(cap.p2) { %><p id="texto-capitulos-<%= index %>-p2" class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed"><%= cap.p2 %></p><% } %>
+                    
+                    <% if(cap.citacao) { %>
+                        <blockquote class="border-l-4 border-brand-primary pl-6 py-2 my-8 bg-slate-50 dark:bg-slate-800/50 rounded-r-xl">
+                            <p id="texto-capitulos-<%= index %>-citacao" class="text-xl italic text-brand-blue dark:text-blue-200 font-serif"><%= cap.citacao %></p>
+                            <footer id="texto-capitulos-<%= index %>-citacaoAutor" class="mt-2 font-bold text-sm text-brand-accent"><%= cap.citacaoAutor %></footer>
+                        </blockquote>
+                    <% } %>
+                </div>
+
+                <div class="md:w-1/2 relative group/img cursor-pointer">
+                    <% if(isAdmin) { %>
+                        <button class="btn-editar-lista absolute top-4 left-4 bg-brand-accent text-white p-2 rounded shadow-xl opacity-0 group-hover/img:opacity-100 z-50 text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="imagem">✏️ Mudar URL da Imagem</button>
+                    <% } %>
+                    <div class="absolute inset-0 <%= isReverse ? 'bg-brand-accent' : 'bg-brand-primary' %> rounded-3xl transform <%= isReverse ? '-rotate-3 group-hover/img:-rotate-6' : 'rotate-3 group-hover/img:rotate-6' %> transition-transform duration-500 opacity-20 dark:opacity-40"></div>
+                    <img id="img-capitulos-<%= index %>" src="<%= cap.imagem %>" onerror="this.src='https://via.placeholder.com/800x1000?text=Imagem'" alt="Capítulo" class="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[300px] md:h-[600px] group-hover/img:-translate-y-2 transition-transform duration-500 <%= isReverse ? 'sepia hover:sepia-0' : 'grayscale hover:grayscale-0' %>">
                 </div>
             </div>
-            <div class="md:w-1/2 relative group">
-                <div class="absolute inset-0 bg-brand-accent rounded-3xl transform -rotate-3 group-hover:-rotate-6 transition-transform duration-500 opacity-20 dark:opacity-40"></div>
-                <img src="/img/noticia2.jpg" onerror="this.src='https://via.placeholder.com/800x1000?text=Antiga+Escola'" alt="Construção da escola" class="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[600px] group-hover:-translate-y-2 transition-transform duration-500 sepia hover:sepia-0">
-            </div>
-        </div>
+        <% }) %>
     </div>
-</section>
+</div>
 
 <section class="py-32 bg-brand-blue dark:bg-slate-900 text-white relative overflow-hidden transition-colors duration-500">
     <div class="max-w-5xl mx-auto px-6 relative z-10">
-        <h2 class="hidden-scroll text-5xl font-extrabold text-center mb-6">A Marcha do Tempo</h2>
-        <p class="hidden-scroll delay-100 text-xl text-blue-200 text-center mb-20 max-w-2xl mx-auto">Os marcos que definem nossa trajetória de expansão e caridade.</p>
+        
+        <div class="text-center mb-16 relative group/timelineTop">
+            <% if(isAdmin) { %>
+                <div class="absolute -top-4 right-1/4 flex gap-1 opacity-0 group-hover/timelineTop:opacity-100 z-50">
+                    <button class="btn-editar-cms bg-blue-500 px-2 py-1 text-xs rounded" data-pagina="historia" data-chave="timelineTitulo">✏️ Tít</button>
+                    <button class="btn-editar-cms bg-orange-500 px-2 py-1 text-xs rounded" data-pagina="historia" data-chave="timelineSub">✏️ Sub</button>
+                    <button class="btn-adicionar-lista bg-green-500 px-2 py-1 text-xs rounded font-bold" data-pagina="historia" data-lista="timeline">+ Ponto</button>
+                </div>
+            <% } %>
+            <h2 id="texto-historia-timelineTitulo" class="hidden-scroll text-5xl font-extrabold mb-6"><%= siteData.historia.timelineTitulo %></h2>
+            <p id="texto-historia-timelineSub" class="hidden-scroll delay-100 text-xl text-blue-200 max-w-2xl mx-auto"><%= siteData.historia.timelineSub %></p>
+        </div>
 
-        <div class="relative border-l-4 border-blue-500/30 md:ml-0 ml-6 md:border-l-0">
+        <div class="relative border-l-4 border-blue-500/30 md:ml-0 ml-6 md:border-l-0 max-h-[700px] overflow-y-auto custom-scrollbar pr-4 pb-10">
             <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-1 h-full bg-blue-500/30"></div>
 
-            <div class="hidden-scroll mb-16 pl-8 md:pl-0 md:flex md:items-center md:justify-between w-full relative">
-                <div class="absolute left-[-10px] md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-brand-accent border-4 border-brand-blue shadow-[0_0_15px_#FF6B0B] z-10"></div>
-                <div class="md:w-[45%] text-left md:text-right bg-white/5 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-2xl">
-                    <h3 class="text-5xl font-black text-brand-accent mb-2 opacity-80">1970</h3>
-                    <h4 class="text-2xl font-bold mb-3">A Fundação</h4>
-                    <p class="text-blue-100 text-lg leading-relaxed">Criação oficial da Congregação com as primeiras formandas assumindo os votos de pobreza e serviço.</p>
-                </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
+            <% siteData.historia.timeline.forEach((ponto, index) => { %>
+                <% const isRight = index % 2 !== 0; %>
+                <div class="hidden-scroll mb-16 pl-8 md:pl-0 md:flex <%= isRight ? 'md:flex-row-reverse' : '' %> md:items-center md:justify-between w-full relative group/ponto">
+                    
+                    <% if(isAdmin) { %>
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 flex gap-1 z-50 opacity-0 group-hover/ponto:opacity-100">
+                            <button class="btn-editar-lista bg-slate-800 text-xs px-1 rounded" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="ano">Ano</button>
+                            <button class="btn-editar-lista bg-slate-800 text-xs px-1 rounded" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="titulo">Tít</button>
+                            <button class="btn-editar-lista bg-slate-800 text-xs px-1 rounded" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="texto">Txt</button>
+                            <button class="btn-remover-lista bg-red-600 text-xs px-1 rounded font-bold" data-pagina="historia" data-lista="timeline" data-index="<%= index %>">X</button>
+                        </div>
+                    <% } %>
 
-            <div class="hidden-scroll mb-16 pl-8 md:pl-0 md:flex md:flex-row-reverse md:items-center md:justify-between w-full relative">
-                <div class="absolute left-[-10px] md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-brand-primary border-4 border-brand-blue shadow-[0_0_15px_#1D4ED8] z-10"></div>
-                <div class="md:w-[45%] text-left bg-white/5 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-2xl">
-                    <h3 class="text-5xl font-black text-brand-primary mb-2 opacity-80">1985</h3>
-                    <h4 class="text-2xl font-bold mb-3">O Primeiro Hospital</h4>
-                    <p class="text-blue-100 text-lg leading-relaxed">Inauguração de nossa primeira casa de saúde, dedicada ao atendimento da população desamparada da região.</p>
+                    <div class="absolute left-[-10px] md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-<%= ponto.cor %> border-4 border-brand-blue shadow-[0_0_15px_currentColor] z-10"></div>
+                    <div class="md:w-[45%] text-left <%= isRight ? '' : 'md:text-right' %> bg-white/5 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-2xl hover:bg-white/10 transition-colors">
+                        <h3 id="texto-timeline-<%= index %>-ano" class="text-5xl font-black text-<%= ponto.cor %> mb-2 opacity-80"><%= ponto.ano %></h3>
+                        <h4 id="texto-timeline-<%= index %>-titulo" class="text-2xl font-bold mb-3"><%= ponto.titulo %></h4>
+                        <p id="texto-timeline-<%= index %>-texto" class="text-blue-100 text-lg leading-relaxed"><%= ponto.texto %></p>
+                    </div>
+                    <div class="hidden md:block w-[45%]"></div>
                 </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-
-            <div class="hidden-scroll mb-16 pl-8 md:pl-0 md:flex md:items-center md:justify-between w-full relative">
-                <div class="absolute left-[-10px] md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-brand-accent border-4 border-brand-blue shadow-[0_0_15px_#FF6B0B] z-10"></div>
-                <div class="md:w-[45%] text-left md:text-right bg-white/5 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-2xl">
-                    <h3 class="text-5xl font-black text-brand-accent mb-2 opacity-80">2002</h3>
-                    <h4 class="text-2xl font-bold mb-3">Expansão de Escolas</h4>
-                    <p class="text-blue-100 text-lg leading-relaxed">Atingimos a marca de 10 escolas em funcionamento, levando educação cidadã e evangelização aos jovens.</p>
-                </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
-
-            <div class="hidden-scroll pl-8 md:pl-0 md:flex md:flex-row-reverse md:items-center md:justify-between w-full relative">
-                <div class="absolute left-[-10px] md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-white border-4 border-brand-blue shadow-[0_0_20px_#ffffff] z-10"></div>
-                <div class="md:w-[45%] text-left bg-white/5 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-2xl">
-                    <h3 class="text-5xl font-black text-white mb-2 opacity-80">Dias Atuais</h3>
-                    <h4 class="text-2xl font-bold mb-3">Mais de 50 Anos</h4>
-                    <p class="text-blue-100 text-lg leading-relaxed">Celebramos nosso jubileu com uma congregação forte, modernizada, mas que nunca perdeu sua essência humilde original.</p>
-                </div>
-                <div class="hidden md:block w-[45%]"></div>
-            </div>
+            <% }) %>
         </div>
     </div>
 </section>
 
 <section class="py-32 bg-white dark:bg-slate-900 transition-colors duration-500">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <h2 class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6">Galeria de Memórias</h2>
+        
+        <div class="text-center mb-16 relative group/galTitulo">
+            <% if(isAdmin) { %>
+                <div class="absolute -top-4 right-1/4 flex gap-2 opacity-0 group-hover/galTitulo:opacity-100 z-50">
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded text-xs" data-pagina="historia" data-chave="galeriaTitulo">✏️</button>
+                    <button class="btn-adicionar-lista bg-green-500 text-white px-4 py-1 rounded font-bold text-xs" data-pagina="historia" data-lista="galeria">+ Add Foto</button>
+                </div>
+            <% } %>
+            <h2 id="texto-historia-galeriaTitulo" class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6"><%= siteData.historia.galeriaTitulo %></h2>
             <div class="w-24 h-1 bg-brand-primary mx-auto rounded-full mb-6"></div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <div class="hidden-scroll group relative rounded-2xl overflow-hidden shadow-lg h-80 cursor-pointer">
-                <img src="/img/noticia3.jpg" onerror="this.src='https://via.placeholder.com/600x600?text=Turma+Antiga'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <p class="text-white font-bold text-xl">Primeira turma de alunos (1975)</p>
-                </div>
-            </div>
-            
-            <div class="hidden-scroll delay-100 group relative rounded-2xl overflow-hidden shadow-lg h-80 cursor-pointer">
-                <img src="/img/noticia1.jpg" onerror="this.src='https://via.placeholder.com/600x600?text=Irmas'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <p class="text-white font-bold text-xl">Votos Perpétuos (Anos 80)</p>
-                </div>
-            </div>
+            <% siteData.historia.galeria.forEach((foto, index) => { %>
+                <div class="hidden-scroll img-galeria group relative rounded-2xl overflow-hidden shadow-lg h-80 cursor-pointer hover:shadow-2xl">
+                    
+                    <% if(isAdmin) { %>
+                        <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-50">
+                            <button class="btn-editar-lista bg-brand-accent text-white px-2 py-1 rounded text-[10px]" data-pagina="historia" data-lista="galeria" data-index="<%= index %>" data-campo="imagem">URL Img</button>
+                            <button class="btn-editar-lista bg-blue-500 text-white px-2 py-1 rounded text-[10px]" data-pagina="historia" data-lista="galeria" data-index="<%= index %>" data-campo="titulo">Título</button>
+                            <button class="btn-remover-lista bg-red-600 text-white px-2 py-1 rounded font-bold text-[10px]" data-pagina="historia" data-lista="galeria" data-index="<%= index %>">X</button>
+                        </div>
+                    <% } %>
 
-            <div class="hidden-scroll delay-200 group relative rounded-2xl overflow-hidden shadow-lg h-80 cursor-pointer">
-                <img src="/img/noticia2.jpg" onerror="this.src='https://via.placeholder.com/600x600?text=Capela'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <p class="text-white font-bold text-xl">Inauguração da Capela Central</p>
+                    <img src="<%= foto.imagem %>" onerror="this.src='https://via.placeholder.com/600x600?text=Nova+Foto'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <p id="texto-galeria-<%= index %>-titulo" class="text-white font-bold text-xl drop-shadow-md"><%= foto.titulo %></p>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md rounded-full w-16 h-16 flex items-center justify-center text-white text-3xl font-light opacity-0 group-hover:opacity-100 transition-all delay-100 scale-50 group-hover:scale-100">🔍</div>
+                    </div>
                 </div>
-            </div>
+            <% }) %>
         </div>
     </div>
 </section>
+
+<div id="lightbox-galeria" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 backdrop-blur-sm cursor-zoom-out transition-opacity">
+    <span id="fechar-lightbox" class="absolute top-6 right-8 text-white text-5xl font-bold cursor-pointer hover:text-brand-accent">&times;</span>
+    <img id="lightbox-img" src="" class="max-w-[90vw] max-h-[90vh] rounded-xl shadow-2xl border-2 border-white/10 cursor-default">
+</div>

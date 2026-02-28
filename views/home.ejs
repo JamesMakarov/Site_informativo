@@ -1,40 +1,91 @@
-<div class="relative bg-brand-blue flex items-center justify-center min-h-[90vh] text-white overflow-hidden bg-fixed bg-center bg-cover" style="background-image: url('/img/noticia1.jpg');">
+<div id="bg-home-heroBg" class="relative group bg-brand-blue flex items-center justify-center min-h-[90vh] text-white overflow-hidden bg-fixed bg-center bg-cover transition-all duration-700" style="background-image: url('<%= siteData.home.heroBg || '/img/noticia1.jpg' %>');">
+    
+    <% if(isAdmin) { %>
+        <button class="absolute top-24 left-6 bg-brand-accent text-white px-4 py-2 rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity z-50 text-sm font-bold hover:scale-105 flex items-center gap-2 border-2 border-white/20" data-pagina="home" data-chave="heroBg" data-tipo="imagem">
+            🖼️ Alterar Fundo
+        </button>
+    <% } %>
+
     <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/90 via-blue-900/70 to-brand-blue dark:to-slate-900 z-10 transition-colors duration-500"></div>
     
     <div class="absolute top-20 left-1/4 w-72 h-72 bg-brand-primary rounded-full mix-blend-screen filter blur-[100px] opacity-60 animate-blob z-10 pointer-events-none"></div>
     <div class="absolute top-40 right-1/4 w-72 h-72 bg-brand-accent rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob-delayed z-10 pointer-events-none"></div>
     
     <div class="relative z-20 text-center px-4 max-w-5xl mx-auto mt-10">
-        <span class="inline-block py-1 px-4 rounded-full bg-white/10 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-xs mb-8 animate-bounce backdrop-blur-sm">DESDE 1970</span>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl hidden-scroll">
-            Presença que <span class="text-transparent bg-clip-text bg-grad-animated bg-[length:200%_auto] animate-shimmer">Transforma</span>
-        </h1>
-        <p class="text-xl md:text-2xl mb-12 text-blue-100 drop-shadow-md max-w-3xl mx-auto leading-relaxed hidden-scroll delay-100">Há mais de 50 anos educando com amor, servindo com esperança e vivendo a fé em nossa comunidade.</p>
+        <div class="relative group/badge inline-block">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-10 bg-brand-accent text-white p-2 rounded-full shadow-xl opacity-0 group-hover/badge:opacity-100 transition-opacity z-50 text-xs" data-pagina="home" data-chave="heroBadge">✏️</button><% } %>
+            <span id="texto-home-heroBadge" class="inline-block py-1 px-4 rounded-full bg-white/10 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-xs mb-8 animate-bounce backdrop-blur-sm"><%= siteData.home.heroBadge %></span>
+        </div>
         
-        <a href="/oracao" class="hidden-scroll delay-200 nav-link relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white transition-all duration-300 bg-brand-accent rounded-full hover:scale-105 shadow-[0_0_20px_rgba(255,107,11,0.4)] overflow-hidden group">
-            <span class="absolute inset-0 w-full h-full bg-grad-animated bg-[length:200%_auto] animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            <span class="relative z-10">Deixe seu Pedido de Oração</span>
-        </a>
+        <div class="relative group/titulo w-full">
+            <% if(isAdmin) { %>
+                <div class="absolute -top-6 -right-4 flex gap-2 opacity-0 group-hover/titulo:opacity-100 transition-opacity z-50">
+                    <button class="btn-editar-cms bg-blue-500 text-white p-2 rounded shadow text-xs font-bold" data-pagina="home" data-chave="heroTitulo">✏️ Titulo 1</button>
+                    <button class="btn-editar-cms bg-orange-500 text-white p-2 rounded shadow text-xs font-bold" data-pagina="home" data-chave="heroTituloDestaque">✏️ Destaque</button>
+                </div>
+            <% } %>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl hidden-scroll">
+                <span id="texto-home-heroTitulo"><%= siteData.home.heroTitulo %></span> 
+                <span id="texto-home-heroTituloDestaque" class="text-transparent bg-clip-text bg-grad-animated bg-[length:200%_auto] animate-shimmer"><%= siteData.home.heroTituloDestaque %></span>
+            </h1>
+        </div>
+
+        <div class="relative group/sub w-full max-w-3xl mx-auto">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white p-2 rounded-full shadow-xl opacity-0 group-hover/sub:opacity-100 transition-opacity z-50 text-xs" data-pagina="home" data-chave="heroSubtitulo">✏️</button><% } %>
+            <p id="texto-home-heroSubtitulo" class="text-xl md:text-2xl mb-12 text-blue-100 drop-shadow-md leading-relaxed hidden-scroll delay-100"><%= siteData.home.heroSubtitulo %></p>
+        </div>
+        
+        <div class="relative group/btn inline-block">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-accent text-white p-2 rounded-full shadow-xl opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 text-xs" data-pagina="home" data-chave="heroBtn">✏️</button><% } %>
+            <a href="/oracao" class="hidden-scroll delay-200 nav-link relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white transition-all duration-300 bg-brand-accent rounded-full hover:scale-105 shadow-[0_0_20px_rgba(255,107,11,0.4)] overflow-hidden">
+                <span class="absolute inset-0 w-full h-full bg-grad-animated bg-[length:200%_auto] animate-shimmer opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
+                <span id="texto-home-heroBtn" class="relative z-10"><%= siteData.home.heroBtn %></span>
+            </a>
+        </div>
     </div>
 </div>
 
 <div class="relative z-30 -mt-24 max-w-7xl mx-auto px-6 mb-24">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="hidden-scroll group bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
-            <h2 class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover:scale-110 transition-transform duration-300">+50</h2>
-            <p class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs">Anos de História</p>
+        <div class="hidden-scroll group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
+            <% if(isAdmin) { %>
+                <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat1_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat1_text">Txt</button>
+                </div>
+            <% } %>
+            <h2 id="texto-home-stat1_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat1_num %></h2>
+            <p id="texto-home-stat1_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat1_text %></p>
         </div>
-        <div class="hidden-scroll delay-100 group bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
-            <h2 class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover:scale-110 transition-transform duration-300">12</h2>
-            <p class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs">Escolas Apoiadas</p>
+        <div class="hidden-scroll delay-100 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
+            <% if(isAdmin) { %>
+                <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat2_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat2_text">Txt</button>
+                </div>
+            <% } %>
+            <h2 id="texto-home-stat2_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat2_num %></h2>
+            <p id="texto-home-stat2_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat2_text %></p>
         </div>
-        <div class="hidden-scroll delay-200 group bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
-            <h2 class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover:scale-110 transition-transform duration-300">300+</h2>
-            <p class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs">Irmãs em Missão</p>
+        <div class="hidden-scroll delay-200 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
+            <% if(isAdmin) { %>
+                <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat3_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat3_text">Txt</button>
+                </div>
+            <% } %>
+            <h2 id="texto-home-stat3_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat3_num %></h2>
+            <p id="texto-home-stat3_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat3_text %></p>
         </div>
-        <div class="hidden-scroll delay-300 group bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
-            <h2 class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover:scale-110 transition-transform duration-300">10k+</h2>
-            <p class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs">Vidas Tocadas</p>
+        <div class="hidden-scroll delay-300 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
+            <% if(isAdmin) { %>
+                <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat4_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat4_text">Txt</button>
+                </div>
+            <% } %>
+            <h2 id="texto-home-stat4_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat4_num %></h2>
+            <p id="texto-home-stat4_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat4_text %></p>
         </div>
     </div>
 </div>
@@ -42,71 +93,81 @@
 <section class="py-24 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-500">
     <div class="absolute inset-0 opacity-[0.03] dark:opacity-10 bg-[radial-gradient(#1D4ED8_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
     <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
-        <h2 class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-8">Paz e Bem! Bem-vindos à nossa casa virtual</h2>
+        
+        <div class="relative group/wtitulo inline-block w-full">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-0 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/wtitulo:opacity-100" data-pagina="home" data-chave="welcomeTitulo">✏️</button><% } %>
+            <h2 id="texto-home-welcomeTitulo" class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-8"><%= siteData.home.welcomeTitulo %></h2>
+        </div>
+        
         <div class="hidden-scroll delay-100 w-24 h-1 bg-grad-animated bg-[length:200%_auto] animate-shimmer mx-auto mb-8 rounded-full"></div>
-        <p class="hidden-scroll delay-200 text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-12">
-            Nossa missão não se resume a palavras, mas a gestos diários de compaixão. Aqui você encontrará um reflexo do nosso trabalho nos hospitais, nas escolas e nas comunidades carentes.
-        </p>
+        
+        <div class="relative group/wtexto inline-block w-full">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-0 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/wtexto:opacity-100" data-pagina="home" data-chave="welcomeTexto">✏️</button><% } %>
+            <p id="texto-home-welcomeTexto" class="hidden-scroll delay-200 text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-12"><%= siteData.home.welcomeTexto %></p>
+        </div>
+
         <div class="hidden-scroll delay-300 flex flex-col sm:flex-row justify-center gap-6">
-            <a href="/historia" class="nav-link bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-brand-blue dark:text-white hover:border-brand-primary dark:hover:border-brand-accent px-8 py-4 rounded-full font-bold transition-all hover:scale-105">Conhecer Nossa História</a>
-            <a href="/projetos" class="nav-link bg-brand-primary text-white hover:bg-blue-800 px-8 py-4 rounded-full font-bold shadow-lg transition-all hover:scale-105">Ver Nossos Projetos</a>
+            <div class="relative group/b1">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-accent text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/b1:opacity-100 text-xs" data-pagina="home" data-chave="welcomeBtn1">✏️</button><% } %>
+                <a href="/historia" class="nav-link bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-brand-blue dark:text-white hover:border-brand-primary dark:hover:border-brand-accent px-8 py-4 rounded-full font-bold transition-all hover:scale-105 inline-block w-full">
+                    <span id="texto-home-welcomeBtn1"><%= siteData.home.welcomeBtn1 %></span>
+                </a>
+            </div>
+            <div class="relative group/b2">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-accent text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/b2:opacity-100 text-xs" data-pagina="home" data-chave="welcomeBtn2">✏️</button><% } %>
+                <a href="/projetos" class="nav-link bg-brand-primary text-white hover:bg-blue-800 px-8 py-4 rounded-full font-bold shadow-lg transition-all hover:scale-105 inline-block w-full">
+                    <span id="texto-home-welcomeBtn2"><%= siteData.home.welcomeBtn2 %></span>
+                </a>
+            </div>
         </div>
     </div>
 </section>
 
 <section class="py-24 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
     <div class="max-w-7xl mx-auto px-6">
-        <h2 class="hidden-scroll text-3xl font-extrabold text-brand-blue dark:text-white mb-12 text-center">Acompanhe Nossa Caminhada</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="hidden-scroll delay-100 md:col-span-2 bg-grad-primary bg-[length:200%_auto] hover:animate-shimmer rounded-3xl p-10 text-white shadow-xl relative overflow-hidden group transition-all duration-500 hover:-translate-y-2">
-                <div class="relative z-10 flex flex-col h-full justify-between">
-                    <div>
-                        <span class="bg-white/20 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-6 inline-block backdrop-blur-sm shadow-sm border border-white/20">DESTAQUE</span>
-                        <h3 class="text-3xl md:text-5xl font-extrabold mb-4 drop-shadow-md">Campanha Inverno Solidário</h3>
-                        <p class="text-blue-50 max-w-xl text-lg leading-relaxed">Milhares de cobertores já foram arrecadados. Junte-se a nós para aquecer as famílias neste inverno rigoroso.</p>
-                    </div>
-                    <a href="/noticias" class="nav-link mt-10 inline-flex items-center gap-3 font-bold text-brand-accent bg-white px-6 py-3 rounded-full hover:bg-slate-50 transition-colors w-max shadow-lg group-hover:scale-105">Ler relato completo <span class="group-hover:translate-x-2 transition-transform">→</span></a>
-                </div>
-            </div>
-            
-            <div class="hidden-scroll delay-200 bg-white dark:bg-slate-800 rounded-3xl p-10 shadow-xl border border-slate-100 dark:border-slate-700 group hover:border-brand-primary dark:hover:border-brand-accent transition-colors flex flex-col justify-center items-center text-center hover:-translate-y-2 duration-300">
-                <div class="text-6xl mb-6 group-hover:rotate-12 transition-transform duration-500 drop-shadow-md">📖</div>
-                <h3 class="text-2xl font-bold text-brand-blue dark:text-white mb-3">Liturgia Diária</h3>
-                <p class="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">Acompanhe as reflexões das nossas irmãs sobre o evangelho do dia.</p>
-                <button class="text-brand-primary dark:text-brand-accent font-bold hover:underline transition-colors flex items-center gap-2">Acessar reflexões <span>→</span></button>
-            </div>
+        <div class="relative group/htitulo inline-block w-full text-center">
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-1/4 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/htitulo:opacity-100 text-xs" data-pagina="home" data-chave="highlightSecTitulo">✏️</button><% } %>
+            <h2 id="texto-home-highlightSecTitulo" class="hidden-scroll text-3xl font-extrabold text-brand-blue dark:text-white mb-12"><%= siteData.home.highlightSecTitulo %></h2>
         </div>
-    </div>
-</section>
-
-<section class="py-24 bg-white dark:bg-slate-900 relative transition-colors duration-500">
-    <div class="max-w-7xl mx-auto px-6">
-        <h2 class="hidden-scroll text-3xl font-extrabold text-brand-blue dark:text-white mb-16 text-center">Vidas Transformadas</h2>
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="hidden-scroll delay-100 bg-slate-50 dark:bg-slate-800/80 p-10 rounded-3xl relative border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-3 transition-all duration-300">
-                <div class="text-7xl text-brand-accent/20 absolute top-2 left-6 font-serif">"</div>
-                <p class="text-slate-600 dark:text-slate-300 italic relative z-10 mt-6 mb-8 text-lg">Através do projeto Pão Partilhado, eu encontrei não apenas alimento, mas conforto.</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 bg-gradient-to-br from-slate-200 to-slate-400 rounded-full"></div>
-                    <div><h4 class="font-bold text-brand-blue dark:text-white text-lg">João Silva</h4><span class="text-xs text-brand-accent font-bold uppercase tracking-wider">Assistido</span></div>
+            <div class="hidden-scroll delay-100 md:col-span-2 bg-grad-primary bg-[length:200%_auto] hover:animate-shimmer rounded-3xl p-10 text-white shadow-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
+                <div class="relative z-10 flex flex-col h-full justify-between group/hcard">
+                    <% if(isAdmin) { %>
+                        <div class="absolute top-0 right-0 flex gap-2 opacity-0 group-hover/hcard:opacity-100 transition-opacity z-50">
+                            <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="highlightBadge">Badge</button>
+                            <button class="btn-editar-cms bg-orange-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="highlightTitulo">Título</button>
+                            <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="highlightTexto">Texto</button>
+                        </div>
+                    <% } %>
+                    <div>
+                        <span id="texto-home-highlightBadge" class="bg-white/20 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-6 inline-block backdrop-blur-sm shadow-sm border border-white/20"><%= siteData.home.highlightBadge %></span>
+                        <h3 id="texto-home-highlightTitulo" class="text-3xl md:text-5xl font-extrabold mb-4 drop-shadow-md"><%= siteData.home.highlightTitulo %></h3>
+                        <p id="texto-home-highlightTexto" class="text-blue-50 max-w-xl text-lg leading-relaxed"><%= siteData.home.highlightTexto %></p>
+                    </div>
+                    <div class="relative inline-block mt-10 w-max group/hbtn">
+                        <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-primary text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/hbtn:opacity-100 text-xs" data-pagina="home" data-chave="highlightBtn">✏️</button><% } %>
+                        <a href="/noticias" class="nav-link inline-flex items-center gap-3 font-bold text-brand-accent bg-white px-6 py-3 rounded-full hover:bg-slate-50 transition-colors shadow-lg hover:scale-105">
+                            <span id="texto-home-highlightBtn"><%= siteData.home.highlightBtn %></span> <span class="hover:translate-x-2 transition-transform">→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <div class="hidden-scroll delay-200 bg-brand-blue dark:bg-slate-800 text-white p-10 rounded-3xl relative shadow-2xl transform md:-translate-y-4 hover:-translate-y-8 transition-all duration-300 border border-blue-800 dark:border-brand-accent">
-                <div class="text-7xl text-brand-primary/40 dark:text-brand-accent/40 absolute top-2 left-6 font-serif">"</div>
-                <p class="text-blue-50 dark:text-slate-200 italic relative z-10 mt-6 mb-8 text-lg leading-relaxed">Estudar na escola da congregação me ensinou valores que levo para a vida. A dedicação é inesquecível.</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 bg-gradient-to-br from-brand-primary to-blue-300 rounded-full"></div>
-                    <div><h4 class="font-bold text-lg text-white">Dr. Marcos Paulo</h4><span class="text-xs text-blue-300 dark:text-brand-accent font-bold uppercase tracking-wider">Ex-aluno</span></div>
-                </div>
-            </div>
-
-            <div class="hidden-scroll delay-300 bg-slate-50 dark:bg-slate-800/80 p-10 rounded-3xl relative border border-slate-100 dark:border-slate-700 hover:shadow-xl hover:-translate-y-3 transition-all duration-300">
-                <div class="text-7xl text-brand-accent/20 absolute top-2 left-6 font-serif">"</div>
-                <p class="text-slate-600 dark:text-slate-300 italic relative z-10 mt-6 mb-8 text-lg">Descobri minha vocação participando dos encontros. Hoje sou grata por dedicar minha vida a Deus.</p>
-                <div class="flex items-center gap-4">
-                    <div class="w-14 h-14 bg-gradient-to-br from-slate-200 to-slate-400 rounded-full"></div>
-                    <div><h4 class="font-bold text-brand-blue dark:text-white text-lg">Ir. Clara</h4><span class="text-xs text-brand-accent font-bold uppercase tracking-wider">Noviça</span></div>
+            <div class="hidden-scroll delay-200 bg-white dark:bg-slate-800 rounded-3xl p-10 shadow-xl border border-slate-100 dark:border-slate-700 transition-colors flex flex-col justify-center items-center text-center hover:-translate-y-2 duration-300 relative group/lit">
+                <% if(isAdmin) { %>
+                    <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover/lit:opacity-100 transition-opacity z-50 flex-col">
+                        <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="liturgiaIcon">Ícone</button>
+                        <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="liturgiaTitulo">Título</button>
+                        <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="liturgiaTexto">Texto</button>
+                    </div>
+                <% } %>
+                <div id="texto-home-liturgiaIcon" class="text-6xl mb-6 hover:rotate-12 transition-transform duration-500 drop-shadow-md cursor-default"><%= siteData.home.liturgiaIcon %></div>
+                <h3 id="texto-home-liturgiaTitulo" class="text-2xl font-bold text-brand-blue dark:text-white mb-3"><%= siteData.home.liturgiaTitulo %></h3>
+                <p id="texto-home-liturgiaTexto" class="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed"><%= siteData.home.liturgiaTexto %></p>
+                <div class="relative group/lbtn">
+                    <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-6 bg-brand-primary text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/lbtn:opacity-100 text-xs" data-pagina="home" data-chave="liturgiaBtn">✏️</button><% } %>
+                    <button class="text-brand-primary dark:text-brand-accent font-bold hover:underline transition-colors flex items-center gap-2"><span id="texto-home-liturgiaBtn"><%= siteData.home.liturgiaBtn %></span> <span>→</span></button>
                 </div>
             </div>
         </div>
@@ -115,27 +176,60 @@
 
 <section class="py-24 bg-slate-100 dark:bg-slate-900 transition-colors duration-500 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-4xl mx-auto px-6">
-        <h2 class="hidden-scroll text-3xl font-extrabold text-brand-blue dark:text-white mb-12 text-center">Dúvidas Frequentes</h2>
-        <div class="space-y-4">
-            <div class="hidden-scroll delay-100 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition-all">
-                <h3 class="text-lg font-bold text-brand-blue dark:text-white mb-2 flex items-center gap-2"><span>❓</span> Como posso fazer uma doação?</h3>
-                <p class="text-slate-600 dark:text-slate-400 pl-8">Você pode doar através da nossa <a href="/doacoes" class="nav-link text-brand-primary dark:text-brand-accent font-bold hover:underline">página de doações</a>.</p>
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 hidden-scroll">
+            <div class="relative group/faqtop inline-block w-full md:w-auto text-center md:text-left">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/faqtop:opacity-100 text-xs" data-pagina="home" data-chave="faqTitulo">✏️</button><% } %>
+                <h2 id="texto-home-faqTitulo" class="text-3xl md:text-5xl font-extrabold text-brand-blue dark:text-white"><%= siteData.home.faqTitulo %></h2>
             </div>
-            <div class="hidden-scroll delay-200 bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition-all">
-                <h3 class="text-lg font-bold text-brand-blue dark:text-white mb-2 flex items-center gap-2"><span>❓</span> O pedido de oração é confidencial?</h3>
-                <p class="text-slate-600 dark:text-slate-400 pl-8">Sim! Todas as intenções são levadas diretamente para a capela e rezadas de forma anônima e confidencial.</p>
-            </div>
+            
+            <% if(isAdmin) { %>
+                <button id="btn-adicionar-faq" class="bg-green-500 hover:bg-green-400 text-white w-10 h-10 rounded-full flex items-center justify-center text-2xl font-black shadow-lg transition-all hover:scale-110 hover:rotate-90 z-50 mt-4 md:mt-0" title="Adicionar Nova Pergunta">
+                    +
+                </button>
+            <% } %>
+        </div>
+        
+        <div class="space-y-4 max-h-[400px] overflow-y-auto pr-3 custom-scrollbar hidden-scroll delay-100">
+            <% if(siteData.home.faqs && siteData.home.faqs.length > 0) { %>
+                <% siteData.home.faqs.forEach((faq, index) => { %>
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition-all relative group/faq">
+                        
+                        <% if(isAdmin) { %>
+                            <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/faq:opacity-100 transition-opacity">
+                                <button class="btn-editar-faq bg-blue-500 hover:bg-blue-400 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="pergunta">✏️ Pergunta</button>
+                                <button class="btn-editar-faq bg-green-600 hover:bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="resposta">✏️ Resposta</button>
+                                <button class="btn-remover-faq bg-red-600 hover:bg-red-500 text-white px-2 py-1 rounded shadow text-xs font-bold ml-2" data-index="<%= index %>" title="Remover Pergunta">🗑️</button>
+                            </div>
+                        <% } %>
+
+                        <h3 class="text-lg font-bold text-brand-blue dark:text-white mb-2 flex items-center gap-2"><span>❓</span> <span id="texto-faq-<%= index %>-pergunta"><%= faq.pergunta %></span></h3>
+                        <p id="texto-faq-<%= index %>-resposta" class="text-slate-600 dark:text-slate-400 pl-8"><%= faq.resposta %></p>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-center text-slate-500 italic">Nenhuma pergunta cadastrada.</p>
+            <% } %>
         </div>
     </div>
 </section>
 
 <section class="hidden-scroll py-32 bg-grad-animated bg-[length:200%_auto] animate-shimmer relative overflow-hidden shadow-[inset_0_20px_50px_rgba(0,0,0,0.1)]">
     <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-8 drop-shadow-lg">Ajude-nos a continuar servindo</h2>
-        <p class="text-2xl text-orange-100 mb-12 font-medium drop-shadow-md">Sua contribuição mantém nossas obras funcionando diariamente.</p>
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10 group/cta">
+        
+        <% if(isAdmin) { %>
+            <div class="absolute -top-8 right-1/4 flex gap-2 z-50 opacity-0 group-hover/cta:opacity-100 transition-opacity">
+                <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaTitulo">Título</button>
+                <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaTexto">Texto</button>
+                <button class="btn-editar-cms bg-brand-primary text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaBtn">Botão</button>
+            </div>
+        <% } %>
+
+        <h2 id="texto-home-ctaTitulo" class="text-5xl md:text-6xl font-extrabold text-white mb-8 drop-shadow-lg"><%= siteData.home.ctaTitulo %></h2>
+        <p id="texto-home-ctaTexto" class="text-2xl text-orange-100 mb-12 font-medium drop-shadow-md"><%= siteData.home.ctaTexto %></p>
         <a href="/doacoes" class="nav-link inline-block bg-white text-brand-accent px-12 py-5 rounded-full text-2xl font-black hover:bg-slate-50 hover:scale-110 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-2 transition-all duration-300">
-            Quero ser um Benfeitor
+            <span id="texto-home-ctaBtn"><%= siteData.home.ctaBtn %></span>
         </a>
     </div>
 </section>
