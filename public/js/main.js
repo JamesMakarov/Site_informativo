@@ -108,6 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 5. SISTEMA DE TOASTS (AVISOS) ---
     function mostrarToast(mensagem, isError = false) {
+        // Limpa toasts antigos para não sobrepor mensagens!
+        document.querySelectorAll('.toast').forEach(t => t.remove());
+
         const toast = document.createElement('div');
         toast.className = `toast ${isError ? 'toast-error' : ''}`;
         toast.innerText = mensagem;
@@ -133,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================================================
     // --- 6. A GRANDE CENTRAL DE CLIQUES DO SITE (SPA + CMS + PIX + LISTAS)
     // ========================================================================
-    // Repara que o "async" está aqui no topo a proteger todos os "awaits"!
     document.body.addEventListener('click', async (e) => {
         
         // FECHAR MENU NO CELULAR AO CLICAR EM LINK
@@ -144,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // NAVEGAÇÃO SPA (Sem recarregar a página inteira)
+        // NAVEGAÇÃO SPA
         const link = e.target.closest('a');
         if (link && (link.classList.contains('nav-link') || link.classList.contains('footer-link')) && link.href.startsWith(window.location.origin) && !link.hash) {
             e.preventDefault();
@@ -201,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const chave = btnUploadImagem.getAttribute('data-chave');
             const lista = btnUploadImagem.getAttribute('data-lista');
             const index = btnUploadImagem.getAttribute('data-index');
-            const campo = btnUploadImagem.getAttribute('data-campo'); // será 'imagem'
+            const campo = btnUploadImagem.getAttribute('data-campo');
 
             const inputUpload = document.createElement('input');
             inputUpload.type = 'file';
@@ -213,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const formData = new FormData();
                 
-                // ORDEM OBRIGATÓRIA: Textos PRIMEIRO, Imagem no FIM!
+                // Textos PRIMEIRO, Imagem no FIM!
                 formData.append('pagina', pagina);
                 if (chave) formData.append('chave', chave);
                 if (lista) {
@@ -227,16 +229,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 mostrarToast("A enviar imagem... ⏳");
                 try {
                     const response = await fetch('/api/upload', { method: 'POST', body: formData });
+                    if(!response.ok) throw new Error("Falha no servidor");
+
                     const result = await response.json();
                     
                     if (result.sucesso) {
-                        // Troca a imagem na tela na hora
-                        let el = null;
-                        if (lista && index) {
-                            el = document.getElementById(`img-${lista}-${index}`); // Para capítulos e galeria
-                        } else if (chave) {
-                            el = document.getElementById(`bg-${pagina}-${chave}`) || document.getElementById(`img-${pagina}-${chave}`);
-                        }
+                        let elId = chave ? `bg-${pagina}-${chave}` : `img-${lista}-${index}`;
+                        let el = document.getElementById(elId) || document.getElementById(`img-${pagina}-${chave}`);
 
                         if (el) {
                             if (el.tagName === 'IMG') el.src = result.url;
@@ -244,17 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         mostrarToast("Imagem guardada! ✅");
                     } else {
-                        mostrarToast("Falha ao salvar no banco.", true);
+                        mostrarToast("Falha ao processar no servidor.", true);
                     }
                 } catch (error) {
-                    mostrarToast("Erro ao enviar imagem.", true);
+                    mostrarToast("Ocorreu um erro de rede ou servidor.", true);
                 }
             };
             inputUpload.click();
             return; 
         }
 
-        // 1. Textos Simples (Títulos, Parágrafos) - IGNORA BOTÕES DE IMAGEM
+        // 1. Textos Simples (Títulos, Parágrafos) - IGNORA IMAGENS
         const btnEditCms = e.target.closest('.btn-editar-cms:not([data-tipo="imagem"])');
         if (btnEditCms) {
             const pagina = btnEditCms.getAttribute('data-pagina');
@@ -312,12 +311,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnAddDep = e.target.closest('#btn-adicionar-depoimento');
         if (btnAddDep) {
             await fetch('/api/depoimento/adicionar', { method: 'POST' });
-            mostrarToast("Novo cartão adicionado! Edite os textos.");
+            mostrarToast("Novo cartão adicionado!");
             recarregarPaginaSPA(); 
             return;
         }
 
-        // 3. FAQ (Editar, Remover, Adicionar)
+        // 3. FAQ
         const btnEditFaq = e.target.closest('.btn-editar-faq');
         if (btnEditFaq) {
             const index = btnEditFaq.getAttribute('data-index');
@@ -352,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 4. Editar itens de Listas Genéricas (Pilares, Ação Social, História) - IGNORA IMAGENS
+        // 4. Editar itens de Listas Genéricas - IGNORA IMAGENS
         const btnEditLista = e.target.closest('.btn-editar-lista:not([data-campo="imagem"])');
         if (btnEditLista) {
             const pagina = btnEditLista.getAttribute('data-pagina');
@@ -361,16 +360,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const campo = btnEditLista.getAttribute('data-campo');
             
             let elTexto = document.getElementById(`texto-${lista}-${index}-${campo}`);
-            
             const textoAtual = elTexto ? elTexto.innerText : "";
             const novoTexto = prompt(`Editar ${campo}:`, textoAtual);
 
             if (novoTexto && novoTexto.trim() !== "" && novoTexto !== textoAtual) {
                 if(elTexto) elTexto.innerText = novoTexto;
-                
                 await fetch('/api/lista/editar', { 
-                    method: 'POST', 
-                    headers: { 'Content-Type': 'application/json' }, 
+                    method: 'POST', headers: { 'Content-Type': 'application/json' }, 
                     body: JSON.stringify({ pagina, lista, index, campo, novoTexto }) 
                 });
                 mostrarToast("Atualizado com sucesso!");
@@ -378,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 5. Adicionar em Listas Genéricas (História, Galeria, etc)
+        // 5. Adicionar em Listas Genéricas
         const btnAddLista = e.target.closest('.btn-adicionar-lista');
         if (btnAddLista) {
             const pagina = btnAddLista.getAttribute('data-pagina');
@@ -388,8 +384,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (lista === 'capitulos') novoItem = { badge: "NOVO", titulo: "Novo Capítulo", p1: "Texto base...", p2: "", citacao: "", citacaoAutor: "", imagem: "https://via.placeholder.com/800x1000?text=Nova+Imagem" };
             if (lista === 'timeline') novoItem = { ano: "Ano", titulo: "Novo Marco", texto: "Descrição...", cor: "brand-primary" };
             if (lista === 'galeria') novoItem = { imagem: "https://via.placeholder.com/600x600?text=Nova+Foto", titulo: "Nova Memória" };
-            if (lista === 'pilares') novoItem = { icone: "✨", titulo: "Novo Pilar", texto: "Descrição...", cor: "blue" };
-            if (lista === 'outros') novoItem = { icone: "🌟", titulo: "Novo Projeto", texto: "Descrição...", corClass: "brand-primary" };
 
             await fetch('/api/lista/adicionar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pagina, lista, novoItem }) });
             mostrarToast("Item adicionado com sucesso!");
@@ -411,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 7. LIGHTBOX DA GALERIA (Ampliar Imagem)
+        // 7. LIGHTBOX DA GALERIA
         const galeriaItem = e.target.closest('.img-galeria');
         const btnEditInside = e.target.closest('.btn-editar-lista'); 
         if (galeriaItem && !btnEditInside) {
@@ -426,14 +420,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Fechar Lightbox
         if (e.target.id === 'fechar-lightbox' || e.target.id === 'lightbox-galeria') {
             document.getElementById('lightbox-galeria').classList.add('hidden');
             document.getElementById('lightbox-galeria').classList.remove('flex');
             return;
         }
 
-    }); // <--- O FECHO DA CENTRAL DE CLIQUES ESTÁ PERFEITO AQUI!
+    });
 
     // ========================================================================
     // --- 7. BOTÃO VOLTAR DO NAVEGADOR ---
@@ -470,24 +463,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btnSubmit.disabled = true;
 
             try {
-                const response = await fetch('/api/oracao', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(dados)
-                });
+                const response = await fetch('/api/oracao', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dados) });
                 const result = await response.json();
                 if (result.sucesso) {
                     mostrarToast(result.mensagem);
                     form.reset();
                 }
-            } catch (error) {
-                mostrarToast("Erro ao conectar com a congregação.", true);
-            } finally {
+            } catch (error) { mostrarToast("Erro ao conectar.", true); } 
+            finally {
                 btnText.classList.remove('hidden');
                 btnLoader.classList.add('hidden');
                 btnSubmit.disabled = false;
             }
         }
     });
-
 });
