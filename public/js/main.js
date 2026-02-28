@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     inicializarCarrossel();
 
-    // --- 5. SISTEMA DE TOASTS (AVISOS) E SPA ---
+    // --- 5. SISTEMA DE TOASTS (AVISOS) ---
     function mostrarToast(mensagem, isError = false) {
         const toast = document.createElement('div');
         toast.className = `toast ${isError ? 'toast-error' : ''}`;
@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================================================
     // --- 6. A GRANDE CENTRAL DE CLIQUES DO SITE (SPA + CMS + PIX + LISTAS)
     // ========================================================================
+    // Repara que o "async" está aqui no topo a proteger todos os "awaits"!
     document.body.addEventListener('click', async (e) => {
         
         // FECHAR MENU NO CELULAR AO CLICAR EM LINK
@@ -194,13 +195,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // ==========================================================
 
         // 0. UPLOADER UNIVERSAL DE IMAGENS (Abre a pasta do PC!)
-        const btnUploadImagem = e.target.closest('[data-tipo="imagem"]');
+        const btnUploadImagem = e.target.closest('[data-tipo="imagem"], [data-campo="imagem"]');
         if (btnUploadImagem) {
             const pagina = btnUploadImagem.getAttribute('data-pagina');
             const chave = btnUploadImagem.getAttribute('data-chave');
             const lista = btnUploadImagem.getAttribute('data-lista');
             const index = btnUploadImagem.getAttribute('data-index');
-            const campo = btnUploadImagem.getAttribute('data-campo');
+            const campo = btnUploadImagem.getAttribute('data-campo'); // será 'imagem'
 
             const inputUpload = document.createElement('input');
             inputUpload.type = 'file';
@@ -212,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const formData = new FormData();
                 
-                // A REGRA DE OURO: Os textos vão primeiro para o servidor ler!
+                // ORDEM OBRIGATÓRIA: Textos PRIMEIRO, Imagem no FIM!
                 formData.append('pagina', pagina);
                 if (chave) formData.append('chave', chave);
                 if (lista) {
@@ -221,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     formData.append('campo', campo);
                 }
                 
-                // A imagem TEM de ser a última coisa a entrar no pacote
                 formData.append('imagem', file);
 
                 mostrarToast("A enviar imagem... ⏳");
@@ -231,14 +231,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (result.sucesso) {
                         // Troca a imagem na tela na hora
-                        let elId = chave ? `bg-${pagina}-${chave}` : `img-${lista}-${index}`;
-                        let el = document.getElementById(elId) || document.getElementById(`img-${pagina}-${chave}`);
+                        let el = null;
+                        if (lista && index) {
+                            el = document.getElementById(`img-${lista}-${index}`); // Para capítulos e galeria
+                        } else if (chave) {
+                            el = document.getElementById(`bg-${pagina}-${chave}`) || document.getElementById(`img-${pagina}-${chave}`);
+                        }
 
                         if (el) {
                             if (el.tagName === 'IMG') el.src = result.url;
                             else el.style.backgroundImage = `url('${result.url}')`;
                         }
-                        mostrarToast("Imagem guardada e substituída! ✅");
+                        mostrarToast("Imagem guardada! ✅");
                     } else {
                         mostrarToast("Falha ao salvar no banco.", true);
                     }
@@ -250,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return; 
         }
 
-        // 1. Textos Simples (Títulos, Parágrafos)
+        // 1. Textos Simples (Títulos, Parágrafos) - IGNORA BOTÕES DE IMAGEM
         const btnEditCms = e.target.closest('.btn-editar-cms:not([data-tipo="imagem"])');
         if (btnEditCms) {
             const pagina = btnEditCms.getAttribute('data-pagina');
@@ -348,8 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // 4. Editar itens de Listas Genéricas
-        const btnEditLista = e.target.closest('.btn-editar-lista:not([data-tipo="imagem"])');
+        // 4. Editar itens de Listas Genéricas (Pilares, Ação Social, História) - IGNORA IMAGENS
+        const btnEditLista = e.target.closest('.btn-editar-lista:not([data-campo="imagem"])');
         if (btnEditLista) {
             const pagina = btnEditLista.getAttribute('data-pagina');
             const lista = btnEditLista.getAttribute('data-lista');
@@ -357,49 +361,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const campo = btnEditLista.getAttribute('data-campo');
             
             let elTexto = document.getElementById(`texto-${lista}-${index}-${campo}`);
-            let isImagem = false;
             
-            if (!elTexto) {
-                elTexto = document.getElementById(`img-${lista}-${index}`);
-                if (elTexto && elTexto.tagName === 'IMG') isImagem = true;
-            }
-
-            // Fallback de imagem caso não tenha o atributo data-tipo="imagem"
-            if (isImagem) {
-                const inputUpload = document.createElement('input');
-                inputUpload.type = 'file';
-                inputUpload.accept = 'image/*';
-                
-                inputUpload.onchange = async (event) => {
-                    const file = event.target.files[0];
-                    if(!file) return;
-
-                    const formData = new FormData();
-                    formData.append('imagem', file);
-                    formData.append('pagina', pagina);
-                    formData.append('lista', lista);
-                    formData.append('index', index);
-                    formData.append('campo', campo);
-
-                    mostrarToast("A enviar imagem... ⏳");
-                    try {
-                        const response = await fetch('/api/upload', { method: 'POST', body: formData });
-                        const result = await response.json();
-                        if (result.sucesso) {
-                            elTexto.src = result.url;
-                            mostrarToast("Imagem atualizada! ✅");
-                        }
-                    } catch (e) { mostrarToast("Erro de rede.", true); }
-                };
-                inputUpload.click();
-                return;
-            }
-
-            const textoAtual = elTexto.innerText;
+            const textoAtual = elTexto ? elTexto.innerText : "";
             const novoTexto = prompt(`Editar ${campo}:`, textoAtual);
 
             if (novoTexto && novoTexto.trim() !== "" && novoTexto !== textoAtual) {
-                elTexto.innerText = novoTexto;
+                if(elTexto) elTexto.innerText = novoTexto;
+                
                 await fetch('/api/lista/editar', { 
                     method: 'POST', 
                     headers: { 'Content-Type': 'application/json' }, 
@@ -420,6 +388,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (lista === 'capitulos') novoItem = { badge: "NOVO", titulo: "Novo Capítulo", p1: "Texto base...", p2: "", citacao: "", citacaoAutor: "", imagem: "https://via.placeholder.com/800x1000?text=Nova+Imagem" };
             if (lista === 'timeline') novoItem = { ano: "Ano", titulo: "Novo Marco", texto: "Descrição...", cor: "brand-primary" };
             if (lista === 'galeria') novoItem = { imagem: "https://via.placeholder.com/600x600?text=Nova+Foto", titulo: "Nova Memória" };
+            if (lista === 'pilares') novoItem = { icone: "✨", titulo: "Novo Pilar", texto: "Descrição...", cor: "blue" };
+            if (lista === 'outros') novoItem = { icone: "🌟", titulo: "Novo Projeto", texto: "Descrição...", corClass: "brand-primary" };
 
             await fetch('/api/lista/adicionar', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pagina, lista, novoItem }) });
             mostrarToast("Item adicionado com sucesso!");
@@ -463,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-    }); // <--- O FECHO CORRETO DE TODO O EVENTO DE CLIQUE!
+    }); // <--- O FECHO DA CENTRAL DE CLIQUES ESTÁ PERFEITO AQUI!
 
     // ========================================================================
     // --- 7. BOTÃO VOLTAR DO NAVEGADOR ---
