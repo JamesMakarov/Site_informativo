@@ -1,13 +1,12 @@
-<div id="bg-home-heroBg" class="relative group bg-brand-blue flex items-center justify-center min-h-[90vh] text-white overflow-hidden bg-fixed bg-center bg-cover transition-all duration-700" style="background-image: url('<%= siteData.home.heroBg || '/img/noticia1.jpg' %>');">
+<div id="bg-home-heroBg" class="relative group/herobg bg-brand-blue flex items-center justify-center min-h-[90vh] text-white overflow-hidden bg-fixed bg-center bg-cover transition-all duration-700" style="background-image: url('<%= siteData.home.heroBg || '/img/noticia1.jpg' %>');">
     
     <% if(isAdmin) { %>
-        <button class="absolute top-24 left-6 bg-brand-accent text-white px-4 py-2 rounded-full shadow-2xl opacity-0 group-hover:opacity-100 transition-opacity z-50 text-sm font-bold hover:scale-105 flex items-center gap-2 border-2 border-white/20" data-pagina="home" data-chave="heroBg" data-tipo="imagem">
-            🖼️ Alterar Fundo
-        </button>
+    <button class="absolute top-24 left-6 bg-brand-accent text-white px-4 py-2 rounded-full shadow-2xl opacity-0 group-hover/herobg:opacity-100 transition-opacity z-50 text-sm font-bold flex items-center gap-2 border border-white/20" data-pagina="home" data-chave="heroBg" data-tipo="imagem">
+        🖼️ Mudar Fundo Principal
+    </button>
     <% } %>
 
     <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/90 via-blue-900/70 to-brand-blue dark:to-slate-900 z-10 transition-colors duration-500"></div>
-    
     <div class="absolute top-20 left-1/4 w-72 h-72 bg-brand-primary rounded-full mix-blend-screen filter blur-[100px] opacity-60 animate-blob z-10 pointer-events-none"></div>
     <div class="absolute top-40 right-1/4 w-72 h-72 bg-brand-accent rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob-delayed z-10 pointer-events-none"></div>
     
@@ -131,8 +130,17 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="hidden-scroll delay-100 md:col-span-2 bg-grad-primary bg-[length:200%_auto] hover:animate-shimmer rounded-3xl p-10 text-white shadow-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2">
-                <div class="relative z-10 flex flex-col h-full justify-between group/hcard">
+            <div class="hidden-scroll delay-100 md:col-span-2 bg-grad-primary rounded-3xl p-10 text-white shadow-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2 group/bg">
+                
+                <div id="bg-home-destaqueImg" class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay transition-all duration-700" style="background-image: url('<%= siteData.home.destaqueImg || '/img/noticia2.jpg' %>');"></div>
+                
+                <% if(isAdmin) { %>
+                    <button class="absolute top-4 left-4 bg-brand-accent text-white px-4 py-2 rounded-full shadow-2xl opacity-0 group-hover/bg:opacity-100 transition-opacity z-50 text-sm font-bold flex items-center gap-2 border border-white/20" data-pagina="home" data-chave="destaqueImg" data-tipo="imagem">
+                        🖼️ Mudar Foto
+                    </button>
+                <% } %>
+
+                <div class="relative z-10 flex flex-col h-full justify-between group/hcard mt-10">
                     <% if(isAdmin) { %>
                         <div class="absolute top-0 right-0 flex gap-2 opacity-0 group-hover/hcard:opacity-100 transition-opacity z-50">
                             <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="highlightBadge">Badge</button>
@@ -174,19 +182,82 @@
     </div>
 </section>
 
+<section class="py-24 bg-white dark:bg-slate-900 relative transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 hidden-scroll relative group">
+            <div class="flex items-center gap-4">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-blue dark:text-white">Vidas Transformadas</h2>
+                <% if(isAdmin) { %>
+                    <button id="btn-adicionar-depoimento" class="bg-green-500 hover:bg-green-400 text-white w-10 h-10 rounded-full flex items-center justify-center text-2xl font-black shadow-lg transition-all hover:scale-110 hover:rotate-90 z-50 mb-1" title="Adicionar Novo Depoimento">+</button>
+                <% } %>
+            </div>
+            
+            <div class="flex gap-4 mt-6 md:mt-0">
+                <button id="btn-prev" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button id="btn-next" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="overflow-hidden hidden-scroll delay-100 py-8">
+            <div id="carousel-track" class="flex gap-8 transition-transform duration-700 ease-out flex-nowrap items-stretch" style="transform: translateX(0%);">
+                
+                <% siteData.home.depoimentos.forEach((dep, index) => { %>
+                    <% 
+                        const isBlue = index % 2 !== 0; 
+                        const cardClass = isBlue ? 'bg-brand-blue dark:bg-slate-800 text-white border-brand-primary dark:border-brand-accent shadow-2xl md:-translate-y-4 hover:md:-translate-y-6' : 'bg-slate-50 dark:bg-slate-800/80 p-10 text-slate-600 dark:text-slate-300 border-slate-100 dark:border-slate-700 shadow-sm hover:md:-translate-y-2';
+                        const pClass = isBlue ? 'text-blue-50 dark:text-slate-200' : 'text-slate-600 dark:text-slate-300';
+                        const nameClass = isBlue ? 'text-white' : 'text-brand-blue dark:text-white';
+                    %>
+
+                    <div class="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0 group/card relative flex flex-col">
+                        
+                        <% if(isAdmin) { %>
+                            <div class="absolute top-2 right-2 flex gap-2 z-20 opacity-0 group-hover/card:opacity-100 transition-opacity">
+                                <button class="btn-editar-depoimento bg-brand-accent text-white p-2 rounded-full shadow-xl hover:scale-110 text-sm" data-index="<%= index %>" data-campo="texto" title="Editar Texto">✏️</button>
+                                <button class="btn-remover-depoimento bg-red-600 text-white p-2 rounded-full shadow-xl hover:scale-110 text-sm" data-index="<%= index %>" title="Apagar Depoimento">🗑️</button>
+                            </div>
+                        <% } %>
+
+                        <div class="<%= cardClass %> p-10 rounded-3xl relative border h-full flex flex-col flex-1 transition-all duration-300">
+                            <div class="text-7xl <%= isBlue ? 'text-brand-primary/40 dark:text-brand-accent/40' : 'text-brand-accent/20' %> absolute top-2 left-6 font-serif cursor-default">"</div>
+                            
+                            <p id="texto-dep-<%= index %>-texto" class="<%= pClass %> italic relative z-10 mt-6 mb-8 text-lg leading-relaxed flex-1"><%= dep.texto %></p>
+                            
+                            <div class="flex items-center gap-4 mt-auto relative group/autor pt-4 border-t <%= isBlue ? 'border-brand-primary/50 dark:border-slate-700' : 'border-slate-200 dark:border-slate-700' %>">
+                                <% if(isAdmin) { %>
+                                    <div class="absolute -top-10 left-16 flex gap-2 opacity-0 group-hover/autor:opacity-100 transition-opacity z-20">
+                                        <button class="btn-editar-depoimento bg-blue-600 hover:bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="autor">Nome</button>
+                                        <button class="btn-editar-depoimento bg-orange-500 hover:bg-orange-400 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="papel">Cargo</button>
+                                    </div>
+                                <% } %>
+                                <div class="w-14 h-14 bg-gradient-to-br <%= isBlue ? 'from-brand-primary to-blue-400' : 'from-slate-200 to-slate-400' %> rounded-full flex-shrink-0"></div>
+                                <div>
+                                    <h4 id="texto-dep-<%= index %>-autor" class="font-bold <%= nameClass %> text-lg leading-tight"><%= dep.autor %></h4>
+                                    <span id="texto-dep-<%= index %>-papel" class="text-xs <%= isBlue ? 'text-blue-300 dark:text-brand-accent' : 'text-brand-accent' %> font-bold uppercase tracking-wider"><%= dep.papel %></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="py-24 bg-slate-100 dark:bg-slate-900 transition-colors duration-500 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-4xl mx-auto px-6">
-        
         <div class="flex flex-col md:flex-row justify-between items-end mb-12 hidden-scroll">
             <div class="relative group/faqtop inline-block w-full md:w-auto text-center md:text-left">
                 <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/faqtop:opacity-100 text-xs" data-pagina="home" data-chave="faqTitulo">✏️</button><% } %>
                 <h2 id="texto-home-faqTitulo" class="text-3xl md:text-5xl font-extrabold text-brand-blue dark:text-white"><%= siteData.home.faqTitulo %></h2>
             </div>
-            
             <% if(isAdmin) { %>
-                <button id="btn-adicionar-faq" class="bg-green-500 hover:bg-green-400 text-white w-10 h-10 rounded-full flex items-center justify-center text-2xl font-black shadow-lg transition-all hover:scale-110 hover:rotate-90 z-50 mt-4 md:mt-0" title="Adicionar Nova Pergunta">
-                    +
-                </button>
+                <button id="btn-adicionar-faq" class="bg-green-500 hover:bg-green-400 text-white w-10 h-10 rounded-full flex items-center justify-center text-2xl font-black shadow-lg transition-all hover:scale-110 hover:rotate-90 z-50 mt-4 md:mt-0" title="Adicionar Nova Pergunta">+</button>
             <% } %>
         </div>
         
@@ -194,7 +265,6 @@
             <% if(siteData.home.faqs && siteData.home.faqs.length > 0) { %>
                 <% siteData.home.faqs.forEach((faq, index) => { %>
                     <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition-all relative group/faq">
-                        
                         <% if(isAdmin) { %>
                             <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/faq:opacity-100 transition-opacity">
                                 <button class="btn-editar-faq bg-blue-500 hover:bg-blue-400 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="pergunta">✏️ Pergunta</button>
@@ -202,7 +272,6 @@
                                 <button class="btn-remover-faq bg-red-600 hover:bg-red-500 text-white px-2 py-1 rounded shadow text-xs font-bold ml-2" data-index="<%= index %>" title="Remover Pergunta">🗑️</button>
                             </div>
                         <% } %>
-
                         <h3 class="text-lg font-bold text-brand-blue dark:text-white mb-2 flex items-center gap-2"><span>❓</span> <span id="texto-faq-<%= index %>-pergunta"><%= faq.pergunta %></span></h3>
                         <p id="texto-faq-<%= index %>-resposta" class="text-slate-600 dark:text-slate-400 pl-8"><%= faq.resposta %></p>
                     </div>
@@ -217,7 +286,6 @@
 <section class="hidden-scroll py-32 bg-grad-animated bg-[length:200%_auto] animate-shimmer relative overflow-hidden shadow-[inset_0_20px_50px_rgba(0,0,0,0.1)]">
     <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
     <div class="max-w-4xl mx-auto px-6 text-center relative z-10 group/cta">
-        
         <% if(isAdmin) { %>
             <div class="absolute -top-8 right-1/4 flex gap-2 z-50 opacity-0 group-hover/cta:opacity-100 transition-opacity">
                 <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaTitulo">Título</button>
@@ -225,7 +293,6 @@
                 <button class="btn-editar-cms bg-brand-primary text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaBtn">Botão</button>
             </div>
         <% } %>
-
         <h2 id="texto-home-ctaTitulo" class="text-5xl md:text-6xl font-extrabold text-white mb-8 drop-shadow-lg"><%= siteData.home.ctaTitulo %></h2>
         <p id="texto-home-ctaTexto" class="text-2xl text-orange-100 mb-12 font-medium drop-shadow-md"><%= siteData.home.ctaTexto %></p>
         <a href="/doacoes" class="nav-link inline-block bg-white text-brand-accent px-12 py-5 rounded-full text-2xl font-black hover:bg-slate-50 hover:scale-110 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-2 transition-all duration-300">

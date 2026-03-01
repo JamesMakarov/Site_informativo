@@ -34,10 +34,18 @@
 
 <section class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 relative z-20 -mt-10 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)]">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20 relative group inline-block w-full">
-            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-1/4 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 text-xs z-50" data-pagina="projetos" data-chave="pilaresTitulo">✏️</button><% } %>
-            <h2 id="texto-projetos-pilaresTitulo" class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6"><%= siteData.projetos.pilaresTitulo %></h2>
-            <div class="hidden-scroll delay-100 w-24 h-1 bg-brand-primary mx-auto rounded-full"></div>
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+            <div class="relative group/ptitulo inline-block text-center md:text-left w-full md:w-auto">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover/ptitulo:opacity-100 text-xs z-50" data-pagina="projetos" data-chave="pilaresTitulo">✏️</button><% } %>
+                <h2 id="texto-projetos-pilaresTitulo" class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6"><%= siteData.projetos.pilaresTitulo %></h2>
+                <div class="hidden-scroll delay-100 w-24 h-1 bg-brand-primary mx-auto md:mx-0 rounded-full"></div>
+            </div>
+            <% if(isAdmin) { %>
+                <button class="btn-adicionar-lista bg-green-500 hover:bg-green-400 text-white font-bold px-6 py-3 rounded-full shadow-lg transition-all hover:scale-105 mt-6 md:mt-0" data-pagina="projetos" data-lista="pilares">
+                    + Adicionar Pilar
+                </button>
+            <% } %>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -45,10 +53,13 @@
                 <div class="hidden-scroll delay-<%= (index+1)*100 %> group relative bg-white dark:bg-slate-800 rounded-3xl p-10 shadow-xl border border-gray-100 dark:border-slate-700 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 overflow-hidden group/card">
                     
                     <% if(isAdmin) { %>
-                        <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/card:opacity-100 transition-opacity">
-                            <button class="btn-editar-lista bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="pilares" data-index="<%= index %>" data-campo="icone">Ícone</button>
-                            <button class="btn-editar-lista bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="pilares" data-index="<%= index %>" data-campo="titulo">Título</button>
-                            <button class="btn-editar-lista bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="pilares" data-index="<%= index %>" data-campo="texto">Texto</button>
+                        <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/card:opacity-100 transition-opacity flex-col items-end">
+                            <div class="flex gap-1">
+                                <button class="btn-editar-lista bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="pilares" data-index="<%= index %>" data-campo="icone">Ícone</button>
+                                <button class="btn-editar-lista bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="pilares" data-index="<%= index %>" data-campo="titulo">Título</button>
+                                <button class="btn-editar-lista bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="pilares" data-index="<%= index %>" data-campo="texto">Texto</button>
+                            </div>
+                            <button class="btn-remover-lista bg-red-600 text-white px-2 py-1 rounded shadow text-[10px] font-bold mt-1" data-pagina="projetos" data-lista="pilares" data-index="<%= index %>">🗑️ Apagar Pilar</button>
                         </div>
                     <% } %>
 
@@ -69,10 +80,19 @@
             <div class="absolute inset-0 opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
             
             <div class="relative z-10 flex flex-col lg:flex-row gap-12 items-center">
+                
                 <div class="lg:w-1/2 w-full">
                     <div class="relative group rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-700 group/img">
-                        <img src="/img/noticia2.jpg" onerror="this.src='https://via.placeholder.com/800x600?text=Robótica+e+Educação'" alt="Centro Educacional" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-blue via-transparent to-transparent opacity-80"></div>
+                        
+                        <% if(isAdmin) { %>
+                            <button class="absolute top-4 right-4 bg-brand-accent text-white px-4 py-2 rounded-full shadow-2xl opacity-0 group-hover/img:opacity-100 transition-opacity z-50 text-sm font-bold flex items-center gap-2 border border-white/20" data-pagina="projetos" data-chave="destaqueImg" data-tipo="imagem">
+                                🖼️ Mudar Foto
+                            </button>
+                        <% } %>
+
+                        <img id="img-projetos-destaqueImg" src="<%= siteData.projetos.destaqueImg || '/img/noticia2.jpg' %>" onerror="this.src='https://via.placeholder.com/800x600?text=Projeto+Destaque'" alt="Centro Educacional" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-blue via-transparent to-transparent opacity-80 pointer-events-none"></div>
                         <div class="absolute bottom-6 left-6 relative w-max">
                             <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-8 left-0 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover/img:opacity-100 text-xs z-50" data-pagina="projetos" data-chave="destaqueBadge">✏️</button><% } %>
                             <span id="texto-projetos-destaqueBadge" class="bg-brand-accent text-white font-bold px-4 py-2 rounded-full text-xs uppercase tracking-wider shadow-lg"><%= siteData.projetos.destaqueBadge %></span>
@@ -122,9 +142,17 @@
 
 <section class="py-24 bg-slate-100 dark:bg-slate-900 transition-colors duration-500">
     <div class="max-w-7xl mx-auto px-6">
-        <div class="relative group inline-block w-full text-center">
-            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-1/4 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 text-xs z-50" data-pagina="projetos" data-chave="outrosTitulo">✏️</button><% } %>
-            <h2 id="texto-projetos-outrosTitulo" class="hidden-scroll text-3xl font-extrabold text-brand-blue dark:text-white mb-16"><%= siteData.projetos.outrosTitulo %></h2>
+        
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
+            <div class="relative group/otitulo inline-block text-center md:text-left w-full md:w-auto">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white px-2 py-1 rounded shadow opacity-0 group-hover/otitulo:opacity-100 text-xs z-50" data-pagina="projetos" data-chave="outrosTitulo">✏️</button><% } %>
+                <h2 id="texto-projetos-outrosTitulo" class="hidden-scroll text-3xl font-extrabold text-brand-blue dark:text-white"><%= siteData.projetos.outrosTitulo %></h2>
+            </div>
+            <% if(isAdmin) { %>
+                <button class="btn-adicionar-lista bg-brand-primary hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-full shadow-lg transition-all hover:scale-105 mt-6 md:mt-0" data-pagina="projetos" data-lista="outros">
+                    + Adicionar Projeto
+                </button>
+            <% } %>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -132,9 +160,10 @@
                 <div class="hidden-scroll delay-<%= index * 100 %> relative bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-md flex items-start gap-6 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-shadow group/card">
                     <% if(isAdmin) { %>
                         <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/card:opacity-100 transition-opacity">
-                            <button class="btn-editar-lista bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="outros" data-index="<%= index %>" data-campo="icone">Ícone</button>
-                            <button class="btn-editar-lista bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="outros" data-index="<%= index %>" data-campo="titulo">Título</button>
-                            <button class="btn-editar-lista bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="projetos" data-lista="outros" data-index="<%= index %>" data-campo="texto">Texto</button>
+                            <button class="btn-editar-lista bg-brand-accent text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="projetos" data-lista="outros" data-index="<%= index %>" data-campo="icone">Ícone</button>
+                            <button class="btn-editar-lista bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="projetos" data-lista="outros" data-index="<%= index %>" data-campo="titulo">Título</button>
+                            <button class="btn-editar-lista bg-green-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="projetos" data-lista="outros" data-index="<%= index %>" data-campo="texto">Texto</button>
+                            <button class="btn-remover-lista bg-red-600 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="projetos" data-lista="outros" data-index="<%= index %>">X</button>
                         </div>
                     <% } %>
                     <div id="texto-outros-<%= index %>-icone" class="w-20 h-20 bg-<%= outro.corClass %>/10 dark:bg-<%= outro.corClass %>/20 rounded-2xl flex items-center justify-center text-4xl flex-shrink-0 text-<%= outro.corClass %>"><%= outro.icone %></div>

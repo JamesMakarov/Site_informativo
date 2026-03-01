@@ -1,0 +1,64 @@
+<article class="bg-white dark:bg-slate-950 min-h-screen pb-24 transition-colors duration-500 group/noticia">
+    
+    <div class="relative h-[60vh] min-h-[400px] w-full group/imgDest">
+        <% if(isAdmin) { %>
+            <button class="absolute top-24 left-6 bg-brand-accent text-white px-6 py-3 rounded-full shadow-2xl opacity-0 group-hover/imgDest:opacity-100 transition-opacity z-50 text-sm font-bold flex items-center gap-2 border border-white/20" data-pagina="noticias" data-lista="feedList" data-index="<%= index %>" data-campo="imagem" data-tipo="imagem">
+                🖼️ Trocar Capa da Notícia
+            </button>
+        <% } %>
+
+        <img id="img-feedList-<%= index %>-imagem" src="<%= noticia.imagem %>" onerror="this.src='/img/noticia1.jpg'" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10 -mt-32">
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl p-8 md:p-16 relative">
+            
+            <% if(isAdmin) { %>
+                <div class="absolute -top-12 right-4 flex opacity-0 group-hover/noticia:opacity-100 z-50 bg-red-600 p-2 rounded-full shadow-lg">
+                    <button class="btn-remover-lista text-white px-4 font-bold text-xs" data-pagina="noticias" data-lista="feedList" data-index="<%= index %>">🗑️ Apagar Reportagem Inteira</button>
+                </div>
+            <% } %>
+
+            <div class="flex items-center gap-3 mb-6 text-sm font-bold text-brand-accent">
+                <span class="bg-<%= noticia.badgeCor || 'brand-primary' %> text-white px-3 py-1 rounded-full text-xs uppercase tracking-wider <%= isAdmin ? 'cms-editavel cursor-text hover:opacity-80' : '' %>" <%= isAdmin ? 'contenteditable=true' : '' %> data-pagina="noticias" data-lista="feedList" data-index="<%= index %>" data-campo="badge"><%= noticia.badge %></span>
+                
+                <span class="<%= isAdmin ? 'cms-editavel cursor-text border-b border-dashed border-brand-accent' : '' %>" <%= isAdmin ? 'contenteditable=true' : '' %> data-pagina="noticias" data-lista="feedList" data-index="<%= index %>" data-campo="data"><%= noticia.data %></span>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold text-brand-blue dark:text-white mb-8 leading-tight <%= isAdmin ? 'cms-editavel cursor-text hover:bg-slate-50 dark:hover:bg-slate-800 p-2 -ml-2 rounded outline-none focus:ring-2 focus:ring-brand-accent transition-all' : '' %>" <%= isAdmin ? 'contenteditable=true' : '' %> data-pagina="noticias" data-lista="feedList" data-index="<%= index %>" data-campo="titulo">
+                <%= noticia.titulo %>
+            </h1>
+
+            <div class="flex items-center gap-4 mb-12 pb-8 border-b border-slate-200 dark:border-slate-800">
+                <div class="relative group/fotoAutor">
+                    <% if(isAdmin) { %>
+                        <button class="absolute -top-2 -right-2 bg-brand-accent text-white p-1 rounded-full shadow-lg opacity-0 group-hover/fotoAutor:opacity-100 z-50 text-[10px] w-6 h-6 flex items-center justify-center" data-pagina="noticias" data-lista="feedList" data-index="<%= index %>" data-campo="fotoAutor" data-tipo="imagem" title="Mudar Foto do Autor">📷</button>
+                    <% } %>
+
+                    <% if (noticia.fotoAutor && noticia.fotoAutor.trim() !== "") { %>
+                        <img id="img-feedList-<%= index %>-fotoAutor" src="<%= noticia.fotoAutor %>" class="w-14 h-14 rounded-full object-cover border-2 border-slate-200 shadow-sm">
+                    <% } else if (isAdmin) { %>
+                        <div id="img-feedList-<%= index %>-fotoAutor" class="w-14 h-14 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-[10px] font-bold text-slate-400 cursor-pointer border-2 border-dashed border-slate-300">Add Foto</div>
+                    <% } %>
+                </div>
+                
+                <div>
+                    <p class="font-bold text-brand-blue dark:text-white text-sm">Escrito por</p>
+                    <p class="text-slate-500 text-sm <%= isAdmin ? 'cms-editavel cursor-text border-b border-dashed border-slate-400' : '' %>" <%= isAdmin ? 'contenteditable=true' : '' %> data-pagina="noticias" data-lista="feedList" data-index="<%= index %>" data-campo="autor"><%= noticia.autor || 'Redação' %></p>
+                </div>
+            </div>
+
+            <div class="prose prose-lg dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-loose <%= isAdmin ? 'cms-editavel cursor-text hover:bg-slate-50 dark:hover:bg-slate-800 p-4 -ml-4 rounded outline-none focus:ring-2 focus:ring-brand-accent transition-all' : '' %>" <%= isAdmin ? 'contenteditable=true' : '' %> data-pagina="noticias" data-lista="feedList" data-index="<%= index %>" data-campo="conteudoCompleto">
+                <%- noticia.conteudoCompleto || noticia.texto %>
+            </div>
+
+            <div class="mt-16 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
+                <a href="/noticias" class="nav-link inline-flex items-center gap-2 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-white px-6 py-3 rounded-full hover:bg-brand-primary hover:text-white transition-colors font-bold shadow-sm">
+                    ← Voltar ao Jornal
+                </a>
+            </div>
+
+        </div>
+    </div>
+</article>

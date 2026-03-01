@@ -3,7 +3,7 @@
     "heroBadge": "DESDE 1970",
     "heroTitulo": "Educação que",
     "heroTituloDestaque": "Transforma",
-    "heroBg": "/img/uploads/img_1772321136478285446763.jpg",
+    "heroBg": "/img/noticia1.jpg",
     "heroSubtitulo": "Há mais de 50 anos educando com amor, servindo com esperança e vivendo a fé em nossa comunidade.",
     "heroBtn": "Deixe seu Pedido de Oração",
     "stat1_num": "+50",
@@ -31,6 +31,7 @@
     "ctaTitulo": "Ajude-nos a continuar servindo",
     "ctaTexto": "Sua contribuição mantém nossas obras funcionando diariamente.",
     "ctaBtn": "Quero ser um Benfeitor",
+    "destaqueImg": "/img/noticia2.jpg",
     "depoimentos": [
       {
         "texto": "Através do projeto Pão Partilhado, eu encontrei não apenas alimento, mas conforto.",
@@ -41,6 +42,11 @@
         "texto": "Estudar na escola da congregação me ensinou valores que levo para a vida. A dedicação é inesquecível.",
         "autor": "Dr. Marcos Paulo",
         "papel": "Ex-aluno"
+      },
+      {
+        "texto": "Testemunho aleatório que tenha agradado ao administrador.",
+        "autor": "Pessoa desconhecida",
+        "papel": "O QUE ESSA PESSOA FAZ"
       }
     ],
     "faqs": [
@@ -87,16 +93,45 @@
     "timelineTitulo": "A Marcha do Tempo",
     "timelineSub": "Os marcos que definem nossa trajetória de expansão e caridade.",
     "timeline": [
-      { "ano": "1970", "titulo": "A Fundação", "texto": "Criação oficial da Congregação.", "cor": "brand-accent" },
-      { "ano": "1985", "titulo": "O Primeiro Hospital", "texto": "Inauguração de nossa primeira casa de saúde.", "cor": "brand-primary" },
-      { "ano": "2002", "titulo": "Expansão de Escolas", "texto": "Atingimos a marca de 10 escolas em funcionamento.", "cor": "brand-accent" },
-      { "ano": "Atual", "titulo": "Mais de 50 Anos", "texto": "Celebramos nosso jubileu com uma congregação forte.", "cor": "white" }
+      {
+        "ano": "1970",
+        "titulo": "A Fundação",
+        "texto": "Criação oficial da Congregação.",
+        "cor": "brand-accent"
+      },
+      {
+        "ano": "1985",
+        "titulo": "O Primeiro Hospital",
+        "texto": "Inauguração de nossa primeira casa de saúde.",
+        "cor": "brand-primary"
+      },
+      {
+        "ano": "2002",
+        "titulo": "Expansão de Escolas",
+        "texto": "Atingimos a marca de 10 escolas em funcionamento.",
+        "cor": "brand-accent"
+      },
+      {
+        "ano": "Atual",
+        "titulo": "Mais de 50 Anos",
+        "texto": "Celebramos nosso jubileu com uma congregação forte.",
+        "cor": "white"
+      }
     ],
     "galeriaTitulo": "Galeria de Memórias",
     "galeria": [
-      { "imagem": "/img/noticia3.jpg", "titulo": "Primeira turma de alunos (1975)" },
-      { "imagem": "/img/noticia1.jpg", "titulo": "Votos Perpétuos (Anos 80)" },
-      { "imagem": "/img/noticia2.jpg", "titulo": "Inauguração da Capela Central" }
+      {
+        "imagem": "/img/noticia1.jpg",
+        "titulo": "Primeira turma de alunos (1975)"
+      },
+      {
+        "imagem": "/img/noticia2.jpg",
+        "titulo": "Votos Perpétuos (Anos 80)"
+      },
+      {
+        "imagem": "/img/noticia3.jpg",
+        "titulo": "Inauguração da Capela Central"
+      }
     ]
   },
   "oracao": {
@@ -169,11 +204,162 @@
         "corClass": "purple-500",
         "titulo": "Oficinas Profissionalizantes",
         "texto": "Cursos de costura, marcenaria e informática básica para inserir jovens e adultos no mercado de trabalho com qualificação."
+      },
+      {
+        "icone": "🌍",
+        "corClass": "brand-primary",
+        "titulo": "Alguma coisa que você quiser adicionar",
+        "texto": "Algum texto que você queira detalhar o texto que você acabou de escrever"
       }
     ],
     "ctaTitulo": "Faça parte desta rede",
     "ctaTexto": "As nossas obras não se sustentam sozinhas. Precisamos de mãos dispostas a trabalhar, corações dispostos a rezar e recursos para expandir. Junte-se à nossa congregação.",
     "ctaBtn1": "Apoiar Financeiramente",
-    "ctaBtn2": "Pedir Oração"
+    "ctaBtn2": "Pedir Oração",
+    "destaqueImg": "/img/noticia2.jpg"
+  },
+  "noticias": {
+    "heroTitulo1": "O Nosso ",
+    "heroTituloDestaque": "Jornal",
+    "heroSubtitulo": "Acompanhe as ações, as reflexões e os milagres quotidianos que constroem a história da nossa Congregação.",
+    "feedTitulo": "Mais Lidas",
+    "feedFiltro1": "Todas",
+    "feedFiltro2": "Espiritualidade",
+    "feedFiltro3": "Educação",
+    "feedList": [
+      {
+        "id": "noticia_1772336511112",
+        "badgeCor": "red-500",
+        "badge": "NOVA",
+        "data": "01 Mar 2026",
+        "titulo": "Clique aqui para editar o Título",
+        "texto": "Clique aqui para editar o resumo da página inicial...",
+        "conteudoCompleto": "Apague este texto e escreva aqui a reportagem completa. Para mudar de parágrafo, basta dar Enter.",
+        "autor": "Equipe de Comunicação",
+        "fotoAutor": "",
+        "imagem": "/img/noticia1.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      },
+      {
+        "id": "noticia_1772336497808",
+        "badgeCor": "red-500",
+        "badge": "NOVA",
+        "data": "01 Mar 2026",
+        "titulo": "Clique aqui para editar o Título",
+        "texto": "Clique aqui para editar o resumo da página inicial...",
+        "conteudoCompleto": "Apague este texto e escreva aqui a reportagem completa. Para mudar de parágrafo, basta dar Enter.",
+        "autor": "Equipe de Comunicação",
+        "fotoAutor": "",
+        "imagem": "/img/uploads/img_1772336503568795014237.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      },
+      {
+        "id": "noticia_1772336486207",
+        "badgeCor": "red-500",
+        "badge": "NOVA",
+        "data": "01 Mar 2026",
+        "titulo": "Clique aqui para editar o Título",
+        "texto": "Clique aqui para editar o resumo da página inicial...",
+        "conteudoCompleto": "Apague este texto e escreva aqui a reportagem completa. Para mudar de parágrafo, basta dar Enter.",
+        "autor": "Equipe de Comunicação",
+        "fotoAutor": "",
+        "imagem": "/img/uploads/img_1772336490650520718010.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      },
+      {
+        "id": "noticia_1772336477169",
+        "badgeCor": "red-500",
+        "badge": "NOVA",
+        "data": "01 Mar 2026",
+        "titulo": "Clique aqui para editar o Título",
+        "texto": "Clique aqui para editar o resumo da página inicial...",
+        "conteudoCompleto": "Apague este texto e escreva aqui a reportagem completa. Para mudar de parágrafo, basta dar Enter.",
+        "autor": "Equipe de Comunicação",
+        "fotoAutor": "",
+        "imagem": "/img/noticia1.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      },
+      {
+        "id": "noticia_1772336107832",
+        "badgeCor": "red-500",
+        "badge": "NOVA",
+        "data": "01 Mar 2026",
+        "titulo": "Clique aqui para editar o Título",
+        "texto": "Clique aqui para editar o resumo da página inicial...",
+        "conteudoCompleto": "Apague este texto e escreva aqui a reportagem completa. Para mudar de parágrafo, basta dar Enter.",
+        "autor": "Equipe de Comunicação",
+        "fotoAutor": "",
+        "imagem": "/img/noticia1.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      },
+      {
+        "id": "noticia_1",
+        "badgeCor": "red-500",
+        "badge": "Última Hora",
+        "data": "28 Fev 2026",
+        "titulo": "O Maior Encontro de Jovens do Ceará",
+        "texto": "Mais de 2.000 jovens de todas as paróquias reuniram-se no último fim de semana no nosso centro para debater espiritualidade, sustentabilidade e o futuro da Igreja na era digital. Um momento histórico de partilha e renovação da fé.",
+        "conteudoCompleto": "Escreva aqui toda a reportagem extensa sobre o encontro...",
+        "autor": "Irmã Maria",
+        "imagem": "/img/noticia1.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      },
+      {
+        "id": "noticia_2",
+        "badgeCor": "brand-primary",
+        "badge": "Estrutura",
+        "data": "15 Fev 2026",
+        "titulo": "Nova Capela é inaugurada na Casa de Acolhimento",
+        "texto": "A comunidade reuniu-se numa missa solene para celebrar a abertura do novo espaço de oração, construído integralmente com donativos de benfeitores locais.",
+        "conteudoCompleto": "Escreva aqui os detalhes da construção da capela...",
+        "autor": "Equipe de Obras",
+        "imagem": "/img/noticia2.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      },
+      {
+        "id": "noticia_3",
+        "badgeCor": "green-600",
+        "badge": "Educação",
+        "data": "02 Fev 2026",
+        "titulo": "Campanha Volta às Aulas distribui 500 kits",
+        "texto": "Graças ao empenho da comunidade, conseguimos fornecer material escolar completo para dezenas de crianças, garantindo um início de ano letivo com dignidade.",
+        "conteudoCompleto": "\n                Detalhes sobre a campanha solidária...\n            ",
+        "autor": "Administração",
+        "imagem": "/img/noticia3.jpg",
+        "isEmoji": false,
+        "emoji": ""
+      }
+    ],
+    "newsletterIcone": "📩",
+    "newsletterTitulo": "Receba as Boas Novas",
+    "newsletterTexto": "Inscreva-se no nosso boletim informativo mensal e seja o primeiro a saber sobre os nossos eventos, campanhas de doação e reflexões espirituais.",
+    "newsletterPlaceholder": "O seu melhor email...",
+    "newsletterBtn": "Subscrever Agora",
+    "newsletterAviso": "Prometemos não enviar spam. Apenas fé e esperança na sua caixa de entrada."
+  },
+  "galeria": {
+    "heroTitulo": "O Nosso Acervo",
+    "heroSubtitulo": "Um passeio visual por décadas de amor, trabalho e milagres construídos pelas mãos da nossa comunidade.",
+    "fotos": [
+      {
+        "imagem": "/img/noticia1.jpg",
+        "titulo": "Os primeiros dias da congregação"
+      },
+      {
+        "imagem": "/img/noticia2.jpg",
+        "titulo": "A primeira grande obra concluída"
+      },
+      {
+        "imagem": "/img/noticia3.jpg",
+        "titulo": "Sorrisos que nos movem"
+      }
+    ]
   }
 }
