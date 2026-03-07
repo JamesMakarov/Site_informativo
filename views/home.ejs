@@ -1,4 +1,4 @@
-<div id="bg-home-heroBg" class="relative group/herobg bg-brand-blue flex items-center justify-center min-h-[90vh] text-white overflow-hidden bg-fixed bg-center bg-cover transition-all duration-700" style="background-image: url('<%= siteData.home.heroBg || '/img/noticia1.jpg' %>');">
+<div id="bg-home-heroBg" class="relative group/herobg bg-brand-blue flex items-center justify-center min-h-[90vh] text-white bg-fixed bg-center bg-cover transition-all duration-700 w-full overflow-hidden" style="background-image: url('<%= siteData.home.heroBg || '/img/noticia1.jpg' %>');">
     
     <% if(isAdmin) { %>
     <button class="absolute top-24 left-6 bg-brand-accent text-white px-4 py-2 rounded-full shadow-2xl opacity-0 group-hover/herobg:opacity-100 transition-opacity z-50 text-sm font-bold flex items-center gap-2 border border-white/20" data-pagina="home" data-chave="heroBg" data-tipo="imagem">
@@ -7,36 +7,37 @@
     <% } %>
 
     <div class="absolute inset-0 bg-gradient-to-b from-brand-blue/90 via-blue-900/70 to-brand-blue dark:to-slate-900 z-10 transition-colors duration-500"></div>
-    <div class="absolute top-20 left-1/4 w-72 h-72 bg-brand-primary rounded-full mix-blend-screen filter blur-[100px] opacity-60 animate-blob z-10 pointer-events-none"></div>
-    <div class="absolute top-40 right-1/4 w-72 h-72 bg-brand-accent rounded-full mix-blend-screen filter blur-[100px] opacity-40 animate-blob-delayed z-10 pointer-events-none"></div>
     
-    <div class="relative z-20 text-center px-4 max-w-5xl mx-auto mt-10">
+    <div class="absolute top-20 left-10 w-48 h-48 md:w-72 md:h-72 bg-brand-primary rounded-full mix-blend-screen filter blur-[80px] md:blur-[100px] opacity-60 animate-blob z-10 pointer-events-none"></div>
+    <div class="absolute top-40 right-10 w-48 h-48 md:w-72 md:h-72 bg-brand-accent rounded-full mix-blend-screen filter blur-[80px] md:blur-[100px] opacity-40 animate-blob-delayed z-10 pointer-events-none"></div>
+    
+    <div class="relative z-20 text-center px-4 md:px-6 w-full max-w-5xl mx-auto mt-10">
         <div class="relative group/badge inline-block">
             <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-10 bg-brand-accent text-white p-2 rounded-full shadow-xl opacity-0 group-hover/badge:opacity-100 transition-opacity z-50 text-xs" data-pagina="home" data-chave="heroBadge">✏️</button><% } %>
-            <span id="texto-home-heroBadge" class="inline-block py-1 px-4 rounded-full bg-white/10 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-xs mb-8 animate-bounce backdrop-blur-sm"><%= siteData.home.heroBadge %></span>
+            <span id="texto-home-heroBadge" class="inline-block py-1 px-4 rounded-full bg-white/10 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-xs mb-6 md:mb-8 animate-bounce backdrop-blur-sm"><%= siteData.home.heroBadge %></span>
         </div>
         
         <div class="relative group/titulo w-full">
             <% if(isAdmin) { %>
-                <div class="absolute -top-6 -right-4 flex gap-2 opacity-0 group-hover/titulo:opacity-100 transition-opacity z-50">
+                <div class="absolute -top-10 left-1/2 -translate-x-1/2 flex gap-2 opacity-0 group-hover/titulo:opacity-100 transition-opacity z-50">
                     <button class="btn-editar-cms bg-blue-500 text-white p-2 rounded shadow text-xs font-bold" data-pagina="home" data-chave="heroTitulo">✏️ Titulo 1</button>
                     <button class="btn-editar-cms bg-orange-500 text-white p-2 rounded shadow text-xs font-bold" data-pagina="home" data-chave="heroTituloDestaque">✏️ Destaque</button>
                 </div>
             <% } %>
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl hidden-scroll">
-                <span id="texto-home-heroTitulo"><%= siteData.home.heroTitulo %></span> 
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold mb-6 tracking-tight drop-shadow-2xl hidden-scroll leading-tight">
+                <span id="texto-home-heroTitulo"><%= siteData.home.heroTitulo %></span><br class="sm:hidden">
                 <span id="texto-home-heroTituloDestaque" class="text-transparent bg-clip-text bg-grad-animated bg-[length:200%_auto] animate-shimmer"><%= siteData.home.heroTituloDestaque %></span>
             </h1>
         </div>
 
         <div class="relative group/sub w-full max-w-3xl mx-auto">
-            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white p-2 rounded-full shadow-xl opacity-0 group-hover/sub:opacity-100 transition-opacity z-50 text-xs" data-pagina="home" data-chave="heroSubtitulo">✏️</button><% } %>
-            <p id="texto-home-heroSubtitulo" class="text-xl md:text-2xl mb-12 text-blue-100 drop-shadow-md leading-relaxed hidden-scroll delay-100"><%= siteData.home.heroSubtitulo %></p>
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-2 md:-right-8 bg-brand-accent text-white p-2 rounded-full shadow-xl opacity-0 group-hover/sub:opacity-100 transition-opacity z-50 text-xs" data-pagina="home" data-chave="heroSubtitulo">✏️</button><% } %>
+            <p id="texto-home-heroSubtitulo" class="text-lg md:text-2xl mb-10 md:mb-12 text-blue-100 drop-shadow-md leading-relaxed hidden-scroll delay-100"><%= siteData.home.heroSubtitulo %></p>
         </div>
         
         <div class="relative group/btn inline-block">
             <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-accent text-white p-2 rounded-full shadow-xl opacity-0 group-hover/btn:opacity-100 transition-opacity z-50 text-xs" data-pagina="home" data-chave="heroBtn">✏️</button><% } %>
-            <a href="/oracao" class="hidden-scroll delay-200 nav-link relative inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white transition-all duration-300 bg-brand-accent rounded-full hover:scale-105 shadow-[0_0_20px_rgba(255,107,11,0.4)] overflow-hidden">
+            <a href="/oracao" class="hidden-scroll delay-200 nav-link relative inline-flex items-center justify-center px-8 md:px-10 py-4 md:py-5 text-lg md:text-xl font-bold text-white transition-all duration-300 bg-brand-accent rounded-full hover:scale-105 shadow-[0_0_20px_rgba(255,107,11,0.4)] overflow-hidden">
                 <span class="absolute inset-0 w-full h-full bg-grad-animated bg-[length:200%_auto] animate-shimmer opacity-0 hover:opacity-100 transition-opacity duration-300"></span>
                 <span id="texto-home-heroBtn" class="relative z-10"><%= siteData.home.heroBtn %></span>
             </a>
@@ -44,200 +45,253 @@
     </div>
 </div>
 
-<div class="relative z-30 -mt-24 max-w-7xl mx-auto px-6 mb-24">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="hidden-scroll group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
-            <% if(isAdmin) { %>
-                <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
-                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat1_num">Nº</button>
-                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat1_text">Txt</button>
-                </div>
-            <% } %>
-            <h2 id="texto-home-stat1_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat1_num %></h2>
-            <p id="texto-home-stat1_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat1_text %></p>
+<% const secNumAtiva = siteData.config?.seccoesAtivas?.home_numeros !== false; %>
+<% if (secNumAtiva || isAdmin) { %>
+<div class="relative z-30 -mt-20 md:-mt-24 max-w-7xl mx-auto px-4 md:px-6 mb-16 md:mb-24 <%= !secNumAtiva ? 'opacity-60 grayscale border-4 border-dashed border-red-500 rounded-[2rem] md:rounded-[3rem] p-4' : '' %>">
+    
+    <% if(isAdmin) { %>
+        <div class="absolute -top-6 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secNumAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg flex items-center gap-2 whitespace-nowrap" data-seccao="home_numeros">
+                <%= secNumAtiva ? '👁️ Ocultar Secção de Números' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
         </div>
-        <div class="hidden-scroll delay-100 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
+    <% } %>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div class="hidden-scroll group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-2 transition-all duration-500">
             <% if(isAdmin) { %>
                 <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
-                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat2_num">Nº</button>
-                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat2_text">Txt</button>
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat1_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat1_text">Txt</button>
                 </div>
             <% } %>
-            <h2 id="texto-home-stat2_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat2_num %></h2>
-            <p id="texto-home-stat2_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat2_text %></p>
+            <h2 id="texto-home-stat1_num" class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat1_num %></h2>
+            <p id="texto-home-stat1_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-[10px] md:text-xs"><%= siteData.home.stat1_text %></p>
         </div>
-        <div class="hidden-scroll delay-200 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
+        <div class="hidden-scroll delay-100 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-2 transition-all duration-500">
             <% if(isAdmin) { %>
                 <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
-                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat3_num">Nº</button>
-                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat3_text">Txt</button>
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat2_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat2_text">Txt</button>
                 </div>
             <% } %>
-            <h2 id="texto-home-stat3_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat3_num %></h2>
-            <p id="texto-home-stat3_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat3_text %></p>
+            <h2 id="texto-home-stat2_num" class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat2_num %></h2>
+            <p id="texto-home-stat2_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-[10px] md:text-xs"><%= siteData.home.stat2_text %></p>
         </div>
-        <div class="hidden-scroll delay-300 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-3xl p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-3 transition-all duration-500">
+        <div class="hidden-scroll delay-200 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-2 transition-all duration-500">
             <% if(isAdmin) { %>
                 <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
-                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat4_num">Nº</button>
-                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="stat4_text">Txt</button>
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat3_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat3_text">Txt</button>
                 </div>
             <% } %>
-            <h2 id="texto-home-stat4_num" class="text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat4_num %></h2>
-            <p id="texto-home-stat4_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-xs"><%= siteData.home.stat4_text %></p>
+            <h2 id="texto-home-stat3_num" class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat3_num %></h2>
+            <p id="texto-home-stat3_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-[10px] md:text-xs"><%= siteData.home.stat3_text %></p>
+        </div>
+        <div class="hidden-scroll delay-300 group/stat relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-md rounded-2xl md:rounded-3xl p-6 md:p-8 text-center shadow-xl border border-transparent dark:border-slate-700 hover:border-brand-primary dark:hover:border-brand-accent hover:-translate-y-2 transition-all duration-500">
+            <% if(isAdmin) { %>
+                <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/stat:opacity-100 transition-opacity">
+                    <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat4_num">Nº</button>
+                    <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="stat4_text">Txt</button>
+                </div>
+            <% } %>
+            <h2 id="texto-home-stat4_num" class="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-grad-primary dark:text-white mb-2 group-hover/stat:scale-110 transition-transform duration-300"><%= siteData.home.stat4_num %></h2>
+            <p id="texto-home-stat4_text" class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-[10px] md:text-xs"><%= siteData.home.stat4_text %></p>
         </div>
     </div>
 </div>
+<% } %>
 
-<section class="py-24 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-500">
-    <div class="absolute inset-0 opacity-[0.03] dark:opacity-10 bg-[radial-gradient(#1D4ED8_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
-    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+<% const secBemVindoAtiva = siteData.config?.seccoesAtivas?.home_bemvindo !== false; %>
+<% if (secBemVindoAtiva || isAdmin) { %>
+<section class="py-16 md:py-24 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-500 w-full <%= !secBemVindoAtiva ? 'opacity-60 grayscale border-y-4 border-dashed border-red-500' : '' %>">
+    
+    <% if(isAdmin) { %>
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secBemVindoAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap" data-seccao="home_bemvindo">
+                <%= secBemVindoAtiva ? '👁️ Ocultar Secção Bem-Vindo' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
+        </div>
+    <% } %>
+
+    <div class="absolute inset-0 opacity-[0.03] dark:opacity-10 bg-[radial-gradient(#1D4ED8_1px,transparent_1px)] dark:bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none w-full h-full"></div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10 w-full">
         
         <div class="relative group/wtitulo inline-block w-full">
-            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-0 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/wtitulo:opacity-100" data-pagina="home" data-chave="welcomeTitulo">✏️</button><% } %>
-            <h2 id="texto-home-welcomeTitulo" class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-8"><%= siteData.home.welcomeTitulo %></h2>
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-8 md:-top-4 right-0 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/wtitulo:opacity-100" data-pagina="home" data-chave="welcomeTitulo">✏️</button><% } %>
+            <h2 id="texto-home-welcomeTitulo" class="hidden-scroll text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6 md:mb-8 mt-4 leading-tight"><%= siteData.home.welcomeTitulo %></h2>
         </div>
         
-        <div class="hidden-scroll delay-100 w-24 h-1 bg-grad-animated bg-[length:200%_auto] animate-shimmer mx-auto mb-8 rounded-full"></div>
+        <div class="hidden-scroll delay-100 w-16 md:w-24 h-1 bg-grad-animated bg-[length:200%_auto] animate-shimmer mx-auto mb-6 md:mb-8 rounded-full"></div>
         
         <div class="relative group/wtexto inline-block w-full">
             <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-0 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/wtexto:opacity-100" data-pagina="home" data-chave="welcomeTexto">✏️</button><% } %>
-            <p id="texto-home-welcomeTexto" class="hidden-scroll delay-200 text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-12"><%= siteData.home.welcomeTexto %></p>
+            <p id="texto-home-welcomeTexto" class="hidden-scroll delay-200 text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed mb-10 md:mb-12"><%= siteData.home.welcomeTexto %></p>
         </div>
 
-        <div class="hidden-scroll delay-300 flex flex-col sm:flex-row justify-center gap-6">
-            <div class="relative group/b1">
-                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-accent text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/b1:opacity-100 text-xs" data-pagina="home" data-chave="welcomeBtn1">✏️</button><% } %>
-                <a href="/historia" class="nav-link bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-brand-blue dark:text-white hover:border-brand-primary dark:hover:border-brand-accent px-8 py-4 rounded-full font-bold transition-all hover:scale-105 inline-block w-full">
+        <div class="hidden-scroll delay-300 flex flex-col sm:flex-row justify-center gap-4 md:gap-6 w-full max-w-2xl mx-auto">
+            <div class="relative group/b1 w-full sm:w-auto">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-2 bg-brand-accent text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/b1:opacity-100 text-xs" data-pagina="home" data-chave="welcomeBtn1">✏️</button><% } %>
+                <a href="/historia" class="nav-link bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-brand-blue dark:text-white hover:border-brand-primary dark:hover:border-brand-accent px-6 md:px-8 py-4 rounded-full font-bold transition-all hover:scale-105 block w-full text-center">
                     <span id="texto-home-welcomeBtn1"><%= siteData.home.welcomeBtn1 %></span>
                 </a>
             </div>
-            <div class="relative group/b2">
-                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-accent text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/b2:opacity-100 text-xs" data-pagina="home" data-chave="welcomeBtn2">✏️</button><% } %>
-                <a href="/projetos" class="nav-link bg-brand-primary text-white hover:bg-blue-800 px-8 py-4 rounded-full font-bold shadow-lg transition-all hover:scale-105 inline-block w-full">
+            <div class="relative group/b2 w-full sm:w-auto">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-2 bg-brand-accent text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/b2:opacity-100 text-xs" data-pagina="home" data-chave="welcomeBtn2">✏️</button><% } %>
+                <a href="/projetos" class="nav-link bg-brand-primary text-white hover:bg-blue-800 px-6 md:px-8 py-4 rounded-full font-bold shadow-lg transition-all hover:scale-105 block w-full text-center">
                     <span id="texto-home-welcomeBtn2"><%= siteData.home.welcomeBtn2 %></span>
                 </a>
             </div>
         </div>
     </div>
 </section>
+<% } %>
 
-<section class="py-24 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
-    <div class="max-w-7xl mx-auto px-6">
+<% const secDestaqueAtiva = siteData.config?.seccoesAtivas?.home_destaque !== false; %>
+<% if (secDestaqueAtiva || isAdmin) { %>
+<section class="py-16 md:py-24 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 transition-colors duration-500 relative w-full overflow-hidden <%= !secDestaqueAtiva ? 'opacity-60 grayscale border-y-4 border-dashed border-red-500' : '' %>">
+    
+    <% if(isAdmin) { %>
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secDestaqueAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap" data-seccao="home_destaque">
+                <%= secDestaqueAtiva ? '👁️ Ocultar Secção de Destaques' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
+        </div>
+    <% } %>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-6 w-full">
         <div class="relative group/htitulo inline-block w-full text-center">
-            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-1/4 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/htitulo:opacity-100 text-xs" data-pagina="home" data-chave="highlightSecTitulo">✏️</button><% } %>
-            <h2 id="texto-home-highlightSecTitulo" class="hidden-scroll text-3xl font-extrabold text-brand-blue dark:text-white mb-12"><%= siteData.home.highlightSecTitulo %></h2>
+            <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-8 md:-top-4 right-0 md:right-1/4 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/htitulo:opacity-100 text-xs" data-pagina="home" data-chave="highlightSecTitulo">✏️</button><% } %>
+            <h2 id="texto-home-highlightSecTitulo" class="hidden-scroll text-2xl md:text-3xl font-extrabold text-brand-blue dark:text-white mb-10 md:mb-12"><%= siteData.home.highlightSecTitulo %></h2>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="hidden-scroll delay-100 md:col-span-2 bg-grad-primary rounded-3xl p-10 text-white shadow-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2 group/bg">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 w-full">
+            
+            <div class="hidden-scroll delay-100 lg:col-span-2 bg-grad-primary rounded-2xl md:rounded-3xl p-6 md:p-10 text-white shadow-xl relative overflow-hidden transition-all duration-500 hover:-translate-y-2 group/bg flex flex-col">
                 
                 <div id="bg-home-destaqueImg" class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay transition-all duration-700" style="background-image: url('<%= siteData.home.destaqueImg || '/img/noticia2.jpg' %>');"></div>
                 
                 <% if(isAdmin) { %>
-                    <button class="absolute top-4 left-4 bg-brand-accent text-white px-4 py-2 rounded-full shadow-2xl opacity-0 group-hover/bg:opacity-100 transition-opacity z-50 text-sm font-bold flex items-center gap-2 border border-white/20" data-pagina="home" data-chave="destaqueImg" data-tipo="imagem">
+                    <button class="absolute top-4 left-4 bg-brand-accent text-white px-3 md:px-4 py-1.5 md:py-2 rounded-full shadow-2xl opacity-0 group-hover/bg:opacity-100 transition-opacity z-50 text-[10px] md:text-sm font-bold flex items-center gap-2 border border-white/20" data-pagina="home" data-chave="destaqueImg" data-tipo="imagem">
                         🖼️ Mudar Foto
                     </button>
                 <% } %>
 
-                <div class="relative z-10 flex flex-col h-full justify-between group/hcard mt-10">
+                <div class="relative z-10 flex flex-col flex-1 justify-between group/hcard pt-12">
                     <% if(isAdmin) { %>
-                        <div class="absolute top-0 right-0 flex gap-2 opacity-0 group-hover/hcard:opacity-100 transition-opacity z-50">
-                            <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="highlightBadge">Badge</button>
-                            <button class="btn-editar-cms bg-orange-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="highlightTitulo">Título</button>
-                            <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="highlightTexto">Texto</button>
+                        <div class="absolute top-0 right-0 flex flex-wrap justify-end gap-1 opacity-0 group-hover/hcard:opacity-100 transition-opacity z-50 w-full">
+                            <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="highlightBadge">Badge</button>
+                            <button class="btn-editar-cms bg-orange-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="highlightTitulo">Tít</button>
+                            <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="highlightTexto">Txt</button>
                         </div>
                     <% } %>
                     <div>
-                        <span id="texto-home-highlightBadge" class="bg-white/20 text-white text-xs font-bold px-4 py-1.5 rounded-full mb-6 inline-block backdrop-blur-sm shadow-sm border border-white/20"><%= siteData.home.highlightBadge %></span>
-                        <h3 id="texto-home-highlightTitulo" class="text-3xl md:text-5xl font-extrabold mb-4 drop-shadow-md"><%= siteData.home.highlightTitulo %></h3>
-                        <p id="texto-home-highlightTexto" class="text-blue-50 max-w-xl text-lg leading-relaxed"><%= siteData.home.highlightTexto %></p>
+                        <span id="texto-home-highlightBadge" class="bg-white/20 text-white text-[10px] md:text-xs font-bold px-3 py-1 md:px-4 md:py-1.5 rounded-full mb-4 md:mb-6 inline-block backdrop-blur-sm shadow-sm border border-white/20"><%= siteData.home.highlightBadge %></span>
+                        <h3 id="texto-home-highlightTitulo" class="text-2xl sm:text-3xl md:text-5xl font-extrabold mb-3 md:mb-4 drop-shadow-md leading-tight"><%= siteData.home.highlightTitulo %></h3>
+                        <p id="texto-home-highlightTexto" class="text-blue-50 max-w-xl text-sm md:text-lg leading-relaxed"><%= siteData.home.highlightTexto %></p>
                     </div>
-                    <div class="relative inline-block mt-10 w-max group/hbtn">
-                        <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-primary text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/hbtn:opacity-100 text-xs" data-pagina="home" data-chave="highlightBtn">✏️</button><% } %>
-                        <a href="/noticias" class="nav-link inline-flex items-center gap-3 font-bold text-brand-accent bg-white px-6 py-3 rounded-full hover:bg-slate-50 transition-colors shadow-lg hover:scale-105">
+                    <div class="relative inline-block mt-8 md:mt-10 mb-2 w-full sm:w-max group/hbtn">
+                        <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-2 bg-brand-primary text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/hbtn:opacity-100 text-xs" data-pagina="home" data-chave="highlightBtn">✏️</button><% } %>
+                        <a href="/noticias" class="nav-link flex justify-center items-center gap-3 font-bold text-brand-accent bg-white px-6 py-3 rounded-full hover:bg-slate-50 transition-colors shadow-lg hover:scale-105 text-sm md:text-base w-full sm:w-auto">
                             <span id="texto-home-highlightBtn"><%= siteData.home.highlightBtn %></span> <span class="hover:translate-x-2 transition-transform">→</span>
                         </a>
                     </div>
                 </div>
             </div>
             
-            <div class="hidden-scroll delay-200 bg-white dark:bg-slate-800 rounded-3xl p-10 shadow-xl border border-slate-100 dark:border-slate-700 transition-colors flex flex-col justify-center items-center text-center hover:-translate-y-2 duration-300 relative group/lit">
+            <div class="hidden-scroll delay-200 bg-white dark:bg-slate-800 rounded-2xl md:rounded-3xl p-6 md:p-10 shadow-xl border border-slate-100 dark:border-slate-700 transition-colors flex flex-col justify-center items-center text-center hover:-translate-y-2 duration-300 relative group/lit w-full">
                 <% if(isAdmin) { %>
                     <div class="absolute top-2 right-2 flex gap-1 opacity-0 group-hover/lit:opacity-100 transition-opacity z-50 flex-col">
-                        <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="liturgiaIcon">Ícone</button>
-                        <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="liturgiaTitulo">Título</button>
-                        <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="liturgiaTexto">Texto</button>
+                        <button class="btn-editar-cms bg-brand-accent text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="liturgiaIcon">Ícone</button>
+                        <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="liturgiaTitulo">Tít</button>
+                        <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-pagina="home" data-chave="liturgiaTexto">Txt</button>
                     </div>
                 <% } %>
-                <div id="texto-home-liturgiaIcon" class="text-6xl mb-6 hover:rotate-12 transition-transform duration-500 drop-shadow-md cursor-default"><%= siteData.home.liturgiaIcon %></div>
-                <h3 id="texto-home-liturgiaTitulo" class="text-2xl font-bold text-brand-blue dark:text-white mb-3"><%= siteData.home.liturgiaTitulo %></h3>
-                <p id="texto-home-liturgiaTexto" class="text-slate-500 dark:text-slate-400 mb-8 leading-relaxed"><%= siteData.home.liturgiaTexto %></p>
-                <div class="relative group/lbtn">
-                    <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-6 bg-brand-primary text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/lbtn:opacity-100 text-xs" data-pagina="home" data-chave="liturgiaBtn">✏️</button><% } %>
-                    <button class="text-brand-primary dark:text-brand-accent font-bold hover:underline transition-colors flex items-center gap-2"><span id="texto-home-liturgiaBtn"><%= siteData.home.liturgiaBtn %></span> <span>→</span></button>
+                <div id="texto-home-liturgiaIcon" class="text-5xl md:text-6xl mb-4 md:mb-6 hover:rotate-12 transition-transform duration-500 drop-shadow-md cursor-default"><%= siteData.home.liturgiaIcon %></div>
+                <h3 id="texto-home-liturgiaTitulo" class="text-xl md:text-2xl font-bold text-brand-blue dark:text-white mb-2 md:mb-3"><%= siteData.home.liturgiaTitulo %></h3>
+                <p id="texto-home-liturgiaTexto" class="text-sm md:text-base text-slate-500 dark:text-slate-400 mb-6 md:mb-8 leading-relaxed"><%= siteData.home.liturgiaTexto %></p>
+                <div class="relative group/lbtn mb-2">
+                    <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-4 bg-brand-primary text-white p-1 rounded-full shadow z-50 opacity-0 group-hover/lbtn:opacity-100 text-[10px]" data-pagina="home" data-chave="liturgiaBtn">✏️</button><% } %>
+                    <button class="text-brand-primary dark:text-brand-accent font-bold hover:underline transition-colors flex items-center gap-2 text-sm md:text-base"><span id="texto-home-liturgiaBtn"><%= siteData.home.liturgiaBtn %></span> <span>→</span></button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<% } %>
 
-<section class="py-24 bg-white dark:bg-slate-900 relative transition-colors duration-500 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 hidden-scroll relative group">
+<% const secDepoAtiva = siteData.config?.seccoesAtivas?.home_depoimentos !== false; %>
+<% if (secDepoAtiva || isAdmin) { %>
+<section class="py-16 md:py-24 bg-white dark:bg-slate-900 relative transition-colors duration-500 w-full <%= !secDepoAtiva ? 'opacity-60 grayscale border-y-4 border-dashed border-red-500' : '' %>">
+    
+    <% if(isAdmin) { %>
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secDepoAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap" data-seccao="home_depoimentos">
+                <%= secDepoAtiva ? '👁️ Ocultar Secção de Depoimentos' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
+        </div>
+    <% } %>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 mt-6 w-full">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-10 hidden-scroll relative group gap-4">
             <div class="flex items-center gap-4">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-blue dark:text-white">Vidas Transformadas</h2>
+                <h2 class="text-3xl md:text-5xl font-extrabold text-brand-blue dark:text-white leading-tight">Vidas Transformadas</h2>
                 <% if(isAdmin) { %>
-                    <button id="btn-adicionar-depoimento" class="bg-green-500 hover:bg-green-400 text-white w-10 h-10 rounded-full flex items-center justify-center text-2xl font-black shadow-lg transition-all hover:scale-110 hover:rotate-90 z-50 mb-1" title="Adicionar Novo Depoimento">+</button>
+                    <button id="btn-adicionar-depoimento" class="bg-green-500 hover:bg-green-400 text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center text-xl md:text-2xl font-black shadow-lg transition-all hover:scale-110 hover:rotate-90 z-50 mb-1 shrink-0" title="Adicionar Novo Depoimento">+</button>
                 <% } %>
             </div>
             
-            <div class="flex gap-4 mt-6 md:mt-0">
-                <button id="btn-prev" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            <div class="hidden md:flex gap-3 md:gap-4 shrink-0">
+                <button id="btn-prev" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
+                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
-                <button id="btn-next" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <button id="btn-next" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
+                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
             </div>
         </div>
         
-        <div class="overflow-hidden hidden-scroll delay-100 py-8">
-            <div id="carousel-track" class="flex gap-8 transition-transform duration-700 ease-out flex-nowrap items-stretch" style="transform: translateX(0%);">
+        <div class="hidden-scroll delay-100 w-full relative">
+            
+            <div class="md:hidden absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10 pointer-events-none flex items-center justify-end text-slate-400 animate-pulse">
+                <span class="text-2xl mr-2">›</span>
+            </div>
+
+            <div id="carousel-track" class="flex gap-4 md:gap-6 w-full pt-10 pb-16 scroll-livre overflow-x-auto snap-x snap-mandatory scroll-smooth items-stretch">
                 
                 <% siteData.home.depoimentos.forEach((dep, index) => { %>
                     <% 
                         const isBlue = index % 2 !== 0; 
-                        const cardClass = isBlue ? 'bg-brand-blue dark:bg-slate-800 text-white border-brand-primary dark:border-brand-accent shadow-2xl md:-translate-y-4 hover:md:-translate-y-6' : 'bg-slate-50 dark:bg-slate-800/80 p-10 text-slate-600 dark:text-slate-300 border-slate-100 dark:border-slate-700 shadow-sm hover:md:-translate-y-2';
+                        const cardClass = isBlue ? 'bg-brand-blue dark:bg-slate-800 text-white border-brand-primary dark:border-brand-accent shadow-[0_10px_40px_-10px_rgba(29,78,216,0.3)] hover:shadow-2xl md:-translate-y-2 hover:md:-translate-y-6' : 'bg-slate-50 dark:bg-slate-800/80 p-6 md:p-10 text-slate-600 dark:text-slate-300 border-slate-100 dark:border-slate-700 shadow-md hover:shadow-2xl hover:md:-translate-y-4';
                         const pClass = isBlue ? 'text-blue-50 dark:text-slate-200' : 'text-slate-600 dark:text-slate-300';
                         const nameClass = isBlue ? 'text-white' : 'text-brand-blue dark:text-white';
                     %>
 
-                    <div class="w-full md:w-[calc(33.333%-1.33rem)] flex-shrink-0 group/card relative flex flex-col">
+                    <div class="w-[85vw] sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] shrink-0 snap-start group/card relative flex flex-col">
                         
                         <% if(isAdmin) { %>
-                            <div class="absolute top-2 right-2 flex gap-2 z-20 opacity-0 group-hover/card:opacity-100 transition-opacity">
-                                <button class="btn-editar-depoimento bg-brand-accent text-white p-2 rounded-full shadow-xl hover:scale-110 text-sm" data-index="<%= index %>" data-campo="texto" title="Editar Texto">✏️</button>
-                                <button class="btn-remover-depoimento bg-red-600 text-white p-2 rounded-full shadow-xl hover:scale-110 text-sm" data-index="<%= index %>" title="Apagar Depoimento">🗑️</button>
+                            <div class="absolute -top-6 right-2 flex gap-1 z-20 opacity-0 group-hover/card:opacity-100 transition-opacity bg-white/80 dark:bg-slate-700/80 p-1.5 rounded-lg backdrop-blur-sm shadow-sm border border-slate-200 dark:border-slate-600">
+                                <button class="btn-editar-depoimento bg-brand-accent text-white px-2 py-1 rounded shadow hover:scale-110 text-[10px] md:text-xs font-bold" data-index="<%= index %>" data-campo="texto" title="Editar Texto">✏️ Texto</button>
+                                <button class="btn-remover-depoimento bg-red-600 text-white px-2 py-1 rounded shadow hover:scale-110 text-[10px] md:text-xs font-bold ml-1" data-index="<%= index %>" title="Apagar Depoimento">🗑️</button>
                             </div>
                         <% } %>
 
-                        <div class="<%= cardClass %> p-10 rounded-3xl relative border h-full flex flex-col flex-1 transition-all duration-300">
-                            <div class="text-7xl <%= isBlue ? 'text-brand-primary/40 dark:text-brand-accent/40' : 'text-brand-accent/20' %> absolute top-2 left-6 font-serif cursor-default">"</div>
+                        <div class="<%= cardClass %> p-6 md:p-10 rounded-2xl md:rounded-3xl relative border h-full flex flex-col flex-1 transition-all duration-300">
+                            <div class="text-5xl md:text-7xl <%= isBlue ? 'text-brand-primary/40 dark:text-brand-accent/40' : 'text-brand-accent/20' %> absolute top-2 left-4 md:left-6 font-serif cursor-default">"</div>
                             
-                            <p id="texto-dep-<%= index %>-texto" class="<%= pClass %> italic relative z-10 mt-6 mb-8 text-lg leading-relaxed flex-1"><%= dep.texto %></p>
+                            <p id="texto-dep-<%= index %>-texto" class="<%= pClass %> italic relative z-10 mt-4 md:mt-6 mb-6 md:mb-8 text-base md:text-lg leading-relaxed flex-1"><%= dep.texto %></p>
                             
-                            <div class="flex items-center gap-4 mt-auto relative group/autor pt-4 border-t <%= isBlue ? 'border-brand-primary/50 dark:border-slate-700' : 'border-slate-200 dark:border-slate-700' %>">
+                            <div class="flex items-center gap-3 md:gap-4 mt-auto relative group/autor pt-4 border-t <%= isBlue ? 'border-brand-primary/50 dark:border-slate-700' : 'border-slate-200 dark:border-slate-700' %>">
                                 <% if(isAdmin) { %>
-                                    <div class="absolute -top-10 left-16 flex gap-2 opacity-0 group-hover/autor:opacity-100 transition-opacity z-20">
-                                        <button class="btn-editar-depoimento bg-blue-600 hover:bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="autor">Nome</button>
-                                        <button class="btn-editar-depoimento bg-orange-500 hover:bg-orange-400 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="papel">Cargo</button>
+                                    <div class="absolute -top-10 left-12 md:left-16 flex gap-1 opacity-0 group-hover/autor:opacity-100 transition-opacity z-20 bg-white/80 dark:bg-slate-700/80 backdrop-blur-sm p-1 rounded-lg shadow border border-slate-200 dark:border-slate-600">
+                                        <button class="btn-editar-depoimento bg-blue-600 hover:bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-index="<%= index %>" data-campo="autor">Nome</button>
+                                        <button class="btn-editar-depoimento bg-orange-500 hover:bg-orange-400 text-white px-2 py-1 rounded shadow text-[10px] font-bold" data-index="<%= index %>" data-campo="papel">Cargo</button>
                                     </div>
                                 <% } %>
-                                <div class="w-14 h-14 bg-gradient-to-br <%= isBlue ? 'from-brand-primary to-blue-400' : 'from-slate-200 to-slate-400' %> rounded-full flex-shrink-0"></div>
+                                <div class="w-10 h-10 md:w-14 md:h-14 bg-gradient-to-br <%= isBlue ? 'from-brand-primary to-blue-400' : 'from-slate-200 to-slate-400' %> rounded-full flex-shrink-0"></div>
                                 <div>
-                                    <h4 id="texto-dep-<%= index %>-autor" class="font-bold <%= nameClass %> text-lg leading-tight"><%= dep.autor %></h4>
-                                    <span id="texto-dep-<%= index %>-papel" class="text-xs <%= isBlue ? 'text-blue-300 dark:text-brand-accent' : 'text-brand-accent' %> font-bold uppercase tracking-wider"><%= dep.papel %></span>
+                                    <h4 id="texto-dep-<%= index %>-autor" class="font-bold <%= nameClass %> text-sm md:text-lg leading-tight"><%= dep.autor %></h4>
+                                    <span id="texto-dep-<%= index %>-papel" class="text-[10px] md:text-xs <%= isBlue ? 'text-blue-300 dark:text-brand-accent' : 'text-brand-accent' %> font-bold uppercase tracking-wider"><%= dep.papel %></span>
                                 </div>
                             </div>
                         </div>
@@ -248,55 +302,86 @@
         </div>
     </div>
 </section>
+<% } %>
 
-<section class="py-24 bg-slate-100 dark:bg-slate-900 transition-colors duration-500 border-t border-slate-200 dark:border-slate-800">
-    <div class="max-w-4xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 hidden-scroll">
-            <div class="relative group/faqtop inline-block w-full md:w-auto text-center md:text-left">
-                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 -right-8 bg-brand-accent text-white p-2 rounded-full shadow z-50 opacity-0 group-hover/faqtop:opacity-100 text-xs" data-pagina="home" data-chave="faqTitulo">✏️</button><% } %>
-                <h2 id="texto-home-faqTitulo" class="text-3xl md:text-5xl font-extrabold text-brand-blue dark:text-white"><%= siteData.home.faqTitulo %></h2>
+<% const secFaqAtiva = siteData.config?.seccoesAtivas?.home_faq !== false; %>
+<% if (secFaqAtiva || isAdmin) { %>
+<section class="py-16 md:py-24 bg-slate-100 dark:bg-slate-900 transition-colors duration-500 border-t border-slate-200 dark:border-slate-800 relative w-full overflow-hidden <%= !secFaqAtiva ? 'opacity-60 grayscale border-y-4 border-dashed border-red-500' : '' %>">
+    
+    <% if(isAdmin) { %>
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secFaqAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap" data-seccao="home_faq">
+                <%= secFaqAtiva ? '👁️ Ocultar Secção de Dúvidas' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
+        </div>
+    <% } %>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 mt-6 w-full">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 hidden-scroll gap-4">
+            <div class="relative group/faqtop w-full md:w-auto text-left">
+                <% if(isAdmin) { %><button class="btn-editar-cms absolute -top-4 right-0 md:-right-8 bg-brand-accent text-white p-1.5 md:p-2 rounded-full shadow z-50 opacity-0 group-hover/faqtop:opacity-100 text-[10px] md:text-xs" data-pagina="home" data-chave="faqTitulo">✏️</button><% } %>
+                <h2 id="texto-home-faqTitulo" class="text-3xl md:text-5xl font-extrabold text-brand-blue dark:text-white leading-tight"><%= siteData.home.faqTitulo %></h2>
             </div>
             <% if(isAdmin) { %>
-                <button id="btn-adicionar-faq" class="bg-green-500 hover:bg-green-400 text-white w-10 h-10 rounded-full flex items-center justify-center text-2xl font-black shadow-lg transition-all hover:scale-110 hover:rotate-90 z-50 mt-4 md:mt-0" title="Adicionar Nova Pergunta">+</button>
+                <button id="btn-adicionar-faq" class="bg-green-500 hover:bg-green-400 text-white px-4 py-2 md:w-10 md:h-10 md:p-0 md:rounded-full rounded-lg flex items-center justify-center text-sm md:text-2xl font-bold md:font-black shadow-lg transition-all hover:scale-105 z-50 w-full md:w-auto shrink-0" title="Adicionar Nova Pergunta">
+                    <span class="md:hidden mr-2">+ Adicionar Nova Pergunta</span><span class="hidden md:inline">+</span>
+                </button>
             <% } %>
         </div>
         
-        <div class="space-y-4 max-h-[400px] overflow-y-auto pr-3 custom-scrollbar hidden-scroll delay-100">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 hidden-scroll delay-100 w-full">
             <% if(siteData.home.faqs && siteData.home.faqs.length > 0) { %>
                 <% siteData.home.faqs.forEach((faq, index) => { %>
-                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition-all relative group/faq">
+                    <div class="bg-white dark:bg-slate-800 p-5 md:p-6 rounded-xl md:rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 hover:-translate-y-1 transition-all relative group/faq w-full h-full flex flex-col justify-start">
                         <% if(isAdmin) { %>
-                            <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/faq:opacity-100 transition-opacity">
-                                <button class="btn-editar-faq bg-blue-500 hover:bg-blue-400 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="pergunta">✏️ Pergunta</button>
-                                <button class="btn-editar-faq bg-green-600 hover:bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-index="<%= index %>" data-campo="resposta">✏️ Resposta</button>
-                                <button class="btn-remover-faq bg-red-600 hover:bg-red-500 text-white px-2 py-1 rounded shadow text-xs font-bold ml-2" data-index="<%= index %>" title="Remover Pergunta">🗑️</button>
+                            <div class="absolute top-2 right-2 flex gap-1 z-50 opacity-0 group-hover/faq:opacity-100 transition-opacity flex-wrap justify-end">
+                                <button class="btn-editar-faq bg-blue-500 hover:bg-blue-400 text-white px-2 py-1 rounded shadow text-[10px] md:text-xs font-bold" data-index="<%= index %>" data-campo="pergunta">✏️ Perg</button>
+                                <button class="btn-editar-faq bg-green-600 hover:bg-green-500 text-white px-2 py-1 rounded shadow text-[10px] md:text-xs font-bold" data-index="<%= index %>" data-campo="resposta">✏️ Resp</button>
+                                <button class="btn-remover-faq bg-red-600 hover:bg-red-500 text-white px-2 py-1 rounded shadow text-[10px] md:text-xs font-bold" data-index="<%= index %>" title="Remover">🗑️</button>
                             </div>
                         <% } %>
-                        <h3 class="text-lg font-bold text-brand-blue dark:text-white mb-2 flex items-center gap-2"><span>❓</span> <span id="texto-faq-<%= index %>-pergunta"><%= faq.pergunta %></span></h3>
-                        <p id="texto-faq-<%= index %>-resposta" class="text-slate-600 dark:text-slate-400 pl-8"><%= faq.resposta %></p>
+                        <h3 class="text-base md:text-lg font-bold text-brand-blue dark:text-white mb-2 flex items-start gap-2">
+                            <span class="mt-1 shrink-0">❓</span> 
+                            <span id="texto-faq-<%= index %>-pergunta" class="block mt-1"><%= faq.pergunta %></span>
+                        </h3>
+                        <p id="texto-faq-<%= index %>-resposta" class="text-sm md:text-base text-slate-600 dark:text-slate-400 pl-6 md:pl-8 leading-relaxed"><%= faq.resposta %></p>
                     </div>
                 <% }) %>
             <% } else { %>
-                <p class="text-center text-slate-500 italic">Nenhuma pergunta cadastrada.</p>
+                <p class="text-center text-slate-500 italic col-span-full">Nenhuma pergunta cadastrada.</p>
             <% } %>
         </div>
     </div>
 </section>
+<% } %>
 
-<section class="hidden-scroll py-32 bg-grad-animated bg-[length:200%_auto] animate-shimmer relative overflow-hidden shadow-[inset_0_20px_50px_rgba(0,0,0,0.1)]">
-    <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10 group/cta">
+<% const secCtaAtiva = siteData.config?.seccoesAtivas?.home_cta !== false; %>
+<% if (secCtaAtiva || isAdmin) { %>
+<section class="hidden-scroll py-20 md:py-32 bg-grad-animated bg-[length:200%_auto] animate-shimmer relative overflow-hidden shadow-[inset_0_20px_50px_rgba(0,0,0,0.1)] w-full <%= !secCtaAtiva ? 'opacity-60 grayscale border-y-4 border-dashed border-red-500' : '' %>">
+    
+    <% if(isAdmin) { %>
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secCtaAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg border border-white/20 whitespace-nowrap" data-seccao="home_cta">
+                <%= secCtaAtiva ? '👁️ Ocultar Chamada Final' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
+        </div>
+    <% } %>
+
+    <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')] w-full"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10 group/cta mt-6 w-full">
         <% if(isAdmin) { %>
-            <div class="absolute -top-8 right-1/4 flex gap-2 z-50 opacity-0 group-hover/cta:opacity-100 transition-opacity">
-                <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaTitulo">Título</button>
-                <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaTexto">Texto</button>
-                <button class="btn-editar-cms bg-brand-primary text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="home" data-chave="ctaBtn">Botão</button>
+            <div class="absolute -top-12 right-0 md:right-1/4 flex flex-wrap justify-center gap-1 z-50 opacity-0 group-hover/cta:opacity-100 transition-opacity w-full md:w-auto">
+                <button class="btn-editar-cms bg-blue-500 text-white px-2 py-1 rounded shadow text-[10px] md:text-xs font-bold" data-pagina="home" data-chave="ctaTitulo">Tít</button>
+                <button class="btn-editar-cms bg-green-500 text-white px-2 py-1 rounded shadow text-[10px] md:text-xs font-bold" data-pagina="home" data-chave="ctaTexto">Txt</button>
+                <button class="btn-editar-cms bg-brand-primary text-white px-2 py-1 rounded shadow text-[10px] md:text-xs font-bold" data-pagina="home" data-chave="ctaBtn">Botão</button>
             </div>
         <% } %>
-        <h2 id="texto-home-ctaTitulo" class="text-5xl md:text-6xl font-extrabold text-white mb-8 drop-shadow-lg"><%= siteData.home.ctaTitulo %></h2>
-        <p id="texto-home-ctaTexto" class="text-2xl text-orange-100 mb-12 font-medium drop-shadow-md"><%= siteData.home.ctaTexto %></p>
-        <a href="/doacoes" class="nav-link inline-block bg-white text-brand-accent px-12 py-5 rounded-full text-2xl font-black hover:bg-slate-50 hover:scale-110 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-2 transition-all duration-300">
+        <h2 id="texto-home-ctaTitulo" class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 md:mb-8 drop-shadow-lg leading-tight"><%= siteData.home.ctaTitulo %></h2>
+        <p id="texto-home-ctaTexto" class="text-lg md:text-2xl text-orange-100 mb-8 md:mb-12 font-medium drop-shadow-md leading-relaxed px-2"><%= siteData.home.ctaTexto %></p>
+        <a href="/doacoes" class="nav-link block sm:inline-block bg-white text-brand-accent px-8 md:px-12 py-4 md:py-5 rounded-full text-lg md:text-2xl font-black hover:bg-slate-50 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-300 w-full sm:w-auto">
             <span id="texto-home-ctaBtn"><%= siteData.home.ctaBtn %></span>
         </a>
     </div>
 </section>
+<% } %>

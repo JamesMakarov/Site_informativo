@@ -36,6 +36,16 @@ function carregarBanco() {
         }
         const data = fs.readFileSync(dbPath, 'utf8');
         siteData = JSON.parse(data);
+
+        // --- ADICIONE ESTE BLOCO AQUI ---
+        if (!siteData.config) siteData.config = {};
+        if (!siteData.config.paginasAtivas) siteData.config.paginasAtivas = {};
+        const paginas = ['historia', 'projetos', 'noticias', 'galeria', 'vocacoes', 'casas', 'doacoes', 'oracao'];
+        paginas.forEach(p => {
+            if (siteData.config.paginasAtivas[p] === undefined) siteData.config.paginasAtivas[p] = true;
+        });
+        // -------------------------------
+
     } catch (err) {
         console.error("ERRO AO LER BANCO:", err);
         siteData = {}; 
@@ -60,6 +70,25 @@ app.use((req, res, next) => {
     res.locals.siteData = siteData; 
     next();
 });
+
+// --- ADICIONE ESTE BLOCO NOVO AQUI ---
+// BLOQUEIO DE PÁGINAS DESLIGADAS PARA O PÚBLICO
+app.use((req, res, next) => {
+    // Se for admin, ou rotas de API/imagens, passa sempre
+    if (res.locals.isAdmin || req.path === '/' || req.path.startsWith('/api') || req.path.startsWith('/img') || req.path.startsWith('/css') || req.path.startsWith('/js')) {
+        return next();
+    }
+    
+    // Descobre que página a pessoa quer acessar (ex: /projetos)
+    const paginaRequisitada = req.path.split('/')[1];
+    
+    // Se a página estiver false (desligada), joga a pessoa pra Home
+    if (siteData.config && siteData.config.paginasAtivas && siteData.config.paginasAtivas[paginaRequisitada] === false) {
+        return res.redirect('/');
+    }
+    next();
+});
+// ------------------------------------
 
 
 // ===================================================================
@@ -125,6 +154,40 @@ app.post('/api/salvar-edicao', (req, res) => {
     siteData[pagina][chave] = novoTexto;
     salvarBanco(); 
     res.json({ sucesso: true });
+});
+
+// --- ADICIONE ESTA ROTA NOVA AQUI ---
+app.post('/api/toggle-pagina', (req, res) => {
+    if (!res.locals.isAdmin) return res.status(403).json({ sucesso: false });
+    const { pagina } = req.body;
+    
+    // Inverte o estado (se for true vira false, se for false vira true)
+    siteData.config.paginasAtivas[pagina] = !siteData.config.paginasAtivas[pagina];
+    salvarBanco();
+    
+    res.json({ sucesso: true });
+});
+
+// --- ROTA PARA LIGAR/DESLIGAR SECÇÕES ESPECÍFICAS ---
+app.post('/api/toggle-seccao', (req, res) => {
+    if (!res.locals.isAdmin) return res.status(403).json({ sucesso: false });
+    
+    const { seccaoId } = req.body;
+    
+    // Se a árvore de config não existir, cria-a para evitar erros
+    if (!siteData.config) siteData.config = {};
+    if (!siteData.config.seccoesAtivas) siteData.config.seccoesAtivas = {};
+
+    // Se a secção nunca foi mexida, assume que estava true e agora passa a false.
+    // Caso contrário, inverte o estado atual.
+    if (siteData.config.seccoesAtivas[seccaoId] === undefined) {
+        siteData.config.seccoesAtivas[seccaoId] = false;
+    } else {
+        siteData.config.seccoesAtivas[seccaoId] = !siteData.config.seccoesAtivas[seccaoId];
+    }
+    
+    salvarBanco();
+    res.json({ sucesso: true, estado: siteData.config.seccoesAtivas[seccaoId] });
 });
 
 // --- API DO CARROSSEL DE DEPOIMENTOS ---

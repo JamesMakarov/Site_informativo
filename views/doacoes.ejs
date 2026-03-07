@@ -1,135 +1,155 @@
-<section class="relative pt-32 pb-24 bg-brand-blue dark:bg-slate-950 transition-colors duration-500 overflow-hidden min-h-[65vh] flex items-center">
-    <div class="absolute inset-0 opacity-[0.03] dark:opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMSIgZmlsbD0iI0ZGQjcwMCIvPjwvc3ZnPg==')]"></div>
-    
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-accent rounded-full blur-[150px] opacity-20 pointer-events-none animate-blob"></div>
+<section class="relative pt-32 pb-24 bg-brand-blue dark:bg-slate-950 transition-colors duration-500 overflow-hidden min-h-[40vh] flex items-center">
+    <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-primary rounded-full blur-[120px] opacity-40 pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
 
-    <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
-        <span class="hidden-scroll inline-block py-1 px-4 rounded-full bg-orange-500/20 text-orange-300 border border-orange-400/30 font-black tracking-[0.2em] text-sm mb-6">SEJA UM BENFEITOR</span>
-        <h1 class="hidden-scroll delay-100 text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight drop-shadow-2xl">
-            A Generosidade que <span class="text-transparent bg-clip-text bg-grad-animated bg-[length:200%_auto] animate-shimmer">Sustenta</span> a Missão
-        </h1>
-        <p class="hidden-scroll delay-200 text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
-            As nossas mãos trabalham, mas é a sua partilha que multiplica os pães. Cada donativo, independentemente do tamanho, é uma semente de esperança plantada no futuro de quem mais precisa.
-        </p>
-    </div>
-</section>
+    <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+        
+        <% if(isAdmin) { %>
+            <div class="flex justify-center gap-2 mb-6 bg-blue-900/50 dark:bg-slate-800/50 py-2 px-4 rounded-xl w-max mx-auto border border-blue-500/30">
+                <span class="text-xs font-bold text-blue-200 uppercase flex items-center mr-2">Cabeçalho:</span>
+                <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-bold transition-colors" data-pagina="doacoes" data-chave="heroTitulo">✏️ Título</button>
+                <button class="btn-editar-cms bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded text-xs font-bold transition-colors" data-pagina="doacoes" data-chave="heroSubtitulo">✏️ Subtítulo</button>
+            </div>
+        <% } %>
 
-<section class="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 relative z-20 -mt-10 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.1)] border-b border-slate-200 dark:border-slate-800">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div class="hidden-scroll group bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-md border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300">
-                <div class="text-5xl mb-4 text-brand-primary group-hover:scale-110 transition-transform">🍲</div>
-                <h3 class="text-xl font-bold text-brand-blue dark:text-white mb-2">Segurança Alimentar</h3>
-                <p class="text-slate-600 dark:text-slate-400">Garante refeições diárias nas nossas creches e cozinhas solidárias para moradores de rua.</p>
-            </div>
-            <div class="hidden-scroll delay-100 group bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-md border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300">
-                <div class="text-5xl mb-4 text-brand-accent group-hover:scale-110 transition-transform">📚</div>
-                <h3 class="text-xl font-bold text-brand-blue dark:text-white mb-2">Educação e Robótica</h3>
-                <p class="text-slate-600 dark:text-slate-400">Financia materiais escolares e laboratórios nos centros educacionais, como o de Cascavel.</p>
-            </div>
-            <div class="hidden-scroll delay-200 group bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-md border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300">
-                <div class="text-5xl mb-4 text-green-500 group-hover:scale-110 transition-transform">🏥</div>
-                <h3 class="text-xl font-bold text-brand-blue dark:text-white mb-2">Amparo Médico</h3>
-                <p class="text-slate-600 dark:text-slate-400">Permite a compra de medicamentos e a manutenção das nossas clínicas filantrópicas.</p>
-            </div>
+        <div class="hidden-scroll inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-full mb-6 border border-white/20 shadow-xl">
+            <span class="text-4xl">❤️</span>
         </div>
+        
+        <h1 id="texto-doacoes-heroTitulo" class="hidden-scroll text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6 drop-shadow-lg"><%= siteData.doacoes.heroTitulo %></h1>
+        <p id="texto-doacoes-heroSubtitulo" class="hidden-scroll delay-100 text-xl text-blue-100 leading-relaxed"><%= siteData.doacoes.heroSubtitulo %></p>
     </div>
 </section>
 
-<section class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500">
+<section class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 relative">
     <div class="max-w-6xl mx-auto px-6">
-        <h2 class="hidden-scroll text-4xl md:text-5xl font-extrabold text-center text-brand-blue dark:text-white mb-16">Faça o seu Donativo</h2>
-
-        <div class="hidden-scroll delay-100 bg-slate-50 dark:bg-slate-900 rounded-[3rem] shadow-2xl border border-slate-200 dark:border-slate-800 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             
-            <div class="flex flex-col items-center text-center bg-white dark:bg-slate-800 p-10 rounded-[2.5rem] shadow-lg border border-slate-100 dark:border-slate-700 relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-full h-2 bg-grad-animated bg-[length:200%_auto] animate-shimmer"></div>
+            <% const secPixAtiva = siteData.config?.seccoesAtivas?.doacoes_pix !== false; %>
+            <% if (secPixAtiva || isAdmin) { %>
+            <div class="hidden-scroll delay-100 bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 md:p-14 shadow-2xl border border-slate-100 dark:border-slate-700 relative group/pix <%= !secPixAtiva ? 'opacity-60 grayscale border-4 border-dashed border-red-500' : '' %>">
                 
-                <h3 class="text-3xl font-extrabold text-brand-blue dark:text-white mb-2">Doação Rápida (PIX)</h3>
-                <p class="text-slate-500 dark:text-slate-400 mb-8 font-medium">Aponte a câmara do seu telemóvel para o código QR ou copie a chave abaixo.</p>
-                
-                <div class="bg-slate-100 dark:bg-slate-700 p-4 rounded-3xl mb-8 group-hover:shadow-[0_0_30px_rgba(29,78,216,0.2)] transition-shadow duration-500">
-                    <img src="/img/qr-pix.png" onerror="this.src='https://via.placeholder.com/250x250?text=Código+QR+PIX'" alt="Código QR PIX" class="w-56 h-56 rounded-2xl dark:invert-[.05]">
+                <% if(isAdmin) { %>
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 z-50">
+                        <button class="btn-toggle-seccao <%= secPixAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-3 py-1 rounded-full text-[10px] font-bold shadow-lg" data-seccao="doacoes_pix">
+                            <%= secPixAtiva ? '👁️ Ocultar PIX' : '🚫 Secção Oculta (Ativar)' %>
+                        </button>
+                    </div>
+
+                    <div class="absolute top-4 right-4 flex gap-1 z-40 bg-slate-50 dark:bg-slate-700 p-2 rounded-xl shadow-lg border border-slate-200 dark:border-slate-600 opacity-0 group-hover/pix:opacity-100 transition-opacity">
+                        <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="pixTitulo">Tít</button>
+                        <button class="btn-editar-cms bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="pixTexto">Txt</button>
+                        <button class="btn-editar-cms bg-green-600 hover:bg-green-700 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="pixChave">Chave PIX</button>
+                    </div>
+                <% } %>
+
+                <div class="flex items-center gap-4 mb-8 border-b border-slate-100 dark:border-slate-700 pb-6 mt-4">
+                    <div class="w-16 h-16 bg-teal-50 dark:bg-teal-900/30 rounded-2xl flex items-center justify-center text-teal-600 dark:text-teal-400 text-3xl shrink-0">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M16.48 2h-8.96l-7.52 10 7.52 10h8.96l7.52-10-7.52-10zm-8.24 18l-6.02-8 6.02-8h7.48l6.02 8-6.02 8h-7.48z"/><path d="M12 6.5l-4.13 5.5 4.13 5.5 4.13-5.5L12 6.5zm0 8.78l-2.46-3.28 2.46-3.28 2.46 3.28L12 15.28z"/></svg>
+                    </div>
+                    <div>
+                        <h3 id="texto-doacoes-pixTitulo" class="text-3xl font-extrabold text-brand-blue dark:text-white"><%= siteData.doacoes.pixTitulo %></h3>
+                    </div>
                 </div>
                 
-                <div class="w-full relative">
-                    <div class="flex w-full overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-600 focus-within:ring-4 focus-within:ring-brand-primary/20 focus-within:border-brand-primary transition-all">
-                        <input type="text" id="chave-pix" value="CNPJ: 12.345.678/0001-90" readonly class="flex-1 px-6 py-4 bg-transparent text-slate-700 dark:text-slate-200 font-mono text-sm md:text-base outline-none text-center font-bold">
-                        <button id="btn-copiar-pix" class="bg-brand-primary hover:bg-blue-800 text-white px-8 py-4 font-black transition-colors uppercase tracking-wider text-sm">Copiar</button>
+                <p id="texto-doacoes-pixTexto" class="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed"><%= siteData.doacoes.pixTexto %></p>
+
+                <div class="relative w-48 h-48 mx-auto mb-8 bg-white p-2 rounded-2xl shadow-inner border border-slate-200 group/qr">
+                    <img id="img-doacoes-pixQrCode" src="<%= siteData.doacoes.pixQrCode %>" alt="QR Code PIX" class="w-full h-full object-contain">
+                    <% if(isAdmin) { %>
+                        <div class="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center opacity-0 group-hover/qr:opacity-100 transition-opacity">
+                            <button class="bg-brand-accent hover:bg-orange-500 text-white px-4 py-2 rounded-full font-bold text-xs shadow-xl flex items-center gap-2" data-pagina="doacoes" data-chave="pixQrCode" data-tipo="imagem">
+                                🖼️ Trocar QR
+                            </button>
+                        </div>
+                    <% } %>
+                </div>
+
+                <div class="bg-slate-50 dark:bg-slate-900 rounded-xl p-2 border border-slate-200 dark:border-slate-700 flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="chave-pix" value="<%= siteData.doacoes.pixChave %>" readonly class="bg-transparent border-none text-center sm:text-left flex-1 text-slate-800 dark:text-slate-200 font-mono font-bold outline-none px-4">
+                    <button id="btn-copiar-pix" class="bg-brand-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-colors whitespace-nowrap shadow-md">
+                        Copiar Chave
+                    </button>
+                </div>
+                <div class="text-center mt-2">
+                    <span class="text-[10px] text-slate-400 uppercase tracking-widest">Valor da Chave PIX:</span>
+                    <span id="texto-doacoes-pixChave" class="text-xs font-bold text-slate-500 ml-1"><%= siteData.doacoes.pixChave %></span>
+                </div>
+            </div>
+            <% } %>
+
+            <% const secBancoAtiva = siteData.config?.seccoesAtivas?.doacoes_banco !== false; %>
+            <% if (secBancoAtiva || isAdmin) { %>
+            <div class="hidden-scroll delay-200 bg-brand-blue dark:bg-slate-800 rounded-[2.5rem] p-10 md:p-14 shadow-2xl relative text-white group/banco <%= !secBancoAtiva ? 'opacity-60 grayscale border-4 border-dashed border-red-500' : '' %>">
+                
+                <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none rounded-[2.5rem]"></div>
+                
+                <% if(isAdmin) { %>
+                    <div class="absolute -top-5 left-1/2 -translate-x-1/2 z-50">
+                        <button class="btn-toggle-seccao <%= secBancoAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-3 py-1 rounded-full text-[10px] font-bold shadow-lg" data-seccao="doacoes_banco">
+                            <%= secBancoAtiva ? '👁️ Ocultar Dados Bancários' : '🚫 Secção Oculta (Ativar)' %>
+                        </button>
+                    </div>
+
+                    <div class="absolute top-4 right-4 flex flex-wrap gap-1 z-40 bg-black/50 backdrop-blur-md p-2 rounded-xl shadow-lg opacity-0 group-hover/banco:opacity-100 transition-opacity justify-end max-w-[80%]">
+                        <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="bancoTitulo">Tít</button>
+                        <button class="btn-editar-cms bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="bancoTexto">Txt</button>
+                        <button class="btn-editar-cms bg-slate-600 hover:bg-slate-500 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="bancoNome">Banco</button>
+                        <button class="btn-editar-cms bg-slate-600 hover:bg-slate-500 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="bancoAgencia">Ag.</button>
+                        <button class="btn-editar-cms bg-slate-600 hover:bg-slate-500 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="bancoConta">C.C.</button>
+                        <button class="btn-editar-cms bg-slate-600 hover:bg-slate-500 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="bancoFavorecido">Fav.</button>
+                        <button class="btn-editar-cms bg-slate-600 hover:bg-slate-500 text-white px-2 py-1 text-[10px] font-bold rounded" data-pagina="doacoes" data-chave="bancoCNPJ">CNPJ</button>
+                    </div>
+                <% } %>
+
+                <div class="flex items-center gap-4 mb-8 border-b border-white/10 pb-6 relative z-10 mt-4">
+                    <div class="w-16 h-16 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-3xl shrink-0 border border-white/20">
+                        🏦
+                    </div>
+                    <div>
+                        <h3 id="texto-doacoes-bancoTitulo" class="text-3xl font-extrabold"><%= siteData.doacoes.bancoTitulo %></h3>
+                    </div>
+                </div>
+                
+                <p id="texto-doacoes-bancoTexto" class="text-blue-100 mb-10 leading-relaxed relative z-10"><%= siteData.doacoes.bancoTexto %></p>
+
+                <div class="space-y-4 relative z-10">
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex flex-col hover:bg-white/10 transition-colors">
+                        <span class="text-xs text-blue-300 uppercase tracking-widest font-bold mb-1">Banco</span>
+                        <span id="texto-doacoes-bancoNome" class="text-xl font-medium"><%= siteData.doacoes.bancoNome %></span>
+                    </div>
+                    
+                    <div class="flex gap-4">
+                        <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex-1 flex flex-col hover:bg-white/10 transition-colors">
+                            <span class="text-xs text-blue-300 uppercase tracking-widest font-bold mb-1">Agência</span>
+                            <span id="texto-doacoes-bancoAgencia" class="text-xl font-mono"><%= siteData.doacoes.bancoAgencia %></span>
+                        </div>
+                        <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex-1 flex flex-col hover:bg-white/10 transition-colors">
+                            <span class="text-xs text-blue-300 uppercase tracking-widest font-bold mb-1">Conta</span>
+                            <span id="texto-doacoes-bancoConta" class="text-xl font-mono"><%= siteData.doacoes.bancoConta %></span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/5 backdrop-blur-md rounded-xl p-4 border border-white/10 flex flex-col hover:bg-white/10 transition-colors">
+                        <span class="text-xs text-blue-300 uppercase tracking-widest font-bold mb-1">Favorecido</span>
+                        <span id="texto-doacoes-bancoFavorecido" class="text-lg font-medium"><%= siteData.doacoes.bancoFavorecido %></span>
+                        <span id="texto-doacoes-bancoCNPJ" class="text-sm text-blue-200 mt-1 font-mono"><%= siteData.doacoes.bancoCNPJ %></span>
                     </div>
                 </div>
             </div>
+            <% } %>
 
-            <div>
-                <h3 class="text-3xl font-extrabold text-brand-blue dark:text-white mb-8 border-b-2 border-brand-accent/20 pb-4 inline-block">Outras Vias de Apoio</h3>
-                
-                <ul class="space-y-8">
-                    <li class="flex gap-6 items-start hover:-translate-y-1 transition-transform group">
-                        <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 text-brand-primary dark:text-blue-300 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 group-hover:bg-brand-primary group-hover:text-white transition-colors">🏦</div>
-                        <div>
-                            <strong class="text-brand-blue dark:text-white block text-xl mb-1">Transferência Bancária</strong>
-                            <p class="text-slate-600 dark:text-slate-400 mb-2">Depósito direto na conta da Congregação.</p>
-                            <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700 font-mono text-sm text-slate-700 dark:text-slate-300">
-                                <span class="block">Banco: Banco do Brasil (001)</span>
-                                <span class="block">Agência: 1234-5</span>
-                                <span class="block">Conta Corrente: 98765-4</span>
-                                <span class="block font-bold mt-1 text-brand-primary">Favorecido: Congregação das Irmãs</span>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="flex gap-6 items-start hover:-translate-y-1 transition-transform group">
-                        <div class="w-16 h-16 bg-orange-100 dark:bg-orange-900/50 text-brand-accent dark:text-orange-300 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0 group-hover:bg-brand-accent group-hover:text-white transition-colors">👕</div>
-                        <div>
-                            <strong class="text-brand-blue dark:text-white block text-xl mb-1">Bazar e Alimentos</strong>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                                Recebemos roupas em bom estado, mobiliário, computadores antigos e alimentos não perecíveis na nossa sede em Cascavel ou Fortaleza.
-                            </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
         </div>
-    </div>
-</section>
 
-<section class="py-24 bg-brand-blue dark:bg-slate-900 transition-colors duration-500 relative overflow-hidden">
-    <div class="absolute right-0 bottom-0 w-[500px] h-[500px] border-[40px] border-white/5 rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
-    <div class="absolute left-0 top-0 w-[300px] h-[300px] border-[20px] border-brand-accent/10 rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row gap-12 items-center">
-        <div class="md:w-1/2">
-            <span class="hidden-scroll text-brand-accent font-black tracking-widest text-sm mb-4 block uppercase">Responsabilidade Social Empresarial</span>
-            <h2 class="hidden-scroll delay-100 text-4xl md:text-5xl font-extrabold text-white mb-6">A Sua Empresa na Nossa Missão</h2>
-            <p class="hidden-scroll delay-200 text-lg text-blue-100 mb-8 leading-relaxed">
-                Tornem-se parceiros corporativos da Congregação. As vossas contribuições podem apadrinhar laboratórios de tecnologia inteiros (como os nossos projetos de robótica) ou fornecer bolsas de estudo. Emitimos recibos para dedução fiscal ao abrigo das leis de mecenato.
+        <div class="mt-20 text-center max-w-3xl mx-auto hidden-scroll delay-300 group/msg relative">
+            <% if(isAdmin) { %>
+                <button class="btn-editar-cms absolute -top-8 left-1/2 -translate-x-1/2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 text-xs font-bold rounded-full shadow opacity-0 group-hover/msg:opacity-100 transition-opacity z-50" data-pagina="doacoes" data-chave="mensagemFinal">✏️ Editar Mensagem Final</button>
+            <% } %>
+            <p id="texto-doacoes-mensagemFinal" class="text-2xl text-slate-500 dark:text-slate-400 italic font-serif leading-relaxed">
+                "<%= siteData.doacoes.mensagemFinal %>"
             </p>
-            <a href="mailto:parcerias@congregacao.org.br" class="hidden-scroll delay-300 inline-block bg-white text-brand-blue font-bold px-8 py-4 rounded-full hover:bg-brand-accent hover:text-white transition-colors shadow-xl">
-                Contactar o Setor de Parcerias
-            </a>
         </div>
-        <div class="md:w-1/2 grid grid-cols-2 gap-4">
-            <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 text-center hidden-scroll delay-100 hover:bg-white/20 transition-colors">
-                <div class="text-4xl mb-3">🤝</div>
-                <h4 class="text-white font-bold">Mecenato</h4>
-            </div>
-            <div class="bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20 text-center hidden-scroll delay-200 hover:bg-white/20 transition-colors mt-8">
-                <div class="text-4xl mb-3">🏆</div>
-                <h4 class="text-white font-bold">Patrocínio de Salas</h4>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section class="py-24 bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 transition-colors duration-500">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-        <div class="hidden-scroll inline-flex items-center justify-center w-20 h-20 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full mb-6">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-        </div>
-        <h2 class="hidden-scroll delay-100 text-3xl font-extrabold text-brand-blue dark:text-white mb-6">Compromisso com a Verdade</h2>
-        <p class="hidden-scroll delay-200 text-lg text-slate-600 dark:text-slate-400 mb-8">
-            Cada cêntimo que entra na Congregação tem um destino sagrado. Conduzimos os nossos projetos com total rigor contabilístico e auditorias anuais, garantindo que o seu donativo chegue exatamente ao prato de comida ou ao caderno daquele que mais necessita.
-        </p>
-        <button class="hidden-scroll delay-300 text-brand-primary dark:text-brand-accent font-bold hover:underline transition-all">Ver Relatório de Contas (PDF)</button>
     </div>
 </section>

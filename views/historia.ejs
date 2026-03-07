@@ -1,77 +1,76 @@
-<section class="relative pt-32 pb-20 bg-brand-blue dark:bg-slate-950 overflow-hidden transition-colors duration-500 min-h-[60vh] flex items-center">
+<section class="relative pt-32 pb-32 bg-brand-blue dark:bg-slate-950 overflow-hidden transition-colors duration-500 min-h-[60vh] flex items-center">
     <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
     <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-primary rounded-full blur-[150px] opacity-30 pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
     
     <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
-        
         <% if(isAdmin) { %>
-            <div class="flex justify-center gap-2 mb-6 bg-blue-900/50 dark:bg-slate-800/50 py-2 px-4 rounded-xl w-max mx-auto border border-blue-500/30">
+            <div class="flex flex-wrap justify-center gap-2 mb-6 bg-blue-900/50 dark:bg-slate-800/50 py-2 px-4 rounded-xl w-max mx-auto border border-blue-500/30">
                 <span class="text-xs font-bold text-blue-200 uppercase flex items-center mr-2">Cabeçalho:</span>
-                <button class="btn-editar-cms bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="historia" data-chave="heroBadge">✏️ Badge</button>
-                <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="historia" data-chave="heroTitulo">✏️ Título</button>
-                <button class="btn-editar-cms bg-brand-primary hover:bg-blue-700 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="historia" data-chave="heroTituloDestaque">✏️ Dest</button>
-                <button class="btn-editar-cms bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded shadow text-xs font-bold" data-pagina="historia" data-chave="heroSubtitulo">✏️ Sub</button>
+                <button class="btn-editar-cms bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded shadow text-[10px] sm:text-xs font-bold" data-pagina="historia" data-chave="heroBadge">✏️ Badge</button>
+                <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded shadow text-[10px] sm:text-xs font-bold" data-pagina="historia" data-chave="heroTitulo">✏️ Título</button>
+                <button class="btn-editar-cms bg-brand-primary hover:bg-blue-700 text-white px-2 py-1 rounded shadow text-[10px] sm:text-xs font-bold" data-pagina="historia" data-chave="heroTituloDestaque">✏️ Dest</button>
+                <button class="btn-editar-cms bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded shadow text-[10px] sm:text-xs font-bold" data-pagina="historia" data-chave="heroSubtitulo">✏️ Sub</button>
             </div>
         <% } %>
         
-        <span id="texto-historia-heroBadge" class="hidden-scroll inline-block py-1 px-4 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-sm mb-6"><%= siteData.historia.heroBadge %></span>
-        <h1 class="hidden-scroll delay-100 text-5xl md:text-7xl font-extrabold text-white mb-8 tracking-tight drop-shadow-2xl">
+        <span id="texto-historia-heroBadge" class="hidden-scroll inline-block py-1 px-4 rounded-full bg-brand-accent/20 text-brand-accent border border-brand-accent/50 font-black tracking-[0.2em] text-xs sm:text-sm mb-6"><%= siteData.historia.heroBadge %></span>
+        <h1 class="hidden-scroll delay-100 text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 md:mb-8 tracking-tight drop-shadow-2xl leading-tight">
             <span id="texto-historia-heroTitulo"><%= siteData.historia.heroTitulo %></span> 
             <span id="texto-historia-heroTituloDestaque" class="text-transparent bg-clip-text bg-grad-animated bg-[length:200%_auto] animate-shimmer"><%= siteData.historia.heroTituloDestaque %></span>
             <span id="texto-historia-heroSufixo"><%= siteData.historia.heroSufixo %></span>
         </h1>
-        <p id="texto-historia-heroSubtitulo" class="hidden-scroll delay-200 text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md"><%= siteData.historia.heroSubtitulo %></p>
+        <p id="texto-historia-heroSubtitulo" class="hidden-scroll delay-200 text-lg sm:text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed drop-shadow-md"><%= siteData.historia.heroSubtitulo %></p>
     </div>
 </section>
 
-<div class="bg-white dark:bg-slate-900 transition-colors duration-500 relative py-24 border-b border-slate-200 dark:border-slate-800">
+<div class="bg-slate-50 dark:bg-slate-900 transition-colors duration-500 relative py-20 md:py-28 rounded-t-[2.5rem] md:rounded-t-[4rem] -mt-12 z-20 shadow-[0_-20px_40px_rgba(0,0,0,0.15)] border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-6">
         
         <% if(isAdmin) { %>
-            <div class="text-center mb-24">
-                <button class="btn-adicionar-lista bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-full shadow-xl transition-all hover:scale-105 flex items-center justify-center gap-2 mx-auto" data-pagina="historia" data-lista="capitulos">
-                    <span class="text-2xl">+</span> Escrever Novo Capítulo da História
+            <div class="text-center mb-16 md:mb-24">
+                <button class="btn-adicionar-lista bg-green-500 hover:bg-green-400 text-white font-bold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-xl transition-all hover:scale-105 flex items-center justify-center gap-2 mx-auto text-sm md:text-base" data-pagina="historia" data-lista="capitulos">
+                    <span class="text-xl md:text-2xl">+</span> Escrever Novo Capítulo
                 </button>
             </div>
         <% } %>
 
         <% siteData.historia.capitulos.forEach((cap, index) => { %>
             <% const isReverse = index % 2 !== 0; %> 
-            <div class="hidden-scroll flex flex-col mb-32 group">
+            <div class="hidden-scroll flex flex-col mb-24 md:mb-32 group">
                 
                 <% if(isAdmin) { %>
-                    <div class="w-full flex justify-between bg-slate-50 dark:bg-slate-800 p-3 rounded-t-2xl border border-slate-200 dark:border-slate-700 mb-6">
-                        <div class="flex gap-2 items-center flex-wrap">
-                            <span class="text-xs font-bold text-slate-500 uppercase mr-2">Editar <%= cap.badge %>:</span>
-                            <button class="btn-editar-lista bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="badge">Badge</button>
-                            <button class="btn-editar-lista bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="titulo">Tít</button>
-                            <button class="btn-editar-lista bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 rounded text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="p1">Parágrafo 1</button>
-                            <button class="btn-editar-lista bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="p2">Parágrafo 2</button>
-                            <button class="btn-editar-lista bg-purple-500 hover:bg-purple-600 text-white px-2 py-1 rounded text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="citacao">Citação</button>
-                            <button class="btn-editar-lista bg-brand-accent hover:bg-orange-600 text-white px-2 py-1 rounded text-xs font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="imagem" data-tipo="imagem">🖼️ Imagem</button>
+                    <div class="w-full flex justify-between bg-white dark:bg-slate-800 p-3 rounded-t-2xl border border-slate-200 dark:border-slate-700 mb-6 shadow-sm">
+                        <div class="flex gap-1 items-center flex-wrap">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase mr-1">Editar <%= cap.badge %>:</span>
+                            <button class="btn-editar-lista bg-slate-700 hover:bg-slate-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="badge">Badge</button>
+                            <button class="btn-editar-lista bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="titulo">Tít</button>
+                            <button class="btn-editar-lista bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="p1">P1</button>
+                            <button class="btn-editar-lista bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="p2">P2</button>
+                            <button class="btn-editar-lista bg-purple-500 hover:bg-purple-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="citacao">Citação</button>
+                            <button class="btn-editar-lista bg-brand-accent hover:bg-orange-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>" data-campo="imagem" data-tipo="imagem">🖼️ Foto</button>
                         </div>
-                        <button class="btn-remover-lista bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs font-bold shadow-sm" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>">Apagar Capítulo</button>
+                        <button class="btn-remover-lista bg-red-100 text-red-600 hover:bg-red-600 hover:text-white px-2 py-1 rounded text-[10px] font-bold transition-colors" data-pagina="historia" data-lista="capitulos" data-index="<%= index %>">Apagar</button>
                     </div>
                 <% } %>
 
-                <div class="flex flex-col <%= isReverse ? 'md:flex-row-reverse' : 'md:flex-row' %> gap-16 items-center">
-                    <div class="md:w-1/2">
-                        <h2 id="texto-capitulos-<%= index %>-badge" class="text-brand-accent font-bold tracking-widest text-sm mb-3 uppercase"><%= cap.badge %></h2>
-                        <h3 id="texto-capitulos-<%= index %>-titulo" class="text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6 leading-tight"><%= cap.titulo %></h3>
-                        <p id="texto-capitulos-<%= index %>-p1" class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed"><%= cap.p1 %></p>
-                        <% if(cap.p2) { %><p id="texto-capitulos-<%= index %>-p2" class="text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed"><%= cap.p2 %></p><% } %>
+                <div class="flex flex-col <%= isReverse ? 'lg:flex-row-reverse' : 'lg:flex-row' %> gap-10 lg:gap-16 items-center">
+                    <div class="w-full lg:w-1/2">
+                        <h2 id="texto-capitulos-<%= index %>-badge" class="text-brand-accent font-bold tracking-widest text-xs md:text-sm mb-3 uppercase"><%= cap.badge %></h2>
+                        <h3 id="texto-capitulos-<%= index %>-titulo" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6 leading-tight"><%= cap.titulo %></h3>
+                        <p id="texto-capitulos-<%= index %>-p1" class="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed"><%= cap.p1 %></p>
+                        <% if(cap.p2) { %><p id="texto-capitulos-<%= index %>-p2" class="text-base md:text-lg text-slate-600 dark:text-slate-300 mb-6 leading-relaxed"><%= cap.p2 %></p><% } %>
                         
                         <% if(cap.citacao) { %>
-                            <blockquote class="border-l-4 border-brand-primary pl-6 py-2 my-8 bg-slate-50 dark:bg-slate-800/50 rounded-r-xl">
-                                <p id="texto-capitulos-<%= index %>-citacao" class="text-xl italic text-brand-blue dark:text-blue-200 font-serif"><%= cap.citacao %></p>
-                                <footer id="texto-capitulos-<%= index %>-citacaoAutor" class="mt-2 font-bold text-sm text-brand-accent"><%= cap.citacaoAutor %></footer>
+                            <blockquote class="border-l-4 border-brand-primary pl-5 py-2 my-8 bg-white dark:bg-slate-800/50 rounded-r-xl shadow-sm">
+                                <p id="texto-capitulos-<%= index %>-citacao" class="text-lg md:text-xl italic text-slate-700 dark:text-blue-200 font-serif leading-relaxed"><%= cap.citacao %></p>
+                                <footer id="texto-capitulos-<%= index %>-citacaoAutor" class="mt-3 font-bold text-xs md:text-sm text-brand-accent uppercase tracking-wider"><%= cap.citacaoAutor %></footer>
                             </blockquote>
                         <% } %>
                     </div>
 
-                    <div class="md:w-1/2 relative group/img cursor-pointer">
-                        <div class="absolute inset-0 <%= isReverse ? 'bg-brand-accent' : 'bg-brand-primary' %> rounded-3xl transform <%= isReverse ? '-rotate-3 group-hover/img:-rotate-6' : 'rotate-3 group-hover/img:rotate-6' %> transition-transform duration-500 opacity-20 dark:opacity-40"></div>
-                        <img id="img-capitulos-<%= index %>" src="<%= cap.imagem %>" onerror="this.src='https://via.placeholder.com/800x1000?text=Imagem'" alt="Capítulo" class="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[300px] md:h-[600px] group-hover/img:-translate-y-2 transition-transform duration-500 <%= isReverse ? 'sepia hover:sepia-0' : 'grayscale hover:grayscale-0' %>">
+                    <div class="w-full lg:w-1/2 relative group/img cursor-pointer mt-6 lg:mt-0">
+                        <div class="absolute inset-0 <%= isReverse ? 'bg-brand-accent' : 'bg-brand-primary' %> rounded-3xl transform <%= isReverse ? '-rotate-2 group-hover/img:-rotate-4' : 'rotate-2 group-hover/img:rotate-4' %> transition-transform duration-500 opacity-20 dark:opacity-40"></div>
+                        <img id="img-capitulos-<%= index %>" src="<%= cap.imagem %>" onerror="this.src='https://via.placeholder.com/800x1000?text=Imagem'" alt="Capítulo" class="relative z-10 rounded-3xl shadow-2xl object-cover w-full h-[300px] sm:h-[400px] md:h-[500px] group-hover/img:-translate-y-2 transition-transform duration-500 <%= isReverse ? 'sepia hover:sepia-0' : 'grayscale hover:grayscale-0' %>">
                     </div>
                 </div>
             </div>
@@ -79,98 +78,169 @@
     </div>
 </div>
 
-<section class="py-32 bg-brand-blue dark:bg-slate-900 text-white relative overflow-hidden transition-colors duration-500 border-b border-blue-900/50 dark:border-slate-800">
-    <div class="max-w-5xl mx-auto px-6 relative z-10">
+<% const secTimelineAtiva = siteData.config?.seccoesAtivas?.historia_timeline !== false; %>
+<% if (secTimelineAtiva || isAdmin) { %>
+<section class="py-24 md:py-32 bg-brand-blue dark:bg-slate-950 text-white relative overflow-hidden transition-colors duration-500 rounded-t-[2.5rem] md:rounded-t-[4rem] -mt-12 z-30 shadow-[0_-20px_40px_rgba(0,0,0,0.3)] <%= !secTimelineAtiva ? 'opacity-60 grayscale border-y-4 border-dashed border-red-500' : '' %>">
+    
+    <div class="absolute inset-0 opacity-[0.05] bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]"></div>
+
+    <% if(isAdmin) { %>
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secTimelineAtiva ? 'bg-slate-800' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap border border-white/20" data-seccao="historia_timeline">
+                <%= secTimelineAtiva ? '👁️ Ocultar Marcha do Tempo' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
+        </div>
+    <% } %>
+
+    <div class="max-w-[90rem] mx-auto relative z-10 mt-6">
         
-        <div class="text-center mb-16 w-full">
+        <div class="text-center mb-12 md:mb-20 px-6 max-w-3xl mx-auto">
             <% if(isAdmin) { %>
-                <div class="flex justify-center gap-2 mb-6 bg-blue-900/50 dark:bg-slate-800/50 py-2 px-4 rounded-xl w-max mx-auto border border-blue-500/30">
-                    <span class="text-xs font-bold text-blue-200 uppercase flex items-center mr-2">Secção Linha do Tempo:</span>
-                    <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 px-3 py-1.5 text-xs font-bold rounded shadow" data-pagina="historia" data-chave="timelineTitulo">✏️ Título</button>
-                    <button class="btn-editar-cms bg-orange-500 hover:bg-orange-600 px-3 py-1.5 text-xs font-bold rounded shadow" data-pagina="historia" data-chave="timelineSub">✏️ Subtítulo</button>
-                    <button class="btn-adicionar-lista bg-green-500 hover:bg-green-600 px-3 py-1.5 text-xs font-bold rounded shadow ml-2" data-pagina="historia" data-lista="timeline">+ Adicionar Novo Marco</button>
+                <div class="flex justify-center gap-2 mb-6 bg-white/10 backdrop-blur-sm py-2 px-4 rounded-xl w-max mx-auto border border-white/10">
+                    <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 px-3 py-1.5 text-[10px] md:text-xs font-bold rounded shadow" data-pagina="historia" data-chave="timelineTitulo">✏️ Título</button>
+                    <button class="btn-editar-cms bg-orange-500 hover:bg-orange-600 px-3 py-1.5 text-[10px] md:text-xs font-bold rounded shadow" data-pagina="historia" data-chave="timelineSub">✏️ Sub</button>
+                    <button class="btn-adicionar-lista bg-green-500 hover:bg-green-600 px-3 py-1.5 text-[10px] md:text-xs font-bold rounded shadow ml-2" data-pagina="historia" data-lista="timeline">+ Add Marco</button>
                 </div>
             <% } %>
-
-            <h2 id="texto-historia-timelineTitulo" class="hidden-scroll text-5xl font-extrabold mb-6"><%= siteData.historia.timelineTitulo %></h2>
-            <p id="texto-historia-timelineSub" class="hidden-scroll delay-100 text-xl text-blue-200 max-w-2xl mx-auto"><%= siteData.historia.timelineSub %></p>
+            <h2 id="texto-historia-timelineTitulo" class="hidden-scroll text-4xl sm:text-5xl font-extrabold mb-4 md:mb-6 leading-tight drop-shadow-md"><%= siteData.historia.timelineTitulo %></h2>
+            <p id="texto-historia-timelineSub" class="hidden-scroll delay-100 text-lg md:text-xl text-blue-200/80 leading-relaxed"><%= siteData.historia.timelineSub %></p>
+            
+            <div class="hidden md:flex justify-center gap-4 mt-8">
+                <button id="btn-prev-timeline" class="bg-white/10 hover:bg-brand-primary text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-lg hover:-translate-y-1 backdrop-blur-sm border border-white/10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button id="btn-next-timeline" class="bg-white/10 hover:bg-brand-primary text-white w-12 h-12 rounded-full flex items-center justify-center transition-all shadow-lg hover:-translate-y-1 backdrop-blur-sm border border-white/10">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
         </div>
 
-        <div class="relative border-l-4 border-blue-500/30 md:ml-0 ml-6 md:border-l-0 max-h-[700px] overflow-y-auto custom-scrollbar pr-4 pb-10">
-            <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-1 h-full bg-blue-500/30"></div>
+        <div class="relative w-full overflow-hidden">
+            
+            <div class="md:hidden flex items-center justify-center gap-2 text-white/40 text-sm mb-6 animate-pulse">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                <span>Deslize para ver mais</span>
+            </div>
 
-            <% siteData.historia.timeline.forEach((ponto, index) => { %>
-                <% const isRight = index % 2 !== 0; %>
-                <div class="hidden-scroll mb-16 pl-8 md:pl-0 md:flex <%= isRight ? 'md:flex-row-reverse' : '' %> md:items-center md:justify-between w-full relative group">
-                    
-                    <div class="absolute left-[-10px] md:left-1/2 md:-translate-x-1/2 w-6 h-6 rounded-full bg-<%= ponto.cor %> border-4 border-brand-blue shadow-[0_0_15px_currentColor] z-10"></div>
-                    
-                    <div class="md:w-[45%] text-left <%= isRight ? '' : 'md:text-right' %> bg-white/5 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none p-6 md:p-0 rounded-2xl hover:bg-white/10 transition-colors border border-white/5 md:border-transparent">
+            <div id="track-timeline" class="flex w-full scroll-livre overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 md:px-12 pb-12 pt-4">
+                <% siteData.historia.timeline.forEach((ponto, index) => { %>
+                    <div class="w-[85vw] sm:w-[320px] md:w-[400px] shrink-0 snap-center relative group flex flex-col items-center px-3 md:px-5">
                         
+                        <% if (index !== siteData.historia.timeline.length - 1) { %>
+                            <div class="absolute top-[22px] md:top-[26px] left-1/2 w-full h-1 bg-white/10 z-0 pointer-events-none"></div>
+                        <% } %>
+
+                        <div class="w-11 h-11 md:w-14 md:h-14 rounded-full bg-<%= ponto.cor %> border-4 border-brand-blue dark:border-slate-950 shadow-[0_0_15px_currentColor] z-10 relative mb-6 md:mb-8 transition-transform duration-300 group-hover:scale-110 flex items-center justify-center text-brand-blue">
+                            <span class="opacity-50 text-xs font-black">●</span>
+                        </div>
+                        
+                        <div class="w-full bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-[2rem] border border-white/10 hover:bg-white/10 transition-colors text-center shadow-xl relative min-h-[220px] flex flex-col justify-start">
+                            
+                            <% if(isAdmin) { %>
+                                <div class="absolute -top-4 left-1/2 -translate-x-1/2 flex gap-1 z-50 opacity-0 group-hover:opacity-100 transition-opacity bg-brand-blue p-1.5 rounded-lg shadow-2xl border border-white/20 w-max">
+                                    <button class="btn-editar-lista bg-slate-700 hover:bg-slate-600 text-white text-[10px] px-2 py-1 rounded font-bold" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="ano">Ano</button>
+                                    <button class="btn-editar-lista bg-blue-500 hover:bg-blue-600 text-white text-[10px] px-2 py-1 rounded font-bold" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="titulo">Tít</button>
+                                    <button class="btn-editar-lista bg-orange-500 hover:bg-orange-600 text-white text-[10px] px-2 py-1 rounded font-bold" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="texto">Txt</button>
+                                    <button class="btn-remover-lista text-red-400 hover:text-white hover:bg-red-600 text-[10px] px-2 py-1 rounded font-bold transition-colors ml-1" data-pagina="historia" data-lista="timeline" data-index="<%= index %>">Apagar</button>
+                                </div>
+                            <% } %>
+
+                            <h3 id="texto-timeline-<%= index %>-ano" class="text-3xl md:text-4xl font-black text-<%= ponto.cor %> mb-2 md:mb-3 drop-shadow-sm"><%= ponto.ano %></h3>
+                            <h4 id="texto-timeline-<%= index %>-titulo" class="text-lg md:text-xl font-bold mb-3 md:mb-4 leading-tight"><%= ponto.titulo %></h4>
+                            <p id="texto-timeline-<%= index %>-texto" class="text-blue-100/70 text-sm md:text-base leading-relaxed"><%= ponto.texto %></p>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+
+    </div>
+</section>
+<% } %>
+
+<% const secGaleriaAtiva = siteData.config?.seccoesAtivas?.historia_galeria !== false; %>
+<% if (secGaleriaAtiva || isAdmin) { %>
+<section class="py-24 md:py-32 bg-white dark:bg-slate-900 transition-colors duration-500 relative rounded-t-[2.5rem] md:rounded-t-[4rem] -mt-12 z-40 shadow-[0_-20px_40px_rgba(0,0,0,0.15)] <%= !secGaleriaAtiva ? 'opacity-60 grayscale border-y-4 border-dashed border-red-500' : '' %>">
+    
+    <% if(isAdmin) { %>
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-50">
+            <button class="btn-toggle-seccao <%= secGaleriaAtiva ? 'bg-slate-700' : 'bg-red-600' %> text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap" data-seccao="historia_galeria">
+                <%= secGaleriaAtiva ? '👁️ Ocultar Galeria' : '🚫 Secção Oculta (Ativar)' %>
+            </button>
+        </div>
+    <% } %>
+
+    <div class="max-w-[90rem] mx-auto px-4 sm:px-6 mt-6 w-full">
+        
+        <div class="text-left mb-10 md:mb-16 w-full flex flex-col md:flex-row justify-between items-start md:items-end border-b border-slate-200 dark:border-slate-800 pb-6 gap-4 px-2 md:px-6">
+            <div class="w-full md:w-auto">
+                <% if(isAdmin) { %>
+                    <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-[10px] md:text-xs font-bold mb-3 block shadow" data-pagina="historia" data-chave="galeriaTitulo">✏️ Título Galeria</button>
+                <% } %>
+                <h2 id="texto-historia-galeriaTitulo" class="hidden-scroll text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white leading-tight"><%= siteData.historia.galeriaTitulo %></h2>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 md:gap-4 shrink-0 w-full md:w-auto mt-2 md:mt-0">
+                <% if(isAdmin) { %>
+                    <button class="btn-adicionar-foto-direto bg-green-500 hover:bg-green-400 text-white px-4 md:px-6 py-2.5 md:py-3 rounded-full font-bold text-xs md:text-sm shadow-lg transition-transform hover:-translate-y-1 flex items-center gap-2" data-pagina="historia" data-lista="galeria">
+                        <span class="text-lg">+</span> Adicionar Foto
+                    </button>
+                <% } %>
+                <div class="hidden md:flex gap-2">
+                    <button id="btn-prev-galeria" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="btn-next-galeria" class="bg-slate-100 dark:bg-slate-800 hover:bg-brand-primary hover:text-white text-brand-blue dark:text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all shadow-sm hover:-translate-y-1">
+                        <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="hidden-scroll delay-100 w-full relative">
+            
+            <div class="md:hidden flex items-center justify-center gap-2 text-slate-400 text-xs mb-4 animate-pulse">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                <span>Deslize as fotos</span>
+            </div>
+
+            <div id="track-galeria-historia" class="flex gap-4 md:gap-6 w-full pt-4 pb-12 scroll-livre overflow-x-auto snap-x snap-mandatory scroll-smooth px-2 md:px-6">
+                <% siteData.historia.galeria.forEach((foto, index) => { %>
+                    <div class="w-[80vw] sm:w-[350px] md:w-[450px] shrink-0 snap-center group relative rounded-2xl md:rounded-[2rem] overflow-hidden shadow-md hover:shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col transition-all duration-300 md:hover:-translate-y-2 bg-white dark:bg-slate-800">
+                        
+                        <div class="img-galeria h-64 md:h-80 cursor-zoom-in relative overflow-hidden flex-1">
+                            <img id="img-galeria-<%= index %>" src="<%= foto.imagem %>" onerror="this.src='/img/noticia1.jpg'" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4 md:p-6 pointer-events-none">
+                                <p id="texto-galeria-<%= index %>-titulo" class="text-white font-bold text-base md:text-xl drop-shadow-md leading-tight"><%= foto.titulo %></p>
+                                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center text-white text-xl md:text-3xl font-light opacity-0 group-hover:opacity-100 transition-all delay-100 scale-50 group-hover:scale-100">🔍</div>
+                            </div>
+                        </div>
+
                         <% if(isAdmin) { %>
-                            <div class="flex gap-1 mb-4 <%= isRight ? 'justify-start' : 'md:justify-end' %>">
-                                <button class="btn-editar-lista bg-slate-700 hover:bg-slate-600 text-xs px-2 py-1 rounded" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="ano">Ano</button>
-                                <button class="btn-editar-lista bg-blue-500 hover:bg-blue-600 text-xs px-2 py-1 rounded" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="titulo">Tít</button>
-                                <button class="btn-editar-lista bg-orange-500 hover:bg-orange-600 text-xs px-2 py-1 rounded" data-pagina="historia" data-lista="timeline" data-index="<%= index %>" data-campo="texto">Txt</button>
-                                <button class="btn-remover-lista bg-red-600 hover:bg-red-700 text-xs px-2 py-1 rounded font-bold ml-2" data-pagina="historia" data-lista="timeline" data-index="<%= index %>">Apagar</button>
+                            <div class="bg-slate-50 dark:bg-slate-800/80 p-3 border-t border-slate-200 dark:border-slate-700 flex justify-between gap-1 items-center z-20 relative">
+                                <div class="flex gap-1">
+                                    <button class="btn-editar-lista bg-brand-accent hover:bg-orange-600 text-white px-2 py-1 rounded text-[10px] font-bold shadow" data-pagina="historia" data-lista="galeria" data-index="<%= index %>" data-campo="imagem" data-tipo="imagem">🖼️ Mudar</button>
+                                    <button class="btn-editar-lista bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-[10px] font-bold shadow" data-pagina="historia" data-lista="galeria" data-index="<%= index %>" data-campo="titulo">Tít</button>
+                                </div>
+                                <button class="btn-remover-lista bg-red-100 text-red-600 hover:bg-red-600 hover:text-white px-2 py-1 rounded text-[10px] font-bold transition-colors" data-pagina="historia" data-lista="galeria" data-index="<%= index %>">Apagar</button>
                             </div>
                         <% } %>
 
-                        <h3 id="texto-timeline-<%= index %>-ano" class="text-5xl font-black text-<%= ponto.cor %> mb-2 opacity-80"><%= ponto.ano %></h3>
-                        <h4 id="texto-timeline-<%= index %>-titulo" class="text-2xl font-bold mb-3"><%= ponto.titulo %></h4>
-                        <p id="texto-timeline-<%= index %>-texto" class="text-blue-100 text-lg leading-relaxed"><%= ponto.texto %></p>
                     </div>
-                    <div class="hidden md:block w-[45%]"></div>
-                </div>
-            <% }) %>
+                <% }) %>
+            </div>
         </div>
+
     </div>
 </section>
+<% } %>
 
-<section class="py-32 bg-white dark:bg-slate-900 transition-colors duration-500">
-    <div class="max-w-7xl mx-auto px-6">
-        
-        <div class="text-center mb-16 w-full">
-            <% if(isAdmin) { %>
-                <div class="flex justify-center gap-2 mb-6 bg-slate-100 dark:bg-slate-800 py-2 px-4 rounded-xl w-max mx-auto border border-slate-200 dark:border-slate-700">
-                    <button class="btn-editar-cms bg-blue-500 hover:bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-bold" data-pagina="historia" data-chave="galeriaTitulo">✏️ Título Galeria</button>
-                    <button class="btn-adicionar-lista bg-green-500 hover:bg-green-600 text-white px-4 py-1.5 rounded font-bold text-xs shadow-sm ml-2" data-pagina="historia" data-lista="galeria">+ Adicionar Nova Foto</button>
-                </div>
-            <% } %>
-
-            <h2 id="texto-historia-galeriaTitulo" class="hidden-scroll text-4xl md:text-5xl font-extrabold text-brand-blue dark:text-white mb-6"><%= siteData.historia.galeriaTitulo %></h2>
-            <div class="w-24 h-1 bg-brand-primary mx-auto rounded-full mb-6"></div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <% siteData.historia.galeria.forEach((foto, index) => { %>
-                <div class="hidden-scroll group relative rounded-2xl overflow-hidden shadow-lg border border-slate-100 dark:border-slate-800">
-                    
-                    <div class="img-galeria h-80 cursor-pointer relative overflow-hidden">
-                        <img id="img-galeria-<%= index %>" src="<%= foto.imagem %>" onerror="this.src='https://via.placeholder.com/600x600?text=Nova+Foto'" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-blue/90 via-brand-blue/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6 pointer-events-none">
-                            <p id="texto-galeria-<%= index %>-titulo" class="text-white font-bold text-xl drop-shadow-md"><%= foto.titulo %></p>
-                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md rounded-full w-16 h-16 flex items-center justify-center text-white text-3xl font-light opacity-0 group-hover:opacity-100 transition-all delay-100 scale-50 group-hover:scale-100">🔍</div>
-                        </div>
-                    </div>
-
-                    <% if(isAdmin) { %>
-                        <div class="bg-slate-50 dark:bg-slate-800 p-3 border-t border-slate-200 dark:border-slate-700 flex justify-between gap-1 items-center z-20 relative">
-                            <div class="flex gap-1">
-                                <button class="btn-editar-lista bg-brand-accent hover:bg-orange-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="galeria" data-index="<%= index %>" data-campo="imagem" data-tipo="imagem">🖼️ Mudar</button>
-                                <button class="btn-editar-lista bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-[10px] font-bold" data-pagina="historia" data-lista="galeria" data-index="<%= index %>" data-campo="titulo">Tít</button>
-                            </div>
-                            <button class="btn-remover-lista bg-red-100 text-red-600 hover:bg-red-600 hover:text-white px-2 py-1 rounded text-[10px] font-bold transition-colors" data-pagina="historia" data-lista="galeria" data-index="<%= index %>">Apagar</button>
-                        </div>
-                    <% } %>
-
-                </div>
-            <% }) %>
-        </div>
+<div id="lightbox-galeria" class="fixed inset-0 bg-black/95 z-[100] hidden items-center justify-center p-4 backdrop-blur-md transition-opacity">
+    <span id="fechar-lightbox" class="absolute top-6 right-6 md:right-8 text-white/70 text-4xl md:text-5xl font-bold cursor-pointer hover:text-brand-accent transition-colors z-50 w-12 h-12 flex items-center justify-center bg-black/50 rounded-full">&times;</span>
+    <button id="lightbox-prev" class="absolute left-2 md:left-10 text-white/50 hover:text-white text-3xl md:text-6xl z-50 p-2 md:p-4 transition-colors">❮</button>
+    <div class="relative max-w-[90vw] max-h-[85vh] flex flex-col items-center mt-8 md:mt-0">
+        <img id="lightbox-img" src="" class="max-w-full max-h-[75vh] md:max-h-[80vh] rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.5)] object-contain select-none transition-opacity duration-300">
+        <p id="lightbox-caption" class="text-white/90 font-medium text-sm md:text-lg mt-4 text-center px-4"></p>
     </div>
-</section>
-
-<div id="lightbox-galeria" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 backdrop-blur-sm cursor-zoom-out transition-opacity">
-    <span id="fechar-lightbox" class="absolute top-6 right-8 text-white text-5xl font-bold cursor-pointer hover:text-brand-accent">&times;</span>
-    <img id="lightbox-img" src="" class="max-w-[90vw] max-h-[90vh] rounded-xl shadow-2xl border-2 border-white/10 cursor-default">
+    <button id="lightbox-next" class="absolute right-2 md:right-10 text-white/50 hover:text-white text-3xl md:text-6xl z-50 p-2 md:p-4 transition-colors">❯</button>
 </div>

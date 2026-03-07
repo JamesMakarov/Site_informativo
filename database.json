@@ -3,7 +3,7 @@
     "heroBadge": "DESDE 1970",
     "heroTitulo": "Educação que",
     "heroTituloDestaque": "Transforma",
-    "heroBg": "/img/noticia1.jpg",
+    "heroBg": "/img/uploads/img_1772374154448940524306.jpg",
     "heroSubtitulo": "Há mais de 50 anos educando com amor, servindo com esperança e vivendo a fé em nossa comunidade.",
     "heroBtn": "Deixe seu Pedido de Oração",
     "stat1_num": "+50",
@@ -47,6 +47,11 @@
         "texto": "Testemunho aleatório que tenha agradado ao administrador.",
         "autor": "Pessoa desconhecida",
         "papel": "O QUE ESSA PESSOA FAZ"
+      },
+      {
+        "texto": "Novo testemunho...",
+        "autor": "Nome",
+        "papel": "Cargo"
       }
     ],
     "faqs": [
@@ -61,6 +66,10 @@
       {
         "pergunta": "Como fazer parte da comunidade?",
         "resposta": "Sua resposta aqui, detalhe de maneira convincente e clara, para que os usuários compreendam. "
+      },
+      {
+        "pergunta": "Nova Pergunta?",
+        "resposta": "Resposta aqui."
       }
     ]
   },
@@ -121,6 +130,10 @@
     "galeriaTitulo": "Galeria de Memórias",
     "galeria": [
       {
+        "imagem": "/img/uploads/img_1772374110620385781906.jpg",
+        "titulo": "Nova Memória Fotográfica"
+      },
+      {
         "imagem": "/img/noticia1.jpg",
         "titulo": "Primeira turma de alunos (1975)"
       },
@@ -131,6 +144,10 @@
       {
         "imagem": "/img/noticia3.jpg",
         "titulo": "Inauguração da Capela Central"
+      },
+      {
+        "imagem": "/img/uploads/img_1772373220935948322369.jpg",
+        "titulo": "Nova Memória"
       }
     ]
   },
@@ -361,5 +378,48 @@
         "titulo": "Sorrisos que nos movem"
       }
     ]
+  },
+  "doacoes": {
+    "heroTitulo": "Apoie a Nossa Missão",
+    "heroSubtitulo": "A sua generosidade é o que nos permite continuar a acolher, educar e curar. Toda a ajuda é uma bênção.",
+    "pixTitulo": "Doação via PIX",
+    "pixTexto": "Rápido, seguro e sem taxas. Escaneie o QR Code ou copie a chave abaixo.",
+    "pixChave": "12.345.678/0001-90",
+    "pixQrCode": "https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg",
+    "bancoTitulo": "Transferência Bancária",
+    "bancoTexto": "Pode também realizar um depósito ou transferência clássica diretamente para a conta da Congregação.",
+    "bancoNome": "Banco do Brasil",
+    "bancoAgencia": "1234-5",
+    "bancoConta": "98765-4",
+    "bancoFavorecido": "Congregação das Irmãs",
+    "bancoCNPJ": "12.345.678/0001-90",
+    "mensagemFinal": "Deus abençoe a sua generosidade. As nossas irmãs rezam diariamente na capela por todos os nossos benfeitores."
+  },
+  "config": {
+    "logo": "/img/uploads/img_1772416786110128971052.png",
+    "paginasAtivas": {
+      "historia": true,
+      "projetos": true,
+      "noticias": true,
+      "galeria": true,
+      "vocacoes": true,
+      "casas": true,
+      "doacoes": true,
+      "oracao": true
+    },
+    "admin": {
+      "usuario": "diretoria",
+      "senha": "123"
+    },
+    "seccoesAtivas": {
+      "home_numeros": true,
+      "home_bemvindo": true,
+      "home_destaque": true,
+      "home_depoimentos": true,
+      "home_faq": true,
+      "home_cta": true,
+      "historia_timeline": true,
+      "doacoes_banco": true
+    }
   }
 }
