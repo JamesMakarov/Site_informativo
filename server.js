@@ -24,10 +24,18 @@ const upload = multer({
         fileSize: 5 * 1024 * 1024
     },
     fileFilter: (req, file, cb) => {
-        if (file.mimetype && file.mimetype.startsWith('image/')) {
+        const allowedMimeTypes = new Set([
+            'image/jpeg',
+            'image/png',
+            'image/webp',
+            'image/gif'
+        ]);
+
+        if (allowedMimeTypes.has(file.mimetype)) {
             return cb(null, true);
         }
-        cb(new Error('Apenas arquivos de imagem são permitidos.'));
+
+        cb(new Error('Formato de imagem não permitido.'));
     }
 });
 
@@ -36,8 +44,8 @@ app.disable('x-powered-by');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '1mb' }));
+app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
 // --- BASE DE DADOS ---
 const dbPath = path.join(__dirname, 'database.json');
