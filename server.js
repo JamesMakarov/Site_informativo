@@ -18,7 +18,20 @@ const storage = multer.diskStorage({
         cb(null, 'img_' + Date.now() + Math.round(Math.random() * 1E9) + ext);
     }
 });
-const upload = multer({ storage: storage });
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024
+    },
+    fileFilter: (req, file, cb) => {
+        if (file.mimetype && file.mimetype.startsWith('image/')) {
+            return cb(null, true);
+        }
+        cb(new Error('Apenas arquivos de imagem são permitidos.'));
+    }
+});
+
+app.disable('x-powered-by');
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -440,6 +453,8 @@ app.post('/api/oracao', (req, res) => {
     setTimeout(() => res.json({ sucesso: true, mensagem: `Paz e bem, ${nome}. Seu pedido foi acolhido.` }), 1200);
 });
 
-app.listen(3000, () => {
-    console.log(`Servidor rodando em http://localhost:3000`);
+const PORT = Number(process.env.PORT) || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
