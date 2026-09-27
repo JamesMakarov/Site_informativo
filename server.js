@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs'); 
+const crypto = require('crypto');
 
 const multer = require('multer');
 
@@ -61,13 +62,51 @@ function salvarBanco() {
     }
 }
 
-// ===================================================================
-// 1. PRIMEIRO: O MIDDLEWARE QUE DEFINE QUEM É O ADMIN
-// ===================================================================
+// --- AUTENTICAÇÃO DO PAINEL ADMIN ---
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+const ADMIN_SECRET = process.env.ADMIN_SECRET || '';
+
+function safeEqual(a, b) {
+    const left = Buffer.from(String(a));
+    const right = Buffer.from(String(b));
+    return left.length === right.length && crypto.timingSafeEqual(left, right);
+}
+
+function getAdminToken() {
+    if (!ADMIN_SECRET) return '';
+    return crypto
+        .createHmac('sha256', ADMIN_SECRET)
+        .update('institutional-site-admin')
+        .digest('hex');
+}
+
+function parseCookies(header = '') {
+    return Object.fromEntries(
+        header
+            .split(';')
+            .map(cookie => cookie.trim())
+            .filter(Boolean)
+            .map(cookie => {
+                const separator = cookie.indexOf('=');
+                if (separator === -1) return [cookie, ''];
+                return [
+                    decodeURIComponent(cookie.slice(0, separator)),
+                    decodeURIComponent(cookie.slice(separator + 1))
+                ];
+            })
+    );
+}
+
 app.use((req, res, next) => {
-    const cookies = req.headers.cookie || '';
-    res.locals.isAdmin = cookies.includes('adminAuth=true');
-    res.locals.siteData = siteData; 
+    const cookies = parseCookies(req.headers.cookie || '');
+    const expectedToken = getAdminToken();
+
+    res.locals.isAdmin = Boolean(
+        expectedToken &&
+        cookies.adminAuth &&
+        safeEqual(cookies.adminAuth, expectedToken)
+    );
+    res.locals.siteData = siteData;
     next();
 });
 
@@ -137,12 +176,59 @@ app.post('/api/upload', upload.single('imagem'), (req, res) => {
 
 // --- ROTAS DO PAINEL ADMIN ---
 app.get('/painel-diretoria', (req, res) => {
-    res.setHeader('Set-Cookie', 'adminAuth=true; Path=/; HttpOnly');
+    if (!ADMIN_PASSWORD || !ADMIN_SECRET) {
+        return res
+            .status(503)
+            .send('Painel administrativo desabilitado. Configure ADMIN_PASSWORD e ADMIN_SECRET.');
+    }
+
+    if (res.locals.isAdmin) return res.redirect('/');
+
+    res.type('html').send(`
+        <!doctype html>
+        <html lang="pt-BR">
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Área administrativa</title>
+        </head>
+        <body>
+            <main>
+                <h1>Área administrativa</h1>
+                <form method="post" action="/painel-diretoria">
+                    <label for="password">Senha</label>
+                    <input id="password" name="password" type="password" required autofocus>
+                    <button type="submit">Entrar</button>
+                </form>
+            </main>
+        </body>
+        </html>
+    `);
+});
+
+app.post('/painel-diretoria', (req, res) => {
+    if (!ADMIN_PASSWORD || !ADMIN_SECRET) {
+        return res.status(503).send('Painel administrativo desabilitado.');
+    }
+
+    if (!safeEqual(req.body.password || '', ADMIN_PASSWORD)) {
+        return res.status(401).send('Senha inválida.');
+    }
+
+    const secure = process.env.NODE_ENV === 'production' ? '; Secure' : '';
+    res.setHeader(
+        'Set-Cookie',
+        `adminAuth=${getAdminToken()}; Path=/; HttpOnly; SameSite=Lax; Max-Age=28800${secure}`
+    );
     res.redirect('/');
 });
 
 app.get('/sair-painel', (req, res) => {
-    res.setHeader('Set-Cookie', 'adminAuth=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT');
+    const secure = process.env.NODE_ENV === 'production' ? '; Secure' : '';
+    res.setHeader(
+        'Set-Cookie',
+        `adminAuth=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${secure}`
+    );
     res.redirect('/');
 });
 
