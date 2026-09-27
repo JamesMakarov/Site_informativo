@@ -1,13 +1,13 @@
 {
   "name": "site_informativo",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Institutional website prototype with an Express/EJS content management workflow",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Thiago Monteiro",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
