@@ -75,7 +75,32 @@ Este projeto usa `database.json` como armazenamento simples de conteúdo. Isso f
 
 ## Segurança
 
-A área administrativa desta versão foi criada para uso local/prototipação e **não deve ser exposta diretamente à internet sem uma camada real de autenticação e autorização**.
+O painel administrativo exige duas variáveis de ambiente:
+
+- `ADMIN_PASSWORD`: senha usada no login;
+- `ADMIN_SECRET`: segredo usado para gerar o token do cookie administrativo.
+
+Exemplo no Linux/macOS:
+
+```bash
+export ADMIN_PASSWORD="change-me"
+export ADMIN_SECRET="use-a-long-random-secret"
+npm start
+```
+
+PowerShell:
+
+```powershell
+$env:ADMIN_PASSWORD="change-me"
+$env:ADMIN_SECRET="use-a-long-random-secret"
+npm start
+```
+
+Sem essas variáveis, o painel administrativo permanece desabilitado.
+
+O cookie administrativo é `HttpOnly`, `SameSite=Lax` e recebe a flag `Secure` quando `NODE_ENV=production`.
+
+Apesar dessa proteção, o projeto continua sendo um protótipo e precisaria de controles adicionais antes de um uso público de produção.
 
 ## Observação
 
