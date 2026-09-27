@@ -1,5 +1,7 @@
 # Institutional Website CMS
 
+[![Node validation](https://github.com/JamesMakarov/Site_informativo/actions/workflows/ci.yml/badge.svg)](https://github.com/JamesMakarov/Site_informativo/actions/workflows/ci.yml)
+
 Protótipo de site institucional construído com **Node.js, Express e EJS**, com conteúdo administrável, upload de imagens e páginas renderizadas no servidor.
 
 O projeto inclui uma área de edição usada para alterar textos, listas, notícias, imagens e a visibilidade de páginas sem modificar diretamente os templates.
